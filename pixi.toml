@@ -34,3 +34,5 @@ swanlab-sync = "swanlab sync"
 score-embedding = "python -m amp_submission.embedding_stage"
 
 expand-pool = "python -m amp_submission.expand_pool"
+
+motif-check = "python -m amp_submission.motifs"

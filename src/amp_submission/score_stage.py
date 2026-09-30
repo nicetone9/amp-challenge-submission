@@ -12,7 +12,7 @@ from .metric_scores import descriptors, anchor_novelty
 from .prepare_reference import save_json
 from .scoring import predict_external
 
-def cache_scores(sequences, directory, identity, compute, batch_size=512):
+def cache_scores(sequences, directory, identity, compute, batch_size=512, progress_callback=None):
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=True)
     outputs = {}
@@ -20,7 +20,8 @@ def cache_scores(sequences, directory, identity, compute, batch_size=512):
         batch = sequences[start:start+batch_size]
         key = fingerprint({"identity": identity, "sequences": batch, "batch_size": batch_size})
         path = directory / (key + ".json")
-        if path.exists():
+        cache_hit = path.exists()
+        if cache_hit:
             cached = json.loads(path.read_text())
             if cached["key"] != key or cached["score_sha256"] != fingerprint(cached["scores"]):
                 raise ValueError("Corrupt score cache")
@@ -35,6 +36,8 @@ def cache_scores(sequences, directory, identity, compute, batch_size=512):
             raise ValueError("Inconsistent score columns")
         for name, values in scores.items():
             outputs.setdefault(name, []).extend(values)
+        if progress_callback is not None:
+            progress_callback(start + len(batch), cache_hit)
     return {name: np.asarray(values) for name, values in outputs.items()}
 
 def oracle_fingerprint(root):
@@ -48,7 +51,7 @@ def oracle_fingerprint(root):
                      and "__pycache__" not in p.parts and p.suffix != ".pyc")
     return {str(p.relative_to(root)): digest(p) for p in sorted(files)}
 
-def score_stage(work, stage, oracles=None, device="cpu"):
+def score_stage(work, stage, oracles=None, device="cpu", track=False):
     work = Path(work)
     prepared = json.loads((work / "prepare-summary.json").read_text())
     for name, expected in prepared["artifacts"].items():
@@ -69,6 +72,22 @@ def score_stage(work, stage, oracles=None, device="cpu"):
         raise ValueError("Changed scoring environment: use a new work directory")
     save_json(previous, identity)
     started = time.monotonic()
+    run, tracking = None, None
+    if track:
+        import swanlab
+        tracking_path = target / "tracking.json"
+        tracking = json.loads(tracking_path.read_text()) if tracking_path.exists() else None
+        run_id = fingerprint([identity, str(work.resolve())])[:32]
+        if tracking and tracking["id"] != run_id:
+            raise ValueError("Tracking resume identity mismatch")
+        run = swanlab.init(workspace="nicetone9", project="AMP_step2challenge", mode="online",
+                          id=run_id, resume="must" if tracking else "allow",
+                          name="six-metrics-" + stage, group="six-metrics-seed42",
+                          job_type="full-scoring", config={"identity_sha256": fingerprint(identity),
+                          "stage": stage, "device": device, "seed": 42, "batch_size": 512},
+                          log_dir=str(work / "swanlog"))
+        tracking = tracking or {"id": run_id, "last_step": -1}
+        save_json(tracking_path, tracking)
     for name, table in tables.items():
         if stage == "novelty" and name == "reference":
             table = table[table.reference_role.eq("calibration")].copy()
@@ -79,7 +98,21 @@ def score_stage(work, stage, oracles=None, device="cpu"):
             compute = lambda seqs: {"anchor_novelty": anchor_novelty(seqs, anchor)}
         else:
             compute = lambda seqs: predict_external(seqs, oracles, device)
-        scores = cache_scores(sequences, work / "cache" / stage, identity, compute)
+        def progress(count, cache_hit):
+            if run is None or cache_hit or (count % 2560 and count != len(sequences)):
+                return
+            tracking["last_step"] += 1
+            swanlab.log({"scoring/" + name + "_completed": count,
+                         "scoring/wall_seconds": time.monotonic() - started},
+                        step=tracking["last_step"])
+            save_json(tracking_path, tracking)
+        try:
+            scores = cache_scores(sequences, work / "cache" / stage, identity, compute,
+                                  progress_callback=progress)
+        except BaseException as error:
+            if run is not None:
+                run.finish(state="crashed", error=type(error).__name__ + ": " + str(error))
+            raise
         result = pd.DataFrame({"sequence": sequences, **scores})
         result.to_csv(target / (name + ".csv"), index=False)
         print(json.dumps({"stage": stage, "table": name, "rows": len(result)}), flush=True)
@@ -87,6 +120,8 @@ def score_stage(work, stage, oracles=None, device="cpu"):
               "wall_seconds": time.monotonic() - started,
               "sha256": {name: digest(target / (name + ".csv")) for name in tables}}
     save_json(target / "complete.json", report)
+    if run is not None:
+        run.finish()
     return report
 
 def load_scores(work, name):
@@ -170,13 +205,14 @@ def main():
     p.add_argument("--oracles", type=Path, default=Path("external"))
     p.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
     p.add_argument("--reference-percentile", type=float, default=.5)
+    p.add_argument("--track", action="store_true")
     a = p.parse_args()
     os.environ.setdefault("OMP_NUM_THREADS", "1")
     os.environ.setdefault("MKL_NUM_THREADS", "1")
     if a.stage == "calibrate":
         audit_calibration(a.work, a.reference_percentile)
     else:
-        score_stage(a.work, a.stage, a.oracles, a.device)
+        score_stage(a.work, a.stage, a.oracles, a.device, a.track)
 
 if __name__ == "__main__":
     main()
