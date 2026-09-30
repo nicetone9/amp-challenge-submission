@@ -21,7 +21,7 @@ def residue_mean(hidden, attention_mask):
         raise ValueError("Empty residue mask")
     return (hidden.float() * mask[..., None]).sum(1) / mask.sum(1)[:, None]
 
-def run(work, model_root, device="cuda", smoke=False):
+def run(work, model_root, device="cuda", smoke=False, track=False):
     import torch
     from transformers import T5EncoderModel, T5Tokenizer
     work, model_root = Path(work), Path(model_root)
@@ -48,6 +48,22 @@ def run(work, model_root, device="cuda", smoke=False):
     if (target / "identity.json").exists() and json.loads((target / "identity.json").read_text()) != identity:
         raise ValueError("Embedding resume fingerprint mismatch")
     save_json(target / "identity.json", identity)
+    run_handle, tracking = None, None
+    if track:
+        import swanlab
+        tracking_path = target / "tracking.json"
+        tracking = json.loads(tracking_path.read_text()) if tracking_path.exists() else None
+        run_id = fingerprint([identity, str(target.resolve())])[:32]
+        if tracking and tracking["id"] != run_id:
+            raise ValueError("Embedding tracking resume identity mismatch")
+        run_handle = swanlab.init(workspace="nicetone9", project="AMP_step2challenge",
+            mode="online", id=run_id, resume="must" if tracking else "allow",
+            name="six-metrics-prott5", group="six-metrics-seed42", job_type="embedding",
+            config={"identity_sha256": fingerprint(identity), "device": device,
+                    "batch_size": 32, "scope": "independent sequence embedding evaluation"},
+            log_dir=str(work / "swanlog"))
+        tracking = tracking or {"id": run_id, "last_step": -1}
+        save_json(tracking_path, tracking)
     tokenizer = T5Tokenizer.from_pretrained(model_root, local_files_only=True, do_lower_case=False)
     model = T5EncoderModel.from_pretrained(model_root, local_files_only=True,
                 torch_dtype=torch.float16 if device == "cuda" else torch.float32).to(device).eval()
@@ -84,6 +100,13 @@ def run(work, model_root, device="cuda", smoke=False):
             if values.shape != (len(sequences), 1024) or not np.isfinite(values).all():
                 raise ValueError("Invalid ProtT5 embedding output")
             rows.append(values)
+            count = start + len(sequences)
+            if track and (count % 1024 == 0 or count == len(table)):
+                tracking["last_step"] += 1
+                swanlab.log({"embedding/" + name + "_completed": count,
+                             "embedding/wall_seconds": time.monotonic() - started},
+                            step=tracking["last_step"])
+                save_json(tracking_path, tracking)
         vectors[name] = np.concatenate(rows)
         np.savez(target / (name + "-vectors.npz"), embeddings=vectors[name],
                  sequences=np.asarray(table.sequence.tolist()))
@@ -105,6 +128,8 @@ def run(work, model_root, device="cuda", smoke=False):
                   "vectors_sha256": {name: digest(target / (name + "-vectors.npz")) for name in tables}}
     report["wall_seconds"] = time.monotonic() - started
     save_json(target / "complete.json", report)
+    if run_handle is not None:
+        run_handle.finish()
     return report
 
 def main():
@@ -113,8 +138,9 @@ def main():
     p.add_argument("--model", type=Path, required=True)
     p.add_argument("--device", choices=("cpu", "cuda"), default="cuda")
     p.add_argument("--smoke", action="store_true")
+    p.add_argument("--track", action="store_true")
     a = p.parse_args()
-    print(json.dumps(run(a.work, a.model, a.device, a.smoke)))
+    print(json.dumps(run(a.work, a.model, a.device, a.smoke, a.track)))
 
 if __name__ == "__main__":
     main()

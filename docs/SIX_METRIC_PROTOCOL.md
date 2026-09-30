@@ -137,7 +137,7 @@ counts and uniqueness do not use subsampling.
 - Full ANIA/HemoPI2/ProtT5 scoring and reference freeze.
 - Obtain a validated short-peptide synthesis implementation or retain UNAVAILABLE.
 - Connect mixed-pool ingestion, full filtering, official-reference hard novelty,
-  motif discovery/validation, quotas, and collection gates end to end.
+  quotas, motif annotations, and collection gates end to end.
 - Parameterize the competition `generate` entry point only after this pipeline
   works; legacy generation must not be misrepresented as the new method.
 - Full two-run / warm-cold cache / interrupted-uninterrupted generation checks.
@@ -154,3 +154,27 @@ weights, data-license changes or reviewer-access changes are authorized here.
 seqme's public API and AMP tutorial are implementation references, not the final
 competition scoring formula. Small-molecule synthesis scores are not validated
 short-peptide synthesis scores.
+
+## Deadline execution update
+
+The target remains 50,000 **qualified** unique sequences, not just 50,000 raw
+samples. The allocated GPU expands the balanced raw pool in stages (300k, then
+600k); the physical-attempt ceiling remains 3,000,000. The CPU reference/candidate
+predictor pass runs concurrently. A deadline does not relax percentile thresholds
+or make UNAVAILABLE scores pass.
+
+Expanded-pool ingestion now verifies completed-prefix metadata, hashes, branch
+counts and duplicate provenance. Use a new prepared work directory when the
+input-pool fingerprint changes.
+
+Motif discovery and independent cluster-held-out validation have run on the
+audited reference: 12 reliable exact patterns, with 279 hits among the original
+100,000 candidates. These are support-only annotations, not measured activity.
+Use `pixi run motif-check`; no protected reference sequences are uploaded.
+
+Oracle and ProtT5 scoring support `--track` for explicit resumable SwanLab runs.
+Motif and expanded-prefix integration bring the verified CPU test count to 35.
+Full GPU repeat-run FASTA equality and complete six-category acceptance remain
+unverified. An eight-sequence HemoPI2 profile identified pandas-heavy composition/
+transition/distribution feature extraction as the CPU bottleneck; no unverified
+replacement of the published predictor is deployed.

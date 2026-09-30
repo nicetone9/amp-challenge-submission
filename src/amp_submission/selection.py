@@ -71,7 +71,7 @@ def allocate(capacities, total):
     active = {key for key, cap in capacities.items() if cap}
     remaining = total
     while remaining:
-        weights = {key: math.sqrt(capacities[key]) for key in active}
+        weights = {key: math.sqrt(capacities[key]) for key in sorted(active)}
         denominator = sum(weights.values())
         shares = {key: remaining * weights[key] / denominator for key in active}
         capped = [key for key in active if shares[key] >= capacities[key] - result[key]]
