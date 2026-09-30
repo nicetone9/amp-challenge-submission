@@ -10,7 +10,7 @@ from amp_submission.scoring import rewards
 class ContractTests(unittest.TestCase):
     def test_defaults(self):
         a = parser().parse_args([])
-        self.assertEqual((a.arch, a.seed, str(a.output)), ("vq", 42, "generate"))
+        self.assertEqual((a.arch, a.seed, str(a.output)), ("mixed", 42, "generate"))
 
     def test_exact_boundary(self):
         for a, b in [("AAAA", "AAA"), ("AAAAA", "AAA"), ("ACDEFGHIKL", "ACDEFGHILL")]:

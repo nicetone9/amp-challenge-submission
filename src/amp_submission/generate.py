@@ -37,17 +37,27 @@ def validate(library, top, references, library_size=50000, top_size=100):
 
 def parser():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--arch", choices=("vq", "dima"), default="vq")
+    p.add_argument("--arch", choices=("mixed", "vq", "dima"), default="mixed")
     p.add_argument("--assets", type=Path, default=Path("checkpoint"))
     p.add_argument("--oracles", type=Path, default=Path("external"))
     p.add_argument("--output", type=Path, default=Path("generate"))
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
-    p.add_argument("--threads", type=int, default=2)
+    p.add_argument("--threads", type=int, default=4)
+    p.add_argument("--pool-size", type=int, default=600000)
+    p.add_argument("--n-sequences", type=int, default=50000)
+    p.add_argument("--top-k", type=int, default=100)
+    p.add_argument("--motif-quota", type=int, default=10)
+    p.add_argument("--selection-reference", type=Path)
+    p.add_argument("--track", action="store_true", default=os.environ.get("AMP_TRACK_ONLINE") == "1")
     return p
 
 def main():
     args = parser().parse_args()
+    if args.arch == "mixed":
+        from .model_generate import run
+        run(args)
+        return
     # Verify every frozen asset before any generation or output mutation.
     manifest = verify_assets(args.assets)
     oracle_manifest = verify_assets(args.oracles)

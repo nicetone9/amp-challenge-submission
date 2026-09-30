@@ -1,0 +1,59 @@
+{
+  "status": "PREFLIGHT_PASSED_FULL_TWO_RUN_VERIFICATION_PENDING",
+  "date": "2026-09-30",
+  "tests": {
+    "pixi": {
+      "count": 56,
+      "passed": true
+    },
+    "uv": {
+      "count": 56,
+      "passed": true
+    }
+  },
+  "real_sampler_smoke": {
+    "fresh_loads_per_architecture": 2,
+    "vq_sequences_per_invocation": 128,
+    "dima_sequences_per_invocation": 128,
+    "sequences_equal": true
+  },
+  "full_cli_smoke": {
+    "exit_code": 0,
+    "pool_size": 2048,
+    "n_sequences": 20,
+    "top_k": 10,
+    "motif_quota": 0,
+    "swanlab_run": "bsns9zvo",
+    "cloud_state": "FINISHED",
+    "series_and_summary_readback": true
+  },
+  "formal_run": {
+    "command_each_run": [
+      "uv",
+      "run",
+      "generate"
+    ],
+    "seed": 42,
+    "pool_size_each": 600000,
+    "vq_each": 300000,
+    "dima_each": 300000,
+    "n_sequences": 50000,
+    "top_k": 100,
+    "motif_quota": 10,
+    "first_run_swanlab": "v4wcggm2",
+    "second_run": "NOT_YET_STARTED",
+    "gpu_job": 396314,
+    "node": "lanec2-4-24",
+    "gpu": "NVIDIA RTX A6000",
+    "candidate_cache_shared": false,
+    "working_root": "work/from-model-repro-seed42-v2"
+  },
+  "reference_manifest_sha256": "80c87fcd173d52ef9619a3800410bcba574ecac0a0ce7e87f13cfb554f69aa9d",
+  "not_claimed": [
+    "Full-size FASTA equality",
+    "Six-category quality completion",
+    "Public clean-clone portability",
+    "Organizer acceptance",
+    "Experimental activity"
+  ]
+}

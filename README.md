@@ -7,6 +7,11 @@ the short-motif-aware Top100: [write-up](docs/benchmark-20260930/WRITEUP.md),
 [requirement checklist](docs/benchmark-20260930/REQUIREMENTS_CHECKLIST.md), and
 [two-run verification](reports/motif-library-seed42-verification.json).
 
+The default entry point now samples both models afresh and applies the mixed
+partial-panel / short-motif pipeline. See [from-model reproducibility](docs/FROM_MODEL_REPRODUCIBILITY.md).
+The motif10 report above verifies fixed-pool selection only; a new full-scale
+two-run certificate is required before claiming default-entry reproducibility.
+
 Private delivery candidate, 2026-09-29. **Not a completed competition submission.**
 No Kaggle submission or reviewer access has been granted.
 
@@ -18,8 +23,8 @@ with a trained ESM LM head. No structural input, prediction, loss or evaluation.
 ## Six-category screening update
 
 [Current protocol, partial results and release gates](docs/SIX_METRIC_PROTOCOL.md).
-The new mixed-pool protocol is under implementation. The legacy `generate`
-command below does not yet produce six-category-qualified candidates.
+The default mixed generator uses the approved seven-metric partial-quality policy,
+not a completed six-category quality evaluation.
 
 ## Read first
 
@@ -47,21 +52,23 @@ pixi run check-assets
 pixi run generate
 ```
 
-After approved model and oracle assets have been provisioned, the competition entry
-point uses the **same implementation**:
+After approved model and frozen selection-reference assets have been provisioned,
+the competition entry point uses the **same implementation**. External predictor
+assets are only required by the legacy single-model modes:
 
 ```bash
 pixi run uv sync --frozen
 pixi run uv run --frozen generate
 ```
 
-A pre-provisioned environment with R 4.4 and the R package kaos can instead run
-`uv sync --frozen && uv run --frozen generate` directly. **uv.lock does not install R.**
-Official clean-clone compatibility with this non-Python dependency remains a release gate.
+A pre-provisioned environment with CD-HIT 4.8.1 and the R prerequisites for the
+retained legacy dependencies can run `uv sync --frozen && uv run generate` directly.
+**uv.lock does not install CD-HIT or R.** Full clean-clone portability remains a release gate.
 
-Default: VQ, seed42, batch128, 50,000 unique 8–40 aa sequences, 500,000 raw attempt
-cap, fixed 2,048-member ranking pool, 100 ranked candidates.
-`--arch dima` selects the independent diffusion route (50 stochastic reverse steps).
+Default: mixed VQ + DiMA, seed42, batch128, 600,000 newly sampled candidates,
+50,000 unique 8–40 aa sequences and 100 ranked candidates including ten short-motif
+quota selections. All candidates receive seven partial-panel scores.
+`--arch vq` / `--arch dima` retain the historical single-model predictor-ranking routes.
 Output: `generate/library.fasta` and `generate/top.fasta`.
 All arguments have defaults; missing or changed assets stop before changing outputs.
 Repeated generation in the same output folder is supported. Fixed seeds do not
