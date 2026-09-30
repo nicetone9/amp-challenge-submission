@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "amp-challenge-submission"
+version = "0.1.0"
+description = "Independent sequence-only VQ-VAE and DiMA AMP generation"
+requires-python = ">=3.11,<3.12"
+license = "MIT"
+dependencies = [
+  "torch==2.7.1", "transformers==4.53.3", "numpy>=1.26,<3",
+  "pandas>=2.2,<3", "scikit-learn>=1.5,<2", "Levenshtein>=0.26,<1",
+  "rapidfuzz>=3.13,<4", "rpy2==3.5.17"
+]
+
+[project.scripts]
+generate = "amp_submission.generate:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/amp_submission"]
+
+[tool.uv]
+index-strategy = "unsafe-best-match"
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch" }

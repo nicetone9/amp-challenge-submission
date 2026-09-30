@@ -1,0 +1,135 @@
+{
+  "format": 1,
+  "provenance": {
+    "vq/broad.pt": {
+      "source_sha256": "cc6d8378e4d178ab71ca647d7bf583bc698f9bc991dae8fd17cb3ff97501c8dc",
+      "source_relative": "challenge_20260929/runs/vq-broad-s42/best.pt",
+      "run_id": "3f00f7af9f7145f3b903a8e9c2f8b3af",
+      "seed": 42,
+      "selected_step": 15,
+      "validation_score": 0.5491739908854166
+    },
+    "vq/gram_negative.pt": {
+      "source_sha256": "ceed1a927febe673e9f8c4ddcb31cae77cd779f4320cf10d1bba19907686f044",
+      "source_relative": "challenge_20260929/runs/vq-gram_negative-s42/best.pt",
+      "run_id": "5a806c57b8d24390b0d67c165efd05e1",
+      "seed": 42,
+      "selected_step": 20,
+      "validation_score": 0.52630615234375
+    },
+    "vq/gram_positive.pt": {
+      "source_sha256": "40f1bb3c809adeafc3fc6f5561cc9d6da1f8e95f438f733db51894b65a6f234f",
+      "source_relative": "challenge_20260929/runs/vq-gram_positive-s42/best.pt",
+      "run_id": "e566aa9919584481b04a8875bfc79cb4",
+      "seed": 42,
+      "selected_step": 10,
+      "validation_score": 0.5330810546875
+    },
+    "vq/joint.pt": {
+      "source_sha256": "be991f8b706760cd57ba530900eb6d79cde8324501fc1aa36e8d3fa7164156d5",
+      "source_relative": "challenge_20260929/runs/vq-joint-s42/best.pt",
+      "run_id": "020a088252984ceaa7dbce74823b9ae7",
+      "seed": 42,
+      "selected_step": 15,
+      "validation_score": 0.5013183593749999
+    },
+    "vq/mdr.pt": {
+      "source_sha256": "3bd287aefd61a3e5f59b3fbf2bcf99ed44014d243c4c436ce23c2947d1d9f13c",
+      "source_relative": "challenge_20260929/runs/vq-mdr-s42/best.pt",
+      "run_id": "a215f9273da545a78444e0183b9be176",
+      "seed": 42,
+      "selected_step": 15,
+      "validation_score": 0.36505126953125
+    },
+    "vq/selectivity.pt": {
+      "source_sha256": "d76b34ac24d7e02bbe25637221d64e424d4d07ddbc0df71b35919ff7fe83f365",
+      "source_relative": "challenge_20260929/runs/vq-selectivity-s43/best.pt",
+      "run_id": "ae53b5c1be9d48d0b8f0bc8b0603212e",
+      "seed": 43,
+      "selected_step": 15,
+      "validation_score": 0.5289408365885416
+    },
+    "dima/broad.pt": {
+      "source_sha256": "35552b10916a211de220b553ee3f032d0f67f08fc532b563ff23a7aa7302bbd5",
+      "source_relative": "challenge_20260929/runs/dima-broad-s43/best.pt",
+      "run_id": "47588a0bf2ec4a16bc349f2a0cdb4b38",
+      "seed": 43,
+      "selected_step": 15,
+      "validation_score": 0.57012939453125
+    },
+    "dima/gram_negative.pt": {
+      "source_sha256": "cddb9c30c68051168ed9f03b0bed306401886a39d7d136c9069b2f5df5d59e61",
+      "source_relative": "challenge_20260929/runs/dima-gram_negative-s43/best.pt",
+      "run_id": "550baaabeef247fbb8908e8a56a19b84",
+      "seed": 43,
+      "selected_step": 5,
+      "validation_score": 0.578582763671875
+    },
+    "dima/gram_positive.pt": {
+      "source_sha256": "2a1145948d2f4e476adfa02a1cdbbe8394073be5f0aecb2cb90cdef598058105",
+      "source_relative": "challenge_20260929/runs/dima-gram_positive-s43/best.pt",
+      "run_id": "04e194c4bc0f48b9a304ad84293adb8c",
+      "seed": 43,
+      "selected_step": 5,
+      "validation_score": 0.59393310546875
+    },
+    "dima/joint.pt": {
+      "source_sha256": "5f808753db8867ee6db2e2220a4b4265693a01a585d64ac1022ce3942469eb1f",
+      "source_relative": "challenge_20260929/runs/dima-joint-s43/best.pt",
+      "run_id": "ca5254ba50c74826a7b0959c9ff4bb58",
+      "seed": 43,
+      "selected_step": 20,
+      "validation_score": 0.523370361328125
+    },
+    "dima/mdr.pt": {
+      "source_sha256": "1a4997508b43a374696dce5beb965e8a4d92408d06d128486a098fc007f99b8c",
+      "source_relative": "challenge_20260929/runs/dima-mdr-s43/best.pt",
+      "run_id": "d950a4def2114d2e9f65a7ce9ecb6524",
+      "seed": 43,
+      "selected_step": 5,
+      "validation_score": 0.407958984375
+    },
+    "dima/selectivity.pt": {
+      "source_sha256": "06a0e24ce9350b95d49d63fba6c98408d81a034f3bb5e187a5b40315df1a1c22",
+      "source_relative": "challenge_20260929/runs/dima-selectivity-s42/best.pt",
+      "run_id": "cf72ccca03ed49609b7884f94cd501cc",
+      "seed": 42,
+      "selected_step": 10,
+      "validation_score": 0.5109761555989583
+    },
+    "vq/codec.pt": {
+      "source_sha256": "9f6af14104b6c7750fe5d4ce114a88a1bce45e7a4c8eb3239c77b3ea8aa566e1",
+      "source_relative": "checkpoints/vq-codec/best.pt"
+    },
+    "dima/decoder.pt": {
+      "source_sha256": "dee822bf4cd4b1763ae73897fda5d86fc1c9179f757358f1e586798de4141af9",
+      "source_relative": "checkpoints/dima-decoder/best.pt"
+    },
+    "dima/reference.pt": {
+      "source_sha256": "c3db44abf523ea442a8df506ff92e66783ca71ad2e5c2da52a727f14c995a9c6",
+      "source_relative": "extension_20260928/dima/best.pt"
+    }
+  },
+  "sha256": {
+    "antibacterial.fasta": "cbbeac64ba95746d87961e8ad9dd0849ae8058d15a300b2e7f6990730ca521e9",
+    "calibration.json": "f8541d503f38f57c679bc85751c9ae6aca81bda2cbbbe40e0d57e0af5bc58992",
+    "dima/broad.pt": "2ff715cad6857e81894335677d83758ca6500c41e71384dc724942670d92ee37",
+    "dima/decoder.pt": "dc144cc368b1c397efc83fbaec2d89fe2ba72fb8675f83a87761d641cc2e433e",
+    "dima/gram_negative.pt": "6e1280a381745e26e0afedeb42266e588cdd216b2090cd1e616d17dc4b095a0f",
+    "dima/gram_positive.pt": "73c5d6875dbb695b07ad4d8b1733cc92574658a92e65b0071dd576a2dcada64e",
+    "dima/joint.pt": "141173988005afa415598ccf73b896c7cb6dc38f6efb6f150d5986f579aa0897",
+    "dima/mdr.pt": "b29c354f51a97a6abe3a544959d882915e2dfbd9eea4a052dce4a092acc5cab0",
+    "dima/reference.pt": "4431cc547f4b181f07dad26df514cf6dcda23fdc2710c625fd81d54934cf7805",
+    "dima/selectivity.pt": "01a2ff8c4022e7008286a54ef0bf1c8436d7c6e9e20beaac01231b6d0778d481",
+    "esm-config.json": "539095c22efc52a09d6147074ba4ca119f76a890df5901213b2b55f7d2f96b2b",
+    "length-pdf.json": "be656bf972b27f2ea248cd87b3ef4516954ae1492a56ceda0d57346aa8ce10b8",
+    "normalization.json": "39533935e3e3be2f5be3c48e2e34873deba8ab9e1ce4435a77afb0b9d90d868d",
+    "vq/broad.pt": "c5f86a76fa3b50dc1bc77a01c9cca5ec9b3bf24ff4c5928293f5932e0ff57fd7",
+    "vq/codec.pt": "7bedd0a5e4081276132b74af11b2a6797b536acf8b694e5589bb0a497827a81d",
+    "vq/gram_negative.pt": "976c843d80028a1bb30f2a165fb7d73bb06b854e371c01660cc227085455d3d2",
+    "vq/gram_positive.pt": "e01d0069c2ea97840ef10b2625f37746252606f8c2991446fd673b294043f48d",
+    "vq/joint.pt": "4dd074e1e413186ab4aaab807584caae75a9ab52a9992b9b447fe7d013f5610d",
+    "vq/mdr.pt": "245cf0e49324c23e7e3e53b69d3a64a32000e9d00594365260b9b9b7b8ae4ecd",
+    "vq/selectivity.pt": "820929919f2a6b33d80f827c202b664d98f2374ef8b61341e25c4d23b1253daf"
+  }
+}

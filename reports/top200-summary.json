@@ -1,0 +1,219 @@
+{
+  "count": 200,
+  "unique_count": 200,
+  "reference_sha256": "cbbeac64ba95746d87961e8ad9dd0849ae8058d15a300b2e7f6990730ca521e9",
+  "calibration_sha256": "f8541d503f38f57c679bc85751c9ae6aca81bda2cbbbe40e0d57e0af5bc58992",
+  "summary": {
+    "vq": {
+      "length_aa": {
+        "min": 9.0,
+        "median": 28.5,
+        "mean": 26.83,
+        "max": 38.0
+      },
+      "max_official_reference_ratio": {
+        "min": 0.4363636363636364,
+        "median": 0.5227743271221532,
+        "mean": 0.5363290416801254,
+        "max": 0.7777777777777778
+      },
+      "nearest_train_ratio": {
+        "min": 0.5,
+        "median": 0.5714285373687744,
+        "mean": 0.5780918997526169,
+        "max": 0.7777777910232544
+      },
+      "charge_proxy_KR_DE": {
+        "min": -1.0,
+        "median": 4.0,
+        "mean": 3.82,
+        "max": 13.0
+      },
+      "hydrophobicity_Kyte_Doolittle": {
+        "min": -1.9555555555555557,
+        "median": -0.08753869969040244,
+        "mean": -0.08922881491948832,
+        "max": 1.8111111111111111
+      },
+      "ania_ecoli": {
+        "min": -1.2419,
+        "median": 0.5222,
+        "mean": 0.37689000000000017,
+        "max": 1.0866
+      },
+      "ania_paeruginosa": {
+        "min": -1.2617,
+        "median": 0.68155,
+        "mean": 0.536503,
+        "max": 0.9957
+      },
+      "ania_saureus": {
+        "min": 0.1371,
+        "median": 0.50275,
+        "mean": 0.503541,
+        "max": 0.9261
+      },
+      "hemopi2_hc50_um": {
+        "min": 5.278,
+        "median": 58.194,
+        "mean": 66.42573999999999,
+        "max": 278.264
+      },
+      "reward_broad": {
+        "min": 0.8177083333333334,
+        "median": 0.91015625,
+        "mean": 0.9085872395833333,
+        "max": 0.9869791666666666
+      },
+      "reward_gram_positive": {
+        "min": 0.734375,
+        "median": 0.93359375,
+        "mean": 0.913359375,
+        "max": 1.0
+      },
+      "reward_gram_negative": {
+        "min": 0.8203125,
+        "median": 0.904296875,
+        "mean": 0.906201171875,
+        "max": 0.9921875
+      },
+      "reward_mdr": {
+        "min": 0.69140625,
+        "median": 0.85546875,
+        "mean": 0.85021484375,
+        "max": 0.96484375
+      },
+      "reward_selectivity": {
+        "min": 0.4733072916666667,
+        "median": 0.6536458333333333,
+        "mean": 0.6463248697916666,
+        "max": 0.9563802083333333
+      },
+      "reward_joint": {
+        "min": 0.795703125,
+        "median": 0.841796875,
+        "mean": 0.8449375,
+        "max": 0.928515625
+      },
+      "checks": {
+        "canonical_20aa": 100,
+        "length_8_50": 100,
+        "member_of_own_library": 100,
+        "official_novelty_le_08": 100,
+        "train_exact_match": 0,
+        "unique_across_top200": 100
+      }
+    },
+    "dima": {
+      "length_aa": {
+        "min": 15.0,
+        "median": 30.0,
+        "mean": 29.01,
+        "max": 40.0
+      },
+      "max_official_reference_ratio": {
+        "min": 0.41666666666666663,
+        "median": 0.5319727891156463,
+        "mean": 0.5387022984175323,
+        "max": 0.7407407407407407
+      },
+      "nearest_train_ratio": {
+        "min": 0.4776119291782379,
+        "median": 0.5738498568534851,
+        "mean": 0.5893095925450325,
+        "max": 0.8666666150093079
+      },
+      "charge_proxy_KR_DE": {
+        "min": -6.0,
+        "median": 4.0,
+        "mean": 4.57,
+        "max": 19.0
+      },
+      "hydrophobicity_Kyte_Doolittle": {
+        "min": -2.7962962962962967,
+        "median": 0.0491431451612903,
+        "mean": 0.08310302263094851,
+        "max": 1.725806451612903
+      },
+      "ania_ecoli": {
+        "min": -1.3155,
+        "median": 0.5162,
+        "mean": 0.3340179999999999,
+        "max": 1.1212
+      },
+      "ania_paeruginosa": {
+        "min": -1.105,
+        "median": 0.5488500000000001,
+        "mean": 0.431524,
+        "max": 0.972
+      },
+      "ania_saureus": {
+        "min": -0.0624,
+        "median": 0.4451,
+        "mean": 0.4518,
+        "max": 0.8829
+      },
+      "hemopi2_hc50_um": {
+        "min": 7.378,
+        "median": 38.224000000000004,
+        "mean": 49.206360000000004,
+        "max": 206.471
+      },
+      "reward_broad": {
+        "min": 0.82421875,
+        "median": 0.9231770833333334,
+        "mean": 0.9241015625000002,
+        "max": 0.9908854166666666
+      },
+      "reward_gram_positive": {
+        "min": 0.7421875,
+        "median": 0.9453125,
+        "mean": 0.93080078125,
+        "max": 1.0
+      },
+      "reward_gram_negative": {
+        "min": 0.779296875,
+        "median": 0.9287109375,
+        "mean": 0.920751953125,
+        "max": 1.0
+      },
+      "reward_mdr": {
+        "min": 0.6796875,
+        "median": 0.884765625,
+        "mean": 0.87373046875,
+        "max": 0.984375
+      },
+      "reward_selectivity": {
+        "min": 0.4641927083333333,
+        "median": 0.5725911458333333,
+        "mean": 0.6012890625,
+        "max": 0.89453125
+      },
+      "reward_joint": {
+        "min": 0.80625,
+        "median": 0.84609375,
+        "mean": 0.8501347656250001,
+        "max": 0.932421875
+      },
+      "checks": {
+        "canonical_20aa": 100,
+        "length_8_50": 100,
+        "member_of_own_library": 100,
+        "official_novelty_le_08": 100,
+        "train_exact_match": 0,
+        "unique_across_top200": 100
+      }
+    }
+  },
+  "warning": "Proxy values are not official MIC, HC50 or competition results.",
+  "sources": {
+    "vq": {
+      "generate/top.fasta": "409cd27f1e09b0914c0e5ab166d8871be1ab323425ca1a39b5dc3cce79dff4be",
+      "top-scores.jsonl": "bbdf0cec3c38deb6ba4a9664f58a1e51924a2703cf1d72f7f4d75e1837c1d635"
+    },
+    "dima": {
+      "generate/top.fasta": "45a83aabd117c72550a80ffd0df869aff620961eb8496f7180aa12ded633d370",
+      "top-scores.jsonl": "7ae351fa3b63bb2175846bc269dae3c62ec1ddd1bb6cdca561d05d92eea708e6"
+    }
+  }
+}

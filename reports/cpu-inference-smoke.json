@@ -1,0 +1,17 @@
+{
+  "device": "cpu",
+  "samples_per_route": 2,
+  "full_50000_regeneration": false,
+  "routes": {
+    "vq": {
+      "deterministic": true,
+      "canonical": true,
+      "wall_seconds": 7.356397034134716
+    },
+    "dima": {
+      "deterministic": true,
+      "canonical": true,
+      "wall_seconds": 48.991760443896055
+    }
+  }
+}

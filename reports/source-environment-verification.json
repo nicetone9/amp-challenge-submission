@@ -1,0 +1,74 @@
+{
+  "dima": {
+    "generation": {
+      "accepted": 50000,
+      "accepted_by_objective": {
+        "broad": 8423,
+        "gram_negative": 8319,
+        "gram_positive": 8322,
+        "joint": 8292,
+        "mdr": 8331,
+        "selectivity": 8313
+      },
+      "counts": {
+        "duplicate": 298,
+        "low_complexity": 245,
+        "raw": 50816,
+        "reference_similar": 249,
+        "unused_after_target": 24
+      },
+      "library_per_second": 39.1244357654747,
+      "peak_gpu_gb": 0.815715328,
+      "wall_seconds": 1277.9737010146491
+    },
+    "pixi_uv_byte_identical": true,
+    "verification": {
+      "architecture": "dima",
+      "library_count": 50000,
+      "library_sha256": "29983135bdd147d7639e556ffc2607a0bc791655d3db1308ad15c9a80e5c38a1",
+      "not_verified": "fresh clone install; full official GitHub verifier; organizer acceptance",
+      "official_component_checks": "PASS",
+      "official_reference_sha256": "cbbeac64ba95746d87961e8ad9dd0849ae8058d15a300b2e7f6990730ca521e9",
+      "official_validator_sha256": "3f2eb1bd61200abfccf07d86e9c226d57f3d12abcf25715af1d90f41531942cf",
+      "top_count": 100,
+      "top_sha256": "45a83aabd117c72550a80ffd0df869aff620961eb8496f7180aa12ded633d370",
+      "whole_library_similarity_max_le_08": true
+    }
+  },
+  "vq": {
+    "generation": {
+      "accepted": 50000,
+      "accepted_by_objective": {
+        "broad": 8409,
+        "gram_negative": 8382,
+        "gram_positive": 8389,
+        "joint": 8266,
+        "mdr": 8283,
+        "selectivity": 8271
+      },
+      "counts": {
+        "duplicate": 37,
+        "low_complexity": 73,
+        "raw": 50304,
+        "reference_similar": 168,
+        "unused_after_target": 26
+      },
+      "library_per_second": 99.09561934151039,
+      "peak_gpu_gb": 0.250440192,
+      "wall_seconds": 504.5631710649468
+    },
+    "pixi_uv_byte_identical": true,
+    "verification": {
+      "architecture": "vq",
+      "library_count": 50000,
+      "library_sha256": "3d4c3685a2365c12e1273aaa13a492d26ec30d050499205145cbe4a5d50c5afe",
+      "not_verified": "fresh clone install; full official GitHub verifier; organizer acceptance",
+      "official_component_checks": "PASS",
+      "official_reference_sha256": "cbbeac64ba95746d87961e8ad9dd0849ae8058d15a300b2e7f6990730ca521e9",
+      "official_validator_sha256": "3f2eb1bd61200abfccf07d86e9c226d57f3d12abcf25715af1d90f41531942cf",
+      "top_count": 100,
+      "top_sha256": "409cd27f1e09b0914c0e5ab166d8871be1ab323425ca1a39b5dc3cce79dff4be",
+      "whole_library_similarity_max_le_08": true
+    }
+  }
+}

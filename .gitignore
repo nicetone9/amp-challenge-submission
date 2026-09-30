@@ -1,0 +1,13 @@
+.pixi/
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+checkpoint/*
+!checkpoint/README.md
+external/
+generate/
+*.pt
+*.safetensors
+*.orig
+*.rej

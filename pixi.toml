@@ -1,0 +1,21 @@
+[workspace]
+name = "amp-challenge-submission"
+version = "0.1.0"
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+python = "3.11.*"
+uv = ">=0.6,<1"
+r-base = "4.4.*"
+r-kaos = "0.1.2.*"
+
+[pypi-dependencies]
+amp-challenge-submission = { path = ".", editable = true }
+torch = { version = "==2.7.1", index = "https://download.pytorch.org/whl/cu126" }
+
+[tasks]
+test = "python -m unittest discover -s tests -v"
+generate = "generate"
+verify-submission = "python scripts/verify_submission.py"
+check-assets = "python -c \"from amp_submission.io import verify_assets; verify_assets('checkpoint'); verify_assets('external'); print('asset hashes passed')\""
