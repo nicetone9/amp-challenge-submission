@@ -36,3 +36,5 @@ score-embedding = "python -m amp_submission.embedding_stage"
 expand-pool = "python -m amp_submission.expand_pool"
 
 motif-check = "python -m amp_submission.motifs"
+
+audit-official-reference = "python -m amp_submission.hard_audit"
