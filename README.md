@@ -78,3 +78,7 @@ Historical source-environment exports passed official sequence component checks
 and two independent Pixi/uv generations matched their hashes.
 The portable package is a new integration and needs its own full regeneration.
 SwanLab: [AMP_step2challenge](https://swanlab.cn/@nicetone9/AMP_step2challenge/overview).
+
+## Candidate review
+
+See [Feishu review documents and full candidate tables](docs/REVIEW_LINKS.md).
