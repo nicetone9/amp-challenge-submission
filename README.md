@@ -1,5 +1,12 @@
 # AMP Challenge — VQ-VAE and DiMA
 
+## Frozen library and write-up (2026-09-30)
+
+The latest private candidate delivery is the unchanged 50,000-member library plus
+the short-motif-aware Top100: [write-up](docs/benchmark-20260930/WRITEUP.md),
+[requirement checklist](docs/benchmark-20260930/REQUIREMENTS_CHECKLIST.md), and
+[two-run verification](reports/motif-library-seed42-verification.json).
+
 Private delivery candidate, 2026-09-29. **Not a completed competition submission.**
 No Kaggle submission or reviewer access has been granted.
 

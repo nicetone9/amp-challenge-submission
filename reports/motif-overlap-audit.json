@@ -1,0 +1,928 @@
+{
+  "scope": "64 motif-supported members of the frozen 50k library; official reference plus 8985 eligible training AMP references, not every external database",
+  "reference_unique_count": 40622,
+  "library_hash": "d5952d27dd77ebca3711c2b95c4b4545653b88d396601188e00722f582306032",
+  "motif_hash": "c33556f29b9acc39818670d8c9f170116d5cd019cd5d3952b10f4fb8072c1e4d",
+  "motif_length_counts": {
+    "3": 2,
+    "4": 5,
+    "5": 4,
+    "6": 1
+  },
+  "motif_max_match_length_counts": {
+    "3": 54,
+    "4": 10
+  },
+  "longest_reference_exact_segment_counts": {
+    "4": 16,
+    "5": 41,
+    "6": 7
+  },
+  "reference_ratio_gt_08": 0,
+  "exact_fraction_gt_half": 0,
+  "records": [
+    {
+      "sequence_sha256": "bc44177bbb590c605214a19cf386aee4ef2d6fcf80059e6dba02c16f25fcab2a",
+      "length": 18,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.2777777777777778,
+      "max_reference_ratio": 0.5405405405405406,
+      "nearest_reference_sha256": "ce687b0e10a7fa7286d8bbf59eff9f770b7d675e7f9e86e3fb24868dc98be611"
+    },
+    {
+      "sequence_sha256": "dabd5869fca9590cfcbd77c4732ccd33f4d26a616443a3a5eb9c92c068c7bdc2",
+      "length": 20,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.25,
+      "max_reference_ratio": 0.5128205128205128,
+      "nearest_reference_sha256": "57b7c1fde13b43d1436474e0f802ff5bc974b0b366293df42d537c689b53bbe3"
+    },
+    {
+      "sequence_sha256": "a0c1c38962f27bc82816c0970c5ce0a79372eaea8687083c17f7995805627dee",
+      "length": 19,
+      "tier": "high",
+      "motif_max_length": 4,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW",
+        "WVIW"
+      ],
+      "longest_reference_exact_segment": 6,
+      "longest_reference_exact_fraction": 0.3157894736842105,
+      "max_reference_ratio": 0.5555555555555556,
+      "nearest_reference_sha256": "e7f1c6fb315d7fbfb7aacb76b9ed20fb922cd58e32d429d96e880fb83fd4e4ca"
+    },
+    {
+      "sequence_sha256": "95d91d15b863054a6e1bb7dabd023aa47684dae460790a70fa80b32adbd95d5e",
+      "length": 19,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.21052631578947367,
+      "max_reference_ratio": 0.5294117647058824,
+      "nearest_reference_sha256": "a9e30fa312aebf624e431334e5aa9d7e8dbdabd47e9201d6b28207b19c77f844"
+    },
+    {
+      "sequence_sha256": "26122d236e2e1909d61f3a719d32b4d8e5c604fe1ee20933fec152cec19501b9",
+      "length": 19,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.2631578947368421,
+      "max_reference_ratio": 0.5106382978723405,
+      "nearest_reference_sha256": "22a0e5b0a544a98064824dbb0c664bfbee2803a0f7c2527bc605d8b3bb9a5096"
+    },
+    {
+      "sequence_sha256": "3c856f8a526883f9870b31105d664d4cc126cbfa826f30cdc4c124f8016e2bbe",
+      "length": 14,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.35714285714285715,
+      "max_reference_ratio": 0.5384615384615384,
+      "nearest_reference_sha256": "3551b99be926f7f1e560269071858c0f532534529d5536f226149f8d6764fa6b"
+    },
+    {
+      "sequence_sha256": "99bd2985b04b402427c680749fef19edf8f2e264b4e9185f5c02c5386c433d98",
+      "length": 19,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.2631578947368421,
+      "max_reference_ratio": 0.5128205128205128,
+      "nearest_reference_sha256": "c825f793ae38775a7a0738ad3436533fd9ad3b9bbf663da110976693700f3002"
+    },
+    {
+      "sequence_sha256": "d1e8ee1c8364c950f6c5f211b605de8ad137f794e77bf6a1a0a6eaa4a1c32f5f",
+      "length": 16,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.3125,
+      "max_reference_ratio": 0.5333333333333333,
+      "nearest_reference_sha256": "a845b888f6748a923447834477f4ced0df9766775245e6d0b1803d64f3519518"
+    },
+    {
+      "sequence_sha256": "1d3ba14b3c0624dc4ed577f0aa4664838fc3dd4903940a8f7b571cd25a36d227",
+      "length": 16,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.3125,
+      "max_reference_ratio": 0.5,
+      "nearest_reference_sha256": "e32efb6fdeeddcf7fa50188ebc4a36b167ede21599c23913c9fbc27791030c22"
+    },
+    {
+      "sequence_sha256": "7bb472af8a8eed3876c7d4c67fe24cf3110cfca92fff1866a4b390cd2da34363",
+      "length": 20,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.25,
+      "max_reference_ratio": 0.5333333333333333,
+      "nearest_reference_sha256": "e7bef1cf7b14e4f8706cbe2b69de65e1d2dcd6995eec0c337d2276239493d6b3"
+    },
+    {
+      "sequence_sha256": "1d0911cf86bbacfbf8cf403ecfcd5c31d4139e38d4ef9435305ebe34ef84aade",
+      "length": 19,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.2631578947368421,
+      "max_reference_ratio": 0.5333333333333333,
+      "nearest_reference_sha256": "71743d74c1c388e36989c9a904a6708d97eb4a457b180cb82337bb742e4880eb"
+    },
+    {
+      "sequence_sha256": "dbae5dcaf5a939c78671233f12c6460af584dc323e2cc59eb9da36614bd66b02",
+      "length": 20,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.25,
+      "max_reference_ratio": 0.5294117647058824,
+      "nearest_reference_sha256": "ca867931b5ef3b674d2fe20243860c1fecb1d8d8494fd653fe5b7722ff9fff82"
+    },
+    {
+      "sequence_sha256": "7015da76b25f78334e15480d169233f9581ce8eeea59549f40a76b7ae317666f",
+      "length": 14,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.2857142857142857,
+      "max_reference_ratio": 0.5384615384615384,
+      "nearest_reference_sha256": "43718a75b6a4a3716d7dc9f15bb97dd4e8997eda4264dba68fd4b6229dc802f4"
+    },
+    {
+      "sequence_sha256": "72d1f139782eb6019629e55c5f0f7ef45094104a4744b3fbb4fd0da15f917cc8",
+      "length": 17,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.29411764705882354,
+      "max_reference_ratio": 0.5384615384615384,
+      "nearest_reference_sha256": "7dd6f1d514d8948a63c60d80edda572547f04a4cebe57f8cb99d423f148db5b7"
+    },
+    {
+      "sequence_sha256": "ccfca082e77a67de0f1e0a211a1880cdb598162d59b5edb34e2852690f983b98",
+      "length": 15,
+      "tier": "low",
+      "motif_max_length": 4,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV",
+        "RIWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.3333333333333333,
+      "max_reference_ratio": 0.6153846153846154,
+      "nearest_reference_sha256": "6cbb4c5abdcc164b8073a9323f6c48ecbc931af072b4a69fa8faafec959652f7"
+    },
+    {
+      "sequence_sha256": "5c9e1120e5f88b544c0adfc2f4bcb06aa57abadb6a5fb14b7654a16a15b77307",
+      "length": 11,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.45454545454545453,
+      "max_reference_ratio": 0.6,
+      "nearest_reference_sha256": "b6bfb09651fc248d9325f682f9e47eb20445428f990cc527e40fd93cdfdb2b79"
+    },
+    {
+      "sequence_sha256": "7f19fe66ce469e8f072bd763264973f6fb20cd4f9881703e7548b16edd40221e",
+      "length": 14,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.35714285714285715,
+      "max_reference_ratio": 0.6086956521739131,
+      "nearest_reference_sha256": "c402ee6a9ca35d6c09ed3b7dc3273e5cb98aafbd6a0d0237c6417433c9124738"
+    },
+    {
+      "sequence_sha256": "05d193ab7f2abae916ed70fd3720c7c266d08594582c93408c3a69c398f58c8a",
+      "length": 12,
+      "tier": "high",
+      "motif_max_length": 4,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW",
+        "WVIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.4166666666666667,
+      "max_reference_ratio": 0.5833333333333333,
+      "nearest_reference_sha256": "070a2df90a4343cc07f5521927514935c29a4a32bca5fa587a9ad81fc2f83015"
+    },
+    {
+      "sequence_sha256": "03536bc78ccb03fd10a24072e1999d2e808afe3a67d342eaebce4abf9a17851a",
+      "length": 17,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.23529411764705882,
+      "max_reference_ratio": 0.5517241379310345,
+      "nearest_reference_sha256": "1ee4a283c40fbb66cb1ecf021d4a0e7dea1466f4d0016fb94d471a243635094f"
+    },
+    {
+      "sequence_sha256": "fbbd72703884f699fd25d87cd7fdf0c854145c3b446701c4adaa66b947d72679",
+      "length": 17,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.23529411764705882,
+      "max_reference_ratio": 0.5517241379310345,
+      "nearest_reference_sha256": "2ee0d847ec83bf490f85ddd44ae948a2228b5c2eec9870eb747df59165f90cb0"
+    },
+    {
+      "sequence_sha256": "0ae43601447dfe236d44ce0ea762b0a5cd1db3794573d8a0be24e0be470af111",
+      "length": 20,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.2,
+      "max_reference_ratio": 0.5238095238095238,
+      "nearest_reference_sha256": "dfe5a0ae375b827ff16c85a13305e25f1faa49490007f7c79c4024d016c59a6e"
+    },
+    {
+      "sequence_sha256": "b8281a3693839e4f81e896ca2220b727f546f1bf5e3d8807145c67e9e8cb10dd",
+      "length": 20,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 6,
+      "longest_reference_exact_fraction": 0.3,
+      "max_reference_ratio": 0.5142857142857142,
+      "nearest_reference_sha256": "5b3b0411a811fd4fff0dca547dc08781bb110135f5d032116c460988f7bcbe5a"
+    },
+    {
+      "sequence_sha256": "84044a04b12a1b3548f7efac09d44a671cc1a5ff91b622c6d58906dca94779cc",
+      "length": 14,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.2857142857142857,
+      "max_reference_ratio": 0.5714285714285714,
+      "nearest_reference_sha256": "543225373eba970ae4924464d5883fdad10b9a3b703176ef049741870957f238"
+    },
+    {
+      "sequence_sha256": "55ed5575f854b4030f1e128c12fd8cf24534c38122c2d2b70969043acccf7c4d",
+      "length": 16,
+      "tier": "low",
+      "motif_max_length": 4,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW",
+        "VIWR"
+      ],
+      "longest_reference_exact_segment": 6,
+      "longest_reference_exact_fraction": 0.375,
+      "max_reference_ratio": 0.6428571428571428,
+      "nearest_reference_sha256": "18cf96aaf0f04a5450eb43d662960a5307905f5ee100adafab3d7c203d666832"
+    },
+    {
+      "sequence_sha256": "66bcbade53780503c6d1f03833b95bade10b6c3991232df6a716a95bf7e3a38d",
+      "length": 20,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 6,
+      "longest_reference_exact_fraction": 0.3,
+      "max_reference_ratio": 0.5128205128205128,
+      "nearest_reference_sha256": "7665861b4511615f213829f53db3da3e762e62e5771b0ee6c20e8c00f81ef2d3"
+    },
+    {
+      "sequence_sha256": "4e513aa2304882ab802834f6f7e5dffbeec6f58efd11076a5ca0f7b4a2084d7a",
+      "length": 14,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.35714285714285715,
+      "max_reference_ratio": 0.5882352941176471,
+      "nearest_reference_sha256": "a1d45e23748b376105b8f2f6e1a3c5e6df1976d78c071cf866db806872d98df1"
+    },
+    {
+      "sequence_sha256": "01e114b9a948deeb27584e17c1c1cfa3e3056f52d563879b81a42ea422c11c3a",
+      "length": 13,
+      "tier": "low",
+      "motif_max_length": 4,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV",
+        "IWVI"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.38461538461538464,
+      "max_reference_ratio": 0.5217391304347826,
+      "nearest_reference_sha256": "1e168a4433da6540bd9e359658008ef7ad952f27c39822bf391168242c09ecaf"
+    },
+    {
+      "sequence_sha256": "a2d22df31aad288d0bc81c03d2e423cab9fb8a5defe387da11684e10ffaccb61",
+      "length": 20,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 6,
+      "longest_reference_exact_fraction": 0.3,
+      "max_reference_ratio": 0.5454545454545454,
+      "nearest_reference_sha256": "d213a2b135ad400564232f18897f2c830fc5724a9032ee1da7aa550be96018b7"
+    },
+    {
+      "sequence_sha256": "d34d88dc108df11be5ce40644e25b1f56883e93c72e18c92c0178fc30603d335",
+      "length": 10,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.4,
+      "max_reference_ratio": 0.631578947368421,
+      "nearest_reference_sha256": "4fb1231616c43ecd9608636586deefbc5d00c7329ff48829bbd2b82b5bb74ee4"
+    },
+    {
+      "sequence_sha256": "50b851949c458a0e47652c9fc6311dc5d4b9b2876405d88befad60a5a892f88e",
+      "length": 17,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.29411764705882354,
+      "max_reference_ratio": 0.5405405405405406,
+      "nearest_reference_sha256": "1ce04ebad849e4e3e661fba3b8515418bc5bbb78f6d16b9bb7f1bcb2d6696698"
+    },
+    {
+      "sequence_sha256": "45c526e1211e0d635054f6053ed4a6aef8777100f376578b452bfc6755538d27",
+      "length": 20,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.25,
+      "max_reference_ratio": 0.5161290322580645,
+      "nearest_reference_sha256": "9d03dc0c869e453a74e8d71254839836b49069c70076617a833b007f57b586b5"
+    },
+    {
+      "sequence_sha256": "4abe55fefc24884dd0e3c1812cc4c412df7b3498b8d101de80c3404a36e0776a",
+      "length": 14,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.35714285714285715,
+      "max_reference_ratio": 0.5384615384615384,
+      "nearest_reference_sha256": "80402ff539e4980e9035109c1455c5bb307a510c75882f187f41d6de5a020a83"
+    },
+    {
+      "sequence_sha256": "b5d383c7741f24fba240b43843f72e18d0d1ad15a55ea6227c4372ceaf50dc2d",
+      "length": 20,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.2,
+      "max_reference_ratio": 0.5,
+      "nearest_reference_sha256": "12fa3e470e4e61f9154b57fcd18d29ce874310d0b235475a0a97b81ed7ae40c8"
+    },
+    {
+      "sequence_sha256": "b9c41e40546f32e7d1b23c8eb49b27272cfd982841738e1f2faa5662404c111f",
+      "length": 13,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.3076923076923077,
+      "max_reference_ratio": 0.6363636363636364,
+      "nearest_reference_sha256": "5146e53ce54145f3039786cfe795c2a5c80f2b6558272c330447acc9f0d99184"
+    },
+    {
+      "sequence_sha256": "1ed85df9d9bcaec2e6b888b57b1f476def511fa0c2a3ae1dffa8326213d19f84",
+      "length": 13,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.38461538461538464,
+      "max_reference_ratio": 0.6363636363636364,
+      "nearest_reference_sha256": "5146e53ce54145f3039786cfe795c2a5c80f2b6558272c330447acc9f0d99184"
+    },
+    {
+      "sequence_sha256": "852c293480359270ea766efb79a5b5ccb468d442ab9dbccbe5eae5aeffcd0fb7",
+      "length": 18,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.2777777777777778,
+      "max_reference_ratio": 0.5333333333333333,
+      "nearest_reference_sha256": "dfb0f9945952b22d39ad0e20d227d7b9f3b72288a304ee4bf83b9da7f41d4961"
+    },
+    {
+      "sequence_sha256": "6588201df764bbb301b64250ace4c7dadc091210924606c1c3b9e1242258e2ae",
+      "length": 19,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.2631578947368421,
+      "max_reference_ratio": 0.5454545454545454,
+      "nearest_reference_sha256": "93df7505ba920f53354ac4a65d439d6e9a47e608aafc5e9a6839ba537d30d560"
+    },
+    {
+      "sequence_sha256": "e9b75ae2f5013990ffa22f3257117c92ba20b5d901b87cb2e045bbd8b7a6c4c1",
+      "length": 16,
+      "tier": "low",
+      "motif_max_length": 4,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV",
+        "RIWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.3125,
+      "max_reference_ratio": 0.5806451612903225,
+      "nearest_reference_sha256": "66d4f032ff99408da76b05d1044c8c6c145798c60014504e410ea9b46c5ee9a1"
+    },
+    {
+      "sequence_sha256": "43054904dc79c5f319ac97c54e23f81915c0f5d56be479de8194c1f0c6a666d2",
+      "length": 11,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.36363636363636365,
+      "max_reference_ratio": 0.5263157894736843,
+      "nearest_reference_sha256": "5d5a28f4d1cf65c2a2988291a68ee227f888d9cb0732dcbb4594f0e0eef092f7"
+    },
+    {
+      "sequence_sha256": "c9d0b9667774ee6ec19de2a166e9bb521301ef3ad52c637924a0f8982a3ae631",
+      "length": 16,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.25,
+      "max_reference_ratio": 0.56,
+      "nearest_reference_sha256": "b4ccbd67e165d91ca6e66639903ec3fd71edee35ac9a81781c20ce8d66a12d67"
+    },
+    {
+      "sequence_sha256": "e353a15ab8464b2a1f000746669fe9eaf984993744dfb0b3dc02e4af4dcd5bc4",
+      "length": 20,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.25,
+      "max_reference_ratio": 0.5161290322580645,
+      "nearest_reference_sha256": "6dba2adfe2a77fa5ef4c7124e4ae445534034a591e0f31d31d6b1f6ffa217424"
+    },
+    {
+      "sequence_sha256": "1fefc72f2ac04979ae3a1132d250c5f8e32a4786d4896107d65e4687de15ff14",
+      "length": 17,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.23529411764705882,
+      "max_reference_ratio": 0.5384615384615384,
+      "nearest_reference_sha256": "a11d0d360cc6ecf22e3db8f7fd487c37ed7aa457fe40ef322312acc4788fe314"
+    },
+    {
+      "sequence_sha256": "b554d9604ed9da81e009d8905832b297f4a31e3b53e7a3c8a63bb71e8b771f22",
+      "length": 11,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.36363636363636365,
+      "max_reference_ratio": 0.6,
+      "nearest_reference_sha256": "e01818ecbe0056dc740c2eb833582e927a87d23055d0d590199a1d2bcc81bef3"
+    },
+    {
+      "sequence_sha256": "032c9ef418e7a5190d459e10d8b1d44d8d6ba42ed824424feb0abff36d0ee6ba",
+      "length": 20,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.25,
+      "max_reference_ratio": 0.5806451612903225,
+      "nearest_reference_sha256": "768a8d5a63c84ba2951417187fd0cd28e5a64f6a4d8f9e6f9ef5e5be82ea5dd3"
+    },
+    {
+      "sequence_sha256": "cd730f7ae980b70e1e5c9ebb90d97b883fe213ed126436d9fbf9486ad5c16cd1",
+      "length": 17,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.29411764705882354,
+      "max_reference_ratio": 0.6206896551724138,
+      "nearest_reference_sha256": "b6550d50ccfa7bb95c755306e9b754d9ab41d1b62782d421203b9cf74b5b756d"
+    },
+    {
+      "sequence_sha256": "6345ef80e30ee94bea4b8f0d68c63be0bb6c05f686dbf895d26f11446026c954",
+      "length": 14,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.35714285714285715,
+      "max_reference_ratio": 0.56,
+      "nearest_reference_sha256": "0bcb9ed5b47224ff532197838eaf02555d382b1d351b749b7426662d2df1deeb"
+    },
+    {
+      "sequence_sha256": "e56d17e6b12f12edf9d09d1def3c976543165af8f88d3e089f8a92b91c499183",
+      "length": 16,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.3125,
+      "max_reference_ratio": 0.5714285714285714,
+      "nearest_reference_sha256": "1b8e24b53da0b78aff0fedb15800f2ba8731186c4ed72c90b61be0adae5ba224"
+    },
+    {
+      "sequence_sha256": "a2c7f48b0954bdaa9a3c7a1414cbe67c3832157bb65d0bbe0810068daba0641b",
+      "length": 12,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.4166666666666667,
+      "max_reference_ratio": 0.5714285714285714,
+      "nearest_reference_sha256": "390fa002256be51f4e6041712df2c205030da25e23ecf61c1419dcd361ad9630"
+    },
+    {
+      "sequence_sha256": "8f7b75311cb4d5ba91d4c6a218414f4a43402c6a7506dd47dbe11b03fc49c815",
+      "length": 16,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.3125,
+      "max_reference_ratio": 0.5714285714285714,
+      "nearest_reference_sha256": "c02cd4f5a9773a1b6eb90b6095d0e8a5c69be0d518e791b2418627e8610d14c5"
+    },
+    {
+      "sequence_sha256": "da8568c7b4ee586df1f094a0769b758a754599ae282668ac612fe94c4ebe8509",
+      "length": 20,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 6,
+      "longest_reference_exact_fraction": 0.3,
+      "max_reference_ratio": 0.6,
+      "nearest_reference_sha256": "ee4f3bb174aaac6177bf776f356a2887c805744f20bd3efbeceb35cc8fc6f857"
+    },
+    {
+      "sequence_sha256": "ecd44a169d2d83c9bb04ae8f672762ba3bb0fcfcdff82dcff75aa4175a3bfb17",
+      "length": 20,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.25,
+      "max_reference_ratio": 0.55,
+      "nearest_reference_sha256": "b8254dd9c9699587ad5600828021d051ffcbe7617d32a691a65f554dbc50f373"
+    },
+    {
+      "sequence_sha256": "6c0f700d3ae830cbb09397e848d8af0768894139072611e2acc727145aa686f1",
+      "length": 12,
+      "tier": "high",
+      "motif_max_length": 4,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV",
+        "RIWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.4166666666666667,
+      "max_reference_ratio": 0.5833333333333333,
+      "nearest_reference_sha256": "30d79756b075e0d4d9e43192b4d07597a9d4056f7ebc3cae74b061677960636a"
+    },
+    {
+      "sequence_sha256": "16c86d63da4632640ed1dda871ef6a8c3f924e2727e6a082303faa91828d2e50",
+      "length": 13,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.38461538461538464,
+      "max_reference_ratio": 0.5714285714285714,
+      "nearest_reference_sha256": "e419c01bf67d8063ea3deb326ec901041c75b1352b45aa9e822bf965b9435c87"
+    },
+    {
+      "sequence_sha256": "c12fd1caefac38956c3f290ca0bdebae97aff6bcde5eddb05c235f99a91e9942",
+      "length": 20,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.25,
+      "max_reference_ratio": 0.5555555555555556,
+      "nearest_reference_sha256": "b9d9c46d8dd1a470a5d42c86c44ebefa756f456de62f60d437b20583cac930fb"
+    },
+    {
+      "sequence_sha256": "8dee513fd9bf7cf5cbb98e27433e7c20c37c32b5138440b4e14a76a9f0490a9f",
+      "length": 15,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.26666666666666666,
+      "max_reference_ratio": 0.6,
+      "nearest_reference_sha256": "9f268be795ec851971480d17192839179ce3ae9a57d57c8859e731b879f3bbaa"
+    },
+    {
+      "sequence_sha256": "24115f2035e507337e6a4a6f47d23e970c0c36b282f806a162e68da9ffdfbc78",
+      "length": 20,
+      "tier": "low",
+      "motif_max_length": 4,
+      "motif_min_length": 4,
+      "matched_motifs": [
+        "IWRR"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.25,
+      "max_reference_ratio": 0.55,
+      "nearest_reference_sha256": "0448f6749a254c433cd0af8972a8bd92fe48e009d5ccaaa68ff7db36e1795f40"
+    },
+    {
+      "sequence_sha256": "2593ecc5ab6e3f2e99f61e9c647f6d5091c412da0d0a6588e200a1f277336187",
+      "length": 13,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.3076923076923077,
+      "max_reference_ratio": 0.6666666666666667,
+      "nearest_reference_sha256": "9ffa8a50afc9953c934842edae5215e4e42e0dca49aa35c787e92c06be3ec9b5"
+    },
+    {
+      "sequence_sha256": "481b28828b348864c46361ed5592ed82e668ca71884cd3362cd60ce022ab117c",
+      "length": 20,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.25,
+      "max_reference_ratio": 0.5555555555555556,
+      "nearest_reference_sha256": "b56aa9b5c58e01c82f4efb98628337d6cb1e86ce7c2bb5ca055c33724ae77ed7"
+    },
+    {
+      "sequence_sha256": "21bdff85f5cd6203d270ad1c8944882e6a3eef3dbd095050c56b45e0fb7fecdb",
+      "length": 20,
+      "tier": "low",
+      "motif_max_length": 4,
+      "motif_min_length": 4,
+      "matched_motifs": [
+        "IWRR"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.25,
+      "max_reference_ratio": 0.625,
+      "nearest_reference_sha256": "5ecdddab8b323437ab1ac52f189849900513a28f4879bf80135bd0653e17fa10"
+    },
+    {
+      "sequence_sha256": "e10c1a7d9bad60c46f7212aca443f6e6addcb4cea5bd8f2d640ac9a34381a15b",
+      "length": 12,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.4166666666666667,
+      "max_reference_ratio": 0.5714285714285714,
+      "nearest_reference_sha256": "c501d57833b7743b9593bcf3872991c2db712618ec70ec4e18ced39d6a70cff3"
+    },
+    {
+      "sequence_sha256": "13e649d178c3da5109bb308ee38df10b8683191c00c598eb038b382df84d3125",
+      "length": 20,
+      "tier": "high",
+      "motif_max_length": 4,
+      "motif_min_length": 4,
+      "matched_motifs": [
+        "IWRR"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.25,
+      "max_reference_ratio": 0.55,
+      "nearest_reference_sha256": "17e1c82e292c5f1f4cd6bcc99bfc4988586b3208424f92f705260a78a851ccc0"
+    },
+    {
+      "sequence_sha256": "34f4eb99d1ea013677e92826bfb08a43e99bfbf56adf218351671c3399bb4fe5",
+      "length": 13,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 5,
+      "longest_reference_exact_fraction": 0.38461538461538464,
+      "max_reference_ratio": 0.56,
+      "nearest_reference_sha256": "aa8a8162055963b0374296241f8761fa93c42ff3efa276f5251144e4b4be5102"
+    },
+    {
+      "sequence_sha256": "7abfa4b52160956a384e79886f139c54849db11a1dac7fb388d4792f51ee5771",
+      "length": 20,
+      "tier": "high",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "IWV"
+      ],
+      "longest_reference_exact_segment": 6,
+      "longest_reference_exact_fraction": 0.3,
+      "max_reference_ratio": 0.5555555555555556,
+      "nearest_reference_sha256": "63bad11b0d0dc440576850987569f3d38509479afe8cda0aec2865e4365c6b06"
+    },
+    {
+      "sequence_sha256": "eefbc7be354e40ae5933ec59e9a2dc6c5571f68ef094fd4baf40e03fb30f291a",
+      "length": 10,
+      "tier": "low",
+      "motif_max_length": 3,
+      "motif_min_length": 3,
+      "matched_motifs": [
+        "VIW"
+      ],
+      "longest_reference_exact_segment": 4,
+      "longest_reference_exact_fraction": 0.4,
+      "max_reference_ratio": 0.5714285714285714,
+      "nearest_reference_sha256": "dcd164305a9d2d827774c91d0da91d84935fecbfab61f5f57cee4097725803af"
+    }
+  ]
+}

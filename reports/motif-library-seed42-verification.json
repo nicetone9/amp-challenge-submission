@@ -1,0 +1,257 @@
+{
+  "additional_amp_reference_count": 1174,
+  "additional_reference_fail": 0,
+  "all_six_categories_passed": false,
+  "database_evidence": {
+    "IWRR": {
+      "OmegAMP": 59,
+      "ZYL_dataset": 59
+    },
+    "IWV": {
+      "OmegAMP": 75,
+      "ZYL_dataset": 79
+    },
+    "IWVI": {
+      "OmegAMP": 58,
+      "ZYL_dataset": 58
+    },
+    "RIWV": {
+      "OmegAMP": 55,
+      "ZYL_dataset": 55
+    },
+    "VIW": {
+      "OmegAMP": 77,
+      "ZYL_dataset": 76
+    },
+    "VIWR": {
+      "OmegAMP": 63,
+      "ZYL_dataset": 64
+    },
+    "WVIW": {
+      "OmegAMP": 55,
+      "ZYL_dataset": 55
+    }
+  },
+  "fasta_sha256": {
+    "library": "d5952d27dd77ebca3711c2b95c4b4545653b88d396601188e00722f582306032",
+    "top": "c0b603b34dc096c8f7ec32340c40cb0869b9f7c73d4e94797cc59196ca21bfa2"
+  },
+  "input_sha256": {
+    "code": "85a4ecfdbe181bd3699bbcb0bef7a228210474ad03fa3c20ced27cf3f3cf9431",
+    "library": "d5952d27dd77ebca3711c2b95c4b4545653b88d396601188e00722f582306032",
+    "lock": "f34ff396cab8771e70068046601529badd4ea5faa67606cb603a23df0e35d8ad",
+    "motifs": "c33556f29b9acc39818670d8c9f170116d5cd019cd5d3952b10f4fb8072c1e4d",
+    "official_reference": "cbbeac64ba95746d87961e8ad9dd0849ae8058d15a300b2e7f6990730ca521e9",
+    "reference": "5a3e3d5fb877e2469973dc046cf20486f6640a2af7a250209e2c32c49a03386c",
+    "scores": "e9d6751cda26ee3fad3f19cce15b4e3729e66a3dad8716eb513d022041a3b7aa",
+    "selection_code": "e78a3ffd5fbcf59ed0c96fe8ff88128e5d1c3eb7755abcb7fdbb0338100abf92"
+  },
+  "library_unchanged": true,
+  "motif_length_range": [
+    3,
+    4
+  ],
+  "motif_quota": 10,
+  "motif_supported_library": 64,
+  "motif_supported_top": 10,
+  "n_sequences": 50000,
+  "reference_percentile": 0.3,
+  "seed": 42,
+  "status": "HARD_COMPLIANT_SHORT_MOTIF_QUOTA_PARTIAL_QUALITY",
+  "step1_evidence": {
+    "eligible_unique": 3249,
+    "input_sha256": {
+      "/home/peiranj/AMP/step1_retrain_external_20260917/data/ZYL_dataset/amp/antibacterial/train.csv": "b929107e745929d790fd6b4719b500aadb8135fe5a88b84b970509b30d565797",
+      "/home/peiranj/AMP/step1_retrain_external_20260917/data/ZYL_dataset/amp/antimicrobial/train.csv": "f8d347f03c8d48b0348a9434b2cb133d9989e4196cdf01922b07a7d778fb873e",
+      "/home/peiranj/AMP/step1_retrain_external_20260917/data/ZYL_dataset/audit/training/global_hard_isolated_train.csv": "3f001ec4c9b726a7ac54456e2c77500fa25cd74d99483ccb4c4fede9453248fa"
+    },
+    "motif_support": {
+      "IWRR": 10,
+      "IWV": 17,
+      "IWVI": 0,
+      "RIWV": 12,
+      "VIW": 2,
+      "VIWR": 0,
+      "WVIW": 0
+    },
+    "scope": "Intersection with frozen AMP training reference; no new reference expansion."
+  },
+  "top_clusters": 81,
+  "top_k": 100,
+  "top_source_counts": {
+    "dima": 48,
+    "vq": 52
+  },
+  "top_tier_counts": {
+    "high": 50,
+    "low": 50
+  },
+  "warning": "Short motifs are overlapping support, not proof of activity. Full predictor, embedding, synthesis and fresh-generation checks remain incomplete.",
+  "verification": {
+    "two_selection_runs_byte_identical": true,
+    "unchanged_library_bytes": true,
+    "top_subset_and_counts": true,
+    "sequence_format_and_lengths": true,
+    "high_low_quotas": true,
+    "motif_top_count": 10,
+    "tests_passed": 49,
+    "scope": "Fixed-pool selection only; not fresh model regeneration."
+  },
+  "motif_top_details": [
+    {
+      "sequence_sha256": "a0c1c38962f27bc82816c0970c5ce0a79372eaea8687083c17f7995805627dee",
+      "length": 19,
+      "motifs": "VIW;WVIW",
+      "positions": [
+        {
+          "end": 13,
+          "motif": "WVIW",
+          "start": 9
+        },
+        {
+          "end": 13,
+          "motif": "VIW",
+          "start": 10
+        }
+      ],
+      "ranking": 0.8524305555555556,
+      "tier": "high",
+      "source": "vq"
+    },
+    {
+      "sequence_sha256": "d1e8ee1c8364c950f6c5f211b605de8ad137f794e77bf6a1a0a6eaa4a1c32f5f",
+      "length": 16,
+      "motifs": "IWV",
+      "positions": [
+        {
+          "end": 7,
+          "motif": "IWV",
+          "start": 4
+        }
+      ],
+      "ranking": 0.7890485739750446,
+      "tier": "low",
+      "source": "dima"
+    },
+    {
+      "sequence_sha256": "5c9e1120e5f88b544c0adfc2f4bcb06aa57abadb6a5fb14b7654a16a15b77307",
+      "length": 11,
+      "motifs": "VIW",
+      "positions": [
+        {
+          "end": 6,
+          "motif": "VIW",
+          "start": 3
+        }
+      ],
+      "ranking": 0.7501114081996434,
+      "tier": "high",
+      "source": "dima"
+    },
+    {
+      "sequence_sha256": "84044a04b12a1b3548f7efac09d44a671cc1a5ff91b622c6d58906dca94779cc",
+      "length": 14,
+      "motifs": "VIW",
+      "positions": [
+        {
+          "end": 8,
+          "motif": "VIW",
+          "start": 5
+        }
+      ],
+      "ranking": 0.7078505644682116,
+      "tier": "high",
+      "source": "vq"
+    },
+    {
+      "sequence_sha256": "a2d22df31aad288d0bc81c03d2e423cab9fb8a5defe387da11684e10ffaccb61",
+      "length": 20,
+      "motifs": "IWV",
+      "positions": [
+        {
+          "end": 10,
+          "motif": "IWV",
+          "start": 7
+        }
+      ],
+      "ranking": 0.6911671865715983,
+      "tier": "high",
+      "source": "vq"
+    },
+    {
+      "sequence_sha256": "1fefc72f2ac04979ae3a1132d250c5f8e32a4786d4896107d65e4687de15ff14",
+      "length": 17,
+      "motifs": "VIW",
+      "positions": [
+        {
+          "end": 5,
+          "motif": "VIW",
+          "start": 2
+        }
+      ],
+      "ranking": 0.6248236036838979,
+      "tier": "low",
+      "source": "vq"
+    },
+    {
+      "sequence_sha256": "6345ef80e30ee94bea4b8f0d68c63be0bb6c05f686dbf895d26f11446026c954",
+      "length": 14,
+      "motifs": "IWV",
+      "positions": [
+        {
+          "end": 9,
+          "motif": "IWV",
+          "start": 6
+        }
+      ],
+      "ranking": 0.5781435680332738,
+      "tier": "low",
+      "source": "vq"
+    },
+    {
+      "sequence_sha256": "da8568c7b4ee586df1f094a0769b758a754599ae282668ac612fe94c4ebe8509",
+      "length": 20,
+      "motifs": "VIW",
+      "positions": [
+        {
+          "end": 9,
+          "motif": "VIW",
+          "start": 6
+        }
+      ],
+      "ranking": 0.5639297385620915,
+      "tier": "low",
+      "source": "dima"
+    },
+    {
+      "sequence_sha256": "481b28828b348864c46361ed5592ed82e668ca71884cd3362cd60ce022ab117c",
+      "length": 20,
+      "motifs": "VIW",
+      "positions": [
+        {
+          "end": 8,
+          "motif": "VIW",
+          "start": 5
+        }
+      ],
+      "ranking": 0.5356320558526442,
+      "tier": "low",
+      "source": "dima"
+    },
+    {
+      "sequence_sha256": "7abfa4b52160956a384e79886f139c54849db11a1dac7fb388d4792f51ee5771",
+      "length": 20,
+      "motifs": "IWV",
+      "positions": [
+        {
+          "end": 4,
+          "motif": "IWV",
+          "start": 1
+        }
+      ],
+      "ranking": 0.4405915775401069,
+      "tier": "high",
+      "source": "dima"
+    }
+  ]
+}

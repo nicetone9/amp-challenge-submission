@@ -39,3 +39,4 @@ motif-check = "python -m amp_submission.motifs"
 
 audit-official-reference = "python -m amp_submission.hard_audit"
 select-hard-library = "python -m amp_submission.hard_select"
+select-motif-top = "python -m amp_submission.motif_select"
