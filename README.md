@@ -2,7 +2,7 @@
 
 ## Frozen library and write-up (2026-09-30)
 
-The latest private candidate delivery is the unchanged 50,000-member library plus
+The latest candidate delivery is the unchanged 50,000-member library plus
 the short-motif-aware Top100: [write-up](docs/benchmark-20260930/WRITEUP.md),
 [requirement checklist](docs/benchmark-20260930/REQUIREMENTS_CHECKLIST.md), and
 [two-run verification](reports/motif-library-seed42-verification.json).
@@ -12,8 +12,8 @@ partial-panel / short-motif pipeline. See [from-model reproducibility](docs/FROM
 The motif10 report above verifies fixed-pool selection only; a new full-scale
 two-run certificate is required before claiming default-entry reproducibility.
 
-Private delivery candidate, 2026-09-29. **Not a completed competition submission.**
-No Kaggle submission or reviewer access has been granted.
+Candidate delivery, 2026-09-29. **Not a completed competition submission.**
+No Kaggle submission has been made.
 
 Two independent sequence-only generators use frozen original
 `facebook/esm2_t33_650M_UR50D` residue embeddings. VQ-VAE samples a causal code

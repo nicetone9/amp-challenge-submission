@@ -13,11 +13,12 @@ Step2 manifest SHA256: a80a84884fa43c04ec95c082ddababf1297552e21d70d8f0a64d0693b
 | All | 11,599 | 655,462 | 665,703 | 1,332,764 |
 
 Sorted common clusters, NumPy default_rng42 shuffle,80/10/10 cluster assignment.
-Audited sequence overlap0 and cluster overlap0. Protected ZYL test/quarantine
+Audited sequence overlap0 and cluster overlap0. Protected test/quarantine sequences from the collective dataset (internal ID: ZYL)
 excluded. Annotation joins only onto frozen milestone sequences; no Step1 resplit.
 Sampling is core30%/candidate60%/background10%, not row proportions or evidence grades.
 
-Core: eligible ZYL antimicrobial/antibacterial positives or OmegAMP curated AMP.
+Core: eligible antimicrobial/antibacterial positives from the collective dataset
+used in a previous study (internal ID: ZYL), or OmegAMP curated AMP.
 Candidates: AMPSphere-source sequences excluding core.
 Background is not interpreted as experimentally validated negative.
 ESM residue cache, train-only normalization and weighted length distribution shared
@@ -27,7 +28,7 @@ between architectures. Generation is narrowed to8–40 for the current HemoPI2 d
 
 A name/count/hash is not a substitute for released training data. Exact accession
 lists, source versions/URLs, complete processing records, each source's redistribution
-terms and a permissively released nonpublic ZYL portion remain to be cleared.
+terms and a permissively released nonpublic portion of the collective dataset remain to be cleared.
 The repository does not currently satisfy the competition's full data-release condition.
 No protected sequences are committed.
 

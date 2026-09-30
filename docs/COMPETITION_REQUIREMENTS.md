@@ -30,8 +30,8 @@ Individual-peptide proxy scores cannot establish team category results.
 |Librarynoexactofficialreferenceoverlap | Verified byhash-matched historical full-library checker |
 |Top100maxreferenceLevenshteinratio≤0.8 | Recomputed for200/200; full50kbothuse same stricterfilter |
 |Method,filters,externaltools,rankingdocumented | Included |
-|PrivateGitHubinference+weights+organizerreadaccess | Codeincluded; weightsnotreleased; accessnotgranted |
-|Publicrepo+permissivecode | MIToriginalcode; reporemainsprivatebyauthorization |
+|PrivateGitHubinference+weights+organizerreadaccess | Publicrepoaccessible; weightsnotreleased |
+|Publicrepo+permissivecode | Publicrepo; MIToriginalcode; weightsanddatareleasepending |
 |Fulltrainingdatadisclosure+nonpublicdatarelease | Partial; sourcepermissionsunresolved |
 |Pythonversion+uv.lock+noargentrypoint | Implemented; externalR/oracleenvironment remainsreleasegate |
 |Twoclean-clonefullgenerationsidentical | Historicalsameenvironmentpassed; portablecold-cloneGPUtestpending |

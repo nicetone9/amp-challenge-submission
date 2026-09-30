@@ -12,7 +12,7 @@ Separate policies address broad-spectrum, Gram-positive, Gram-negative, MDR-prox
 
 ## Training data and external resources
 
-Training uses the frozen September 4, 2026 milestone: 1,332,764 eligible intact canonical sequences, split by shared clusters into 1,066,105 training, 132,921 validation and 133,738 internal-evaluation sequences. The training mixture samples 30% annotated AMP core, 60% AMP-source candidates and 10% background/uncertain sequences. Core sources are eligible ZYL antimicrobial/antibacterial positives and OmegAMP curated AMPs; the candidate tier is AMPSphere excluding core. Background sequences are not treated as experimentally verified negatives. Protected test/quarantine sequences are excluded from generator training and calibration.
+Training uses the frozen September 4, 2026 milestone: 1,332,764 eligible intact canonical sequences, split by shared clusters into 1,066,105 training, 132,921 validation and 133,738 internal-evaluation sequences. The training mixture samples 30% annotated AMP core, 60% AMP-source candidates and 10% background/uncertain sequences. Core sources are eligible antimicrobial/antibacterial positives from the collective dataset used in a previous study (internal ID: ZYL) and OmegAMP curated AMPs; the candidate tier is AMPSphere excluding core. Background sequences are not treated as experimentally verified negatives. Protected test/quarantine sequences are excluded from generator training and calibration.
 
 The current calibration uses 8,985 eligible training AMPs. Additional Step 1 motif evidence is restricted to 3,249 safe AMP-positive training sequences intersecting that frozen reference, excluding holdout, quarantine and conflict flags. Source labels may overlap. Later Step 1 updates have not been comprehensively integrated.
 
@@ -50,6 +50,6 @@ The default seed is 42. Reference data, metric definitions, motif set, code and 
 
 ## Participation and release status
 
-The private repository contains inference/selection code and documentation under MIT for original code. Model weights exist on Lane but have not been distributed through the repository. Organizer read access has not been granted or verified by this work. Weight delivery and read access for `RasmusML` and `szymczakpau` remain minimum-participation release gates.
+The public repository contains inference/selection code and documentation under MIT for original code. Model weights exist on Lane but have not been distributed through the repository. Weight delivery remains a minimum-participation release gate.
 
-Full co-authorship requirements are not claimed: public repository/weights, complete data disclosure and permissive release of nonpublic data, and full repeated-generation verification remain outstanding. Third-party data, code and weights retain their own terms. Missing potency/safety, embedding and peptide-synthesizability evaluations are explicitly marked incomplete; the artifacts are not described as passing all six quality categories. No competition submission has been made by this workflow.
+Full co-authorship requirements are not claimed: released weights, complete data disclosure and permissive release of nonpublic data, and full repeated-generation verification remain outstanding. Third-party data, code and weights retain their own terms. Missing potency/safety, embedding and peptide-synthesizability evaluations are explicitly marked incomplete; the artifacts are not described as passing all six quality categories. No competition submission has been made by this workflow.

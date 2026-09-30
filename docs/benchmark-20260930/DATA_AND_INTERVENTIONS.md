@@ -2,9 +2,9 @@
 
 ## Training input
 
-This candidate package uses the frozen AMP-Step0-v2-data-milestone-20260904 data, not all subsequently updated Step 1 material. Existing audited disclosure records 1,332,764 eligible intact 8–50 aa canonical sequences: 1,066,105 train, 132,921 validation, and 133,738 internal generation evaluation. Core AMP sources are eligible ZYL antimicrobial/antibacterial positives and OmegAMP curated AMP; the candidate tier is AMPSphere excluding core; remaining eligible sequences are background/uncertain, not experimentally negative.
+This candidate package uses the frozen AMP-Step0-v2-data-milestone-20260904 data, not all subsequently updated Step 1 material. Existing audited disclosure records 1,332,764 eligible intact 8–50 aa canonical sequences: 1,066,105 train, 132,921 validation, and 133,738 internal generation evaluation. Core AMP sources are eligible antimicrobial/antibacterial positives from the collective dataset used in a previous study (internal ID: ZYL) and OmegAMP curated AMP; the candidate tier is AMPSphere excluding core; remaining eligible sequences are background/uncertain, not experimentally negative.
 
-The shared cluster split uses seed 42 and 80/10/10 assignment, excluding protected ZYL test/quarantine. Training sampling is 30% core, 60% candidate, 10% background, not the raw data proportions. Both routes share original frozen ESM-2 650M residue representations and train-only normalization/length statistics.
+The shared cluster split uses seed 42 and 80/10/10 assignment, excluding protected test/quarantine sequences from the collective dataset (internal ID: ZYL). Training sampling is 30% core, 60% candidate, 10% background, not the raw data proportions. Both routes share original frozen ESM-2 650M residue representations and train-only normalization/length statistics.
 
 For the current short-peptide calibration, 8,985 eligible training AMP sequences are used; sequence/embedding anchor and calibration-query clusters are separated. Motif discovery has its own fixed cluster discovery/validation split. Complete data accession/version/permission records and nonpublic-data release are still unresolved. See ../DATA.md for the existing counts and fingerprints. No private reference sequence list is included in this package.
 
