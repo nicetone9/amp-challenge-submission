@@ -1,8 +1,17 @@
 # AMP Challenge — VQ-VAE and DiMA
 
-## Frozen library and write-up (2026-09-30)
+## Length-hard-only selection update (2026-09-30)
 
-The latest candidate delivery is the unchanged 50,000-member library plus
+Length is now only an 8–50 aa validity bound. Length and molecular weight do not
+contribute to percentile gates or ranking. See [the revised policy](docs/LENGTH_HARD_ONLY.md).
+The existing frozen pool spans 8–40 aa; this update reselects from that pool and
+does not invent 41–50 aa candidates. Earlier motif10 artifacts remain historical. The revised fixed-pool delivery has
+passed two-run byte equality and a fresh whole-library reference audit:
+[verification report](reports/length-hard-only-seed42-verification.json).
+
+## Earlier frozen library and write-up (2026-09-30)
+
+The earlier candidate delivery is the unchanged 50,000-member library plus
 the short-motif-aware Top100: [write-up](docs/benchmark-20260930/WRITEUP.md),
 [requirement checklist](docs/benchmark-20260930/REQUIREMENTS_CHECKLIST.md), and
 [two-run verification](reports/motif-library-seed42-verification.json).
@@ -23,7 +32,7 @@ with a trained ESM LM head. No structural input, prediction, loss or evaluation.
 ## Six-category screening update
 
 [Current protocol, partial results and release gates](docs/SIX_METRIC_PROTOCOL.md).
-The default mixed generator uses the approved seven-metric partial-quality policy,
+The default mixed generator uses the approved five-metric partial-quality policy,
 not a completed six-category quality evaluation.
 
 ## Read first
@@ -66,8 +75,8 @@ retained legacy dependencies can run `uv sync --frozen && uv run generate` direc
 **uv.lock does not install CD-HIT or R.** Full clean-clone portability remains a release gate.
 
 Default: mixed VQ + DiMA, seed42, batch128, 600,000 newly sampled candidates,
-50,000 unique 8–40 aa sequences and 100 ranked candidates including ten short-motif
-quota selections. All candidates receive seven partial-panel scores.
+50,000 unique 8–50 aa sequences and 100 ranked candidates including ten short-motif
+quota selections. All candidates receive five partial-panel scores; length and mass are descriptive only.
 `--arch vq` / `--arch dima` retain the historical single-model predictor-ranking routes.
 Output: `generate/library.fasta` and `generate/top.fasta`.
 All arguments have defaults; missing or changed assets stop before changing outputs.

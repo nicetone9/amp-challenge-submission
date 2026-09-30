@@ -1,0 +1,191 @@
+{
+  "all_six_categories_passed": false,
+  "audit_code_sha256": "3c7e9f2b482d3538382a9469d2fa139aa23d86f84ccbb33e72145dfdc0e01d02",
+  "byte_identical": true,
+  "descriptive_only": [
+    "length",
+    "molecular_weight"
+  ],
+  "fasta_sha256": {
+    "library": "912d9a33aa2c3ff1943a52059f3bc323be3f3c9554a5399d1cd31658e5b972dc",
+    "top": "2354f7a6b6e3bdf4984c57c2620674cc3a7008f58d0a318386f40f0d2353c4b2"
+  },
+  "hard_length_bounds": [
+    8,
+    50
+  ],
+  "independent_percentile_and_rank_recalculation": true,
+  "inputs": {
+    "candidate_score_sources": {
+      "descriptors": "a0980b0bc639480839003e5f95485cf6d652f6c782a03dbcd278c32ba509e536",
+      "novelty": "24c67121683cfc14466afb7a49613eab1b04ef3ff5393eb379cbe98acbea7e00"
+    },
+    "candidate_sha256": "e6845d742b810deb25e248d080a857480da4a1d6407769c714bea3a3cc761a4d",
+    "code_sha256": "0acdbb866c256188f61214e2463ad29618cc8b813567959346ca7327d218fbfc",
+    "motif_sha256": "c33556f29b9acc39818670d8c9f170116d5cd019cd5d3952b10f4fb8072c1e4d",
+    "official_result_sha256": "75411410ded09a612531a8aeb75cf0e5c0fde8e0d7b377f56929dcce1ac0bf17",
+    "pixi_lock_sha256": "f34ff396cab8771e70068046601529badd4ea5faa67606cb603a23df0e35d8ad",
+    "reference_score_sources": {
+      "descriptors": "a0980b0bc639480839003e5f95485cf6d652f6c782a03dbcd278c32ba509e536",
+      "novelty": "24c67121683cfc14466afb7a49613eab1b04ef3ff5393eb379cbe98acbea7e00"
+    },
+    "reference_sha256": "5a3e3d5fb877e2469973dc046cf20486f6640a2af7a250209e2c32c49a03386c",
+    "selection_code_sha256": "e78a3ffd5fbcf59ed0c96fe8ff88128e5d1c3eb7755abcb7fdbb0338100abf92"
+  },
+  "known_reference_count": 40622,
+  "motif_length_range": [
+    3,
+    4
+  ],
+  "motif_quota": 10,
+  "quality_metrics": [
+    "charge_ph7",
+    "gravy",
+    "aromaticity",
+    "isoelectric_point",
+    "anchor_novelty"
+  ],
+  "scope": "Frozen-pool selection only; not two fresh model generations",
+  "seed": 42,
+  "selected_threshold": 0.45,
+  "statistics": {
+    "library": {
+      "bins": {
+        "16-20": 15166,
+        "21-25": 7693,
+        "26-30": 13627,
+        "31-40": 9452,
+        "41-50": 0,
+        "8-15": 4062
+      },
+      "clusters": 45568,
+      "count": 50000,
+      "counts": {
+        "8": 114,
+        "9": 107,
+        "10": 243,
+        "11": 569,
+        "12": 518,
+        "13": 753,
+        "14": 742,
+        "15": 1016,
+        "16": 872,
+        "17": 1271,
+        "18": 1379,
+        "19": 1436,
+        "20": 10208,
+        "21": 1536,
+        "22": 1325,
+        "23": 1355,
+        "24": 1598,
+        "25": 1879,
+        "26": 1874,
+        "27": 2275,
+        "28": 2290,
+        "29": 3383,
+        "30": 3805,
+        "31": 4193,
+        "32": 4463,
+        "33": 126,
+        "34": 144,
+        "35": 89,
+        "36": 130,
+        "37": 82,
+        "38": 87,
+        "39": 67,
+        "40": 71
+      },
+      "max": 40,
+      "mean": 24.19774,
+      "median": 24.0,
+      "min": 8,
+      "motif_supported": 100,
+      "source_counts": {
+        "dima": 22590,
+        "vq": 27410
+      },
+      "tier_counts": {
+        "high": 25000,
+        "low": 25000
+      }
+    },
+    "top": {
+      "bins": {
+        "16-20": 25,
+        "21-25": 9,
+        "26-30": 33,
+        "31-40": 21,
+        "41-50": 0,
+        "8-15": 12
+      },
+      "clusters": 88,
+      "count": 100,
+      "counts": {
+        "9": 1,
+        "11": 1,
+        "13": 4,
+        "14": 1,
+        "15": 5,
+        "16": 3,
+        "17": 4,
+        "18": 1,
+        "19": 1,
+        "20": 16,
+        "22": 1,
+        "23": 1,
+        "24": 4,
+        "25": 3,
+        "26": 7,
+        "27": 10,
+        "28": 4,
+        "29": 3,
+        "30": 9,
+        "31": 8,
+        "32": 12,
+        "36": 1
+      },
+      "max": 36,
+      "mean": 24.39,
+      "median": 26.0,
+      "min": 9,
+      "motif_supported": 10,
+      "source_counts": {
+        "dima": 54,
+        "vq": 46
+      },
+      "tier_counts": {
+        "high": 50,
+        "low": 50
+      }
+    }
+  },
+  "status": "LENGTH_HARD_ONLY_FIXED_POOL_DOUBLE_RUN_VERIFIED",
+  "threshold_curve": [
+    {
+      "eligible": 48273,
+      "threshold": 0.5
+    },
+    {
+      "eligible": 71592,
+      "threshold": 0.45
+    },
+    {
+      "eligible": 95861,
+      "threshold": 0.4
+    },
+    {
+      "eligible": 137543,
+      "threshold": 0.35
+    },
+    {
+      "eligible": 166005,
+      "threshold": 0.3
+    },
+    {
+      "eligible": 206089,
+      "threshold": 0.25
+    }
+  ],
+  "warning": "Internal five-metric ranking; no official aggregation or experimental efficacy claim.",
+  "whole_library_known_reference_ratio_le_0_8": true
+}

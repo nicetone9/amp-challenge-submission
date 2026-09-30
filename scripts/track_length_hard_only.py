@@ -14,8 +14,12 @@ identity = {"report_sha256": digest(report_path), "seed": report["seed"],
             "descriptive_only": report["descriptive_only"],
             "fasta_sha256": report["fasta_sha256"], "inputs": report["inputs"],
             "scope": report["scope"], "length_hard_bounds": [8, 50]}
+started = Path("work/length-hard-only-seed42/swanlab-started.json")
+if started.exists():
+    raise ValueError("Tracking already attempted; inspect state and use an explicit resume workflow")
+save_json(started, identity)
 run = swanlab.init(workspace="nicetone9", project="AMP_step2challenge",
-                   mode="online", id=identity["report_sha256"][:32], resume="never",
+                   mode="online", id=identity["report_sha256"][:32], resume="allow",
                    name="length-hard-only-fixed-pool", group="length-hard-only-seed42",
                    job_type="selection-audit", config=identity,
                    log_dir="work/length-hard-only-seed42/swanlog")

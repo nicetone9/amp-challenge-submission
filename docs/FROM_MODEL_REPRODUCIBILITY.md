@@ -20,7 +20,7 @@ redistribution permissions are resolved.
 
 Use Linux x86-64, Python 3.11, the checked-in Pixi and uv locks, CUDA, and CD-HIT
 4.8.1 supplied by Pixi. The default mixed route does not invoke the legacy
-ANIA/HemoPI2 runtime: it uses the explicitly disclosed seven-metric partial panel.
+ANIA/HemoPI2 runtime: it uses the explicitly disclosed five-metric partial panel.
 The legacy single-model modes retain their external predictor prerequisites.
 
 Within the provisioned Pixi environment:
@@ -46,15 +46,16 @@ Slurm compute nodes. No login-node or local-Mac computation is permitted.
   deterministically excluded, rather than changing the last batch shape.
 - Six frozen RL policy checkpoints per architecture are cycled in fixed order.
 - Complete sequences are sampled from the frozen training length distribution,
-  restricted to 8–40 aa. No substring truncation or sequence editing.
-- All unique candidates receive the same six physicochemical descriptors and
-  anchor-novelty score used for reference calibration.
+  restricted to the 8–50 aa validity range. No substring truncation or sequence editing.
+- All unique candidates receive the same four physicochemical quality descriptors
+  and anchor-novelty score used for reference calibration. Length and molecular
+  weight are recorded descriptively, not used for gates or ranking.
 - Hard gates reject training exact hits, invalid sequences, excessive single-AA
   fraction and Levenshtein ratio above 0.8 against the combined known-AMP reference.
   Heavy similarity checks are performed on every candidate that could pass the
   minimum permitted percentile, and repeated on the final library.
 - Select the highest feasible threshold from 0.50, 0.45, 0.40, 0.35, 0.30, 0.25.
-  The threshold must pass every one of the seven registered partial-panel scores.
+  The threshold must pass every one of the five registered partial-panel scores.
 - Preserve CD-HIT 0.50 identity / 0.80 bidirectional coverage, deterministic
   high/low tiers, square-root capacity allocation and stable tie-breaking.
 - Export 50,000 unique sequences with 25,000 high / 25,000 qualified-low.
@@ -69,8 +70,14 @@ supporting evidence, not proof of antimicrobial activity.
 
 ## Two independent default invocations
 
+The previous seven-metric run in `work/from-model-repro-seed42-v2` was stopped
+when the user changed the selection policy. It is not a completed certificate.
+The revised default model-to-output route needs a new full-scale verification;
+fixed-pool reselection is a separate, explicitly narrower guarantee.
+
+
 ```bash
-pixi run reproduce-from-model --phase prepare --root work/from-model-repro-seed42-v2
+pixi run reproduce-from-model --phase prepare --root work/from-model-repro-length-hard-only
 pixi run reproduce-from-model --phase run --root work/from-model-repro-seed42-v2
 ```
 
