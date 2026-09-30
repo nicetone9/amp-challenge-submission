@@ -14,7 +14,28 @@ def save_json(path, data):
     temporary.write_text(json.dumps(data, sort_keys=True, indent=2, allow_nan=False) + "\n")
     temporary.replace(path)
 
-def prepare(manifest_path, audit_path, candidate_root, output, seed=42, expanded_pool=None):
+def expansion_record(root, snapshot_path=None):
+    path = Path(snapshot_path) if snapshot_path is not None else Path(root) / "complete.json"
+    record = json.loads(path.read_text())
+    if snapshot_path is not None:
+        if record.get("status") != "RAW_BATCHES_VERIFIED_CLOUD_SYNC_PENDING":
+            raise ValueError("Unsupported raw snapshot status")
+        counts = record.get("per_branch", {})
+        if (set(counts) != {"vq", "dima"} or
+                any(type(n) is not int or n < 50000 for n in counts.values()) or
+                counts["vq"] != counts["dima"] or
+                sum(counts.values()) != record.get("raw_requested") or
+                not record.get("batch_hash_list_sha256") or
+                type(record.get("pool_unique")) is not int):
+            raise ValueError("Malformed balanced raw snapshot")
+        record["additional_counts"] = {arch: n - 50000 for arch, n in counts.items()}
+    elif record.get("status") != "RAW_POOL_ONLY_NOT_QUALIFIED":
+        raise ValueError("Unsupported expansion completion status")
+    return record, path
+
+
+def prepare(manifest_path, audit_path, candidate_root, output, seed=42, expanded_pool=None,
+            pool_snapshot=None):
     output = Path(output)
     audit = json.loads(Path(audit_path).read_text())
     if digest(manifest_path) != audit["manifest_sha256"]:
@@ -24,9 +45,11 @@ def prepare(manifest_path, audit_path, candidate_root, output, seed=42, expanded
             raise ValueError("Step1 annotation input changed: " + name)
     paths = {arch: Path(candidate_root) / arch / "library.fasta" for arch in ("vq", "dima")}
     expanded = None
+    if pool_snapshot is not None and expanded_pool is None:
+        raise ValueError("A pool snapshot requires --expanded-pool")
     if expanded_pool is not None:
         expanded_pool = Path(expanded_pool)
-        expanded = json.loads((expanded_pool / "complete.json").read_text())
+        expanded, expansion_path = expansion_record(expanded_pool, pool_snapshot)
         pool_identity = json.loads((expanded_pool / "identity.json").read_text())
         if expanded["identity_sha256"] != fingerprint(pool_identity):
             raise ValueError("Expansion identity mismatch")
@@ -37,7 +60,8 @@ def prepare(manifest_path, audit_path, candidate_root, output, seed=42, expanded
     identity = {"manifest_sha256": audit["manifest_sha256"], "label_files": audit["label_files"],
                 "seed": seed, "input_fasta_sha256": {k: digest(p) for k, p in paths.items()},
                 "registry_sha256": fingerprint(registry_payload()), "code_sha256": digest(__file__),
-                "expansion_sha256": digest(expanded_pool / "complete.json") if expanded else None}
+                "expansion_sha256": digest(expansion_path) if expanded else None,
+                "expansion_status": expanded["status"] if expanded else None}
     if (output / "identity.json").exists():
         if json.loads((output / "identity.json").read_text()) != identity:
             raise ValueError("Refusing changed inputs in frozen reference directory")
@@ -57,6 +81,7 @@ def prepare(manifest_path, audit_path, candidate_root, output, seed=42, expanded
     known = set(train.sequence)
     merged, seen = [], {}
     counts = Counter()
+    batch_hashes = {arch: [] for arch in paths}
     for arch, path in paths.items():
         sequences = read_fasta(path)
         if len(sequences) != 50000 or len(set(sequences)) != 50000:
@@ -66,7 +91,10 @@ def prepare(manifest_path, audit_path, candidate_root, output, seed=42, expanded
             extra = []
             index = 0
             while len(extra) < needed:
-                batch = json.loads((expanded_pool / arch / f"batch-{index:07d}.json").read_text())
+                batch_path = expanded_pool / arch / f"batch-{index:07d}.json"
+                batch = json.loads(batch_path.read_text())
+                if pool_snapshot is not None:
+                    batch_hashes[arch].append(digest(batch_path))
                 expected = fingerprint({"identity": pool_identity, "arch": arch, "index": index,
                                         "batch_size": pool_identity["batch_size"]})
                 if (batch["identity"] != expected or
@@ -98,6 +126,10 @@ def prepare(manifest_path, audit_path, candidate_root, output, seed=42, expanded
                    "hard_precheck": not reasons, "failure_reasons": ";".join(reasons), "raw_occurrences": 1}
             seen[sequence] = row
             merged.append(row)
+    if pool_snapshot is not None:
+        if (fingerprint(batch_hashes) != expanded["batch_hash_list_sha256"] or
+                len(merged) != expanded["pool_unique"]):
+            raise ValueError("Raw snapshot batch hashes or unique count changed")
     output.mkdir(parents=True, exist_ok=True)
     core.to_csv(output / "reference.csv", index=False)
     excluded.to_csv(output / "excluded-reference.csv", index=False)
@@ -133,8 +165,11 @@ def main():
     p.add_argument("--output", type=Path, default=Path("work/six-metrics"))
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--expanded-pool", type=Path)
+    p.add_argument("--pool-snapshot", type=Path,
+                   help="Explicit verified raw snapshot; cloud state remains pending")
     a = p.parse_args()
-    prepare(a.manifest, a.audit, a.candidate_root, a.output, a.seed, a.expanded_pool)
+    prepare(a.manifest, a.audit, a.candidate_root, a.output, a.seed, a.expanded_pool,
+            a.pool_snapshot)
 
 if __name__ == "__main__":
     main()

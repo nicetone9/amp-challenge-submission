@@ -178,3 +178,20 @@ Full GPU repeat-run FASTA equality and complete six-category acceptance remain
 unverified. An eight-sequence HemoPI2 profile identified pandas-heavy composition/
 transition/distribution feature extraction as the CPU bottleneck; no unverified
 replacement of the published predictor is deployed.
+
+## Continuing a verified raw pool during a tracking outage
+
+An explicit `prepare-reference --expanded-pool work/expanded-pool
+--pool-snapshot work/operations/raw-600k-verified-cloud-pending.json` input can
+prepare a separately named work directory from already verified raw batches.
+The original pool completion file is never changed. All batch-file hashes,
+per-batch content hashes, equal branch counts and the deduplicated count are
+rechecked; the snapshot hash and cloud-pending status enter the prepared identity.
+This enables CPU audit work only. It does not declare upload success or waive
+the online-tracking prerequisite for a new GPU stage.
+
+As of the recorded September 30 outage, 600,000 raw sequences (300,000 per route)
+were batch-verified, with 597,555 unique sequences. The 300k-pool hard-reference
+audit found 298,255 of 299,132 unique candidates at ratio <= 0.8; all 7,212
+seven-metric diagnostic passes also passed that hard audit. These counts are
+still not six-category qualification or competition acceptance.
