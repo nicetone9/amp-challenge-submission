@@ -54,7 +54,7 @@ pixi run reproduce-frozen-pool --revision FULL_COMMIT_SHA --root work/frozen-poo
 This creates two actual public GitHub clones at the supplied commit, each with
 its own native runtime, uv environment, empty package cache and independently
 downloaded public pool. It runs the default command twice, checks byte equality,
-checks equality to the original sampling-run selection, and runs the retained
+checks equality to the source pool finalization selection, and runs the retained
 official validator's sequence components. A certificate is written only after
 all checks pass.
 

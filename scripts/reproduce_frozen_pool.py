@@ -59,7 +59,7 @@ def reproduce(root, revision):
             raise ValueError("Byte identity failed: " + filename)
         hashes[filename] = digest(first)
         if hashes[filename] != provenance["source_fasta_sha256"][filename.removesuffix(".fasta")]:
-            raise ValueError("Frozen filtering changed the original sampling-run selection")
+            raise ValueError("Frozen filtering changed the source pool finalization selection")
     for name in ("run1", "run2"):
         target = root / name
         verify_assets(target / "frozen-pool")
@@ -72,7 +72,7 @@ def reproduce(root, revision):
     result = {"status": "TWO_PUBLIC_COLD_CLONES_FROZEN_FILTER_BYTE_IDENTICAL",
               "revision": revision, "command_each_run": ["uv", "run", "generate"],
               "public_inputs_downloaded_each_clone": True,
-              "fresh_model_sampling": False, "original_sampling_output_match": True,
+              "fresh_model_sampling": False, "frozen_source_selection_match": True,
               "pool_counts": {"vq": 300000, "dima": 300000}, "seed": 42,
               "library_count": 50000, "top_count": 100, "fasta_sha256": hashes,
               "raw_sha256": reports[0]["raw_sha256"],

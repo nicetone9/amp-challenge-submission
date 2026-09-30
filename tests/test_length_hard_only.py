@@ -3,6 +3,8 @@ import unittest
 import numpy as np
 from amp_submission.hard_select import METRICS, quality_arrays
 from amp_submission.model_generate import merge_pool
+from amp_submission.metric_scores import descriptors
+from amp_submission.scoring import validate_sequences
 
 
 class LengthHardOnlyTests(unittest.TestCase):
@@ -28,3 +30,17 @@ class LengthHardOnlyTests(unittest.TestCase):
         rows = merge_pool({"vq": sequences, "dima": []}, set())
         self.assertEqual([r["hard_precheck"] for r in rows],
                          [False, True, True, True, True, False])
+
+    def test_descriptor_scoring_accepts_41_to_50(self):
+        sequences = [("ACDEFGHIKLMNPQRSTVWY" * 3)[:n] for n in (8, 40, 41, 50)]
+        values = descriptors(sequences)
+        np.testing.assert_array_equal(values["length"], [8, 40, 41, 50])
+        self.assertTrue(all(np.isfinite(value).all() for value in values.values()))
+        for invalid in ([], ["A" * 7], ["A" * 51], ["ACDEXGHI"]):
+            with self.assertRaises(ValueError):
+                descriptors(invalid)
+
+    def test_external_oracle_retains_40_aa_limit(self):
+        validate_sequences(["ACDEFGHI"])
+        with self.assertRaisesRegex(ValueError, "HemoPI2"):
+            validate_sequences([("ACDEFGHIKLMNPQRSTVWY" * 3)[:41]])

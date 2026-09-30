@@ -13,22 +13,12 @@ from amp_submission.model_generate import load_reference
 from amp_submission.prepare_reference import save_json
 
 
-def freeze(source, assets, output, archive):
-    source, assets, output, archive = map(Path, (source, assets, output, archive))
-    if output.exists() or archive.exists():
-        raise ValueError("Use new frozen-pool and archive paths")
+def load_completed_raw(source):
+    source = Path(source)
     complete = json.loads((source / "raw/complete.json").read_text())
     inputs = json.loads((source / "inputs.json").read_text())
-    report = json.loads((source / "generation.json").read_text())
     if not complete["fresh_model_sampling"] or complete["counts"] != {"vq": 300000, "dima": 300000}:
         raise ValueError("Require the completed 600,000-attempt mixed pool")
-    reference_root = assets / "generation-reference"
-    reference_manifest = verify_assets(reference_root)
-    if digest(reference_root / "manifest.json") != inputs["reference_sha256"]:
-        raise ValueError("Source generation reference changed")
-    verify_assets(assets)
-    if digest(assets / "manifest.json") != inputs["assets_sha256"]:
-        raise ValueError("Source model assets changed")
     branches = {}
     for arch in ("vq", "dima"):
         sequences = []
@@ -45,6 +35,22 @@ def freeze(source, assets, output, archive):
         branches[arch] = sequences[:complete["counts"][arch]]
         if fingerprint(branches[arch]) != complete["sha256"][arch]:
             raise ValueError("Raw branch checksum mismatch")
+    return inputs, complete, branches
+
+
+def freeze(source, assets, output, archive):
+    source, assets, output, archive = map(Path, (source, assets, output, archive))
+    if output.exists() or archive.exists():
+        raise ValueError("Use new frozen-pool and archive paths")
+    inputs, complete, branches = load_completed_raw(source)
+    report = json.loads((source / "generation.json").read_text())
+    reference_root = assets / "generation-reference"
+    reference_manifest = verify_assets(reference_root)
+    if digest(reference_root / "manifest.json") != inputs["reference_sha256"]:
+        raise ValueError("Source generation reference changed")
+    verify_assets(assets)
+    if digest(assets / "manifest.json") != inputs["assets_sha256"]:
+        raise ValueError("Source model assets changed")
     output.mkdir(parents=True)
     for arch, sequences in branches.items():
         write_fasta(output / (arch + ".fasta"), sequences)
@@ -57,7 +63,10 @@ def freeze(source, assets, output, archive):
     provenance = {"sampling_seed": inputs["seed"], "counts": complete["counts"],
                   "raw_sha256": complete["sha256"], "physical_attempts": complete["physical_attempts"],
                   "assets_sha256": inputs["assets_sha256"], "reference_sha256": inputs["reference_sha256"],
-                  "sampling_code_sha256": inputs["code_sha256"], "locks": inputs["locks"],
+                  "sampling_code_sha256": inputs["code_sha256"],
+                  "selection_code_sha256": report.get("selection_code_sha256", inputs["code_sha256"]),
+                  "reused_completed_raw": report.get("reused_completed_raw", False),
+                  "locks": inputs["locks"],
                   "source_environment": report["environment"],
                   "source_generation_report_sha256": digest(source / "generation.json"),
                   "source_swanlab_run_id": report["swanlab_run_id"],

@@ -3,10 +3,16 @@ import numpy as np
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 from rapidfuzz import process
 from rapidfuzz.distance import Indel, Levenshtein
-from .scoring import validate_sequences
+from .io import AA
 
 def descriptors(sequences):
-    validate_sequences(sequences)
+    if not sequences:
+        raise ValueError("Empty candidate batch")
+    for sequence in sequences:
+        if not 8 <= len(sequence) <= 50:
+            raise ValueError("Descriptors require length 8-50")
+        if not set(sequence) <= set(AA):
+            raise ValueError("Candidate contains non-canonical amino acids")
     rows = []
     for sequence in sequences:
         p = ProteinAnalysis(sequence)

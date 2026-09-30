@@ -16,7 +16,7 @@ class MetricTests(unittest.TestCase):
         for key in scores:
             np.testing.assert_equal(scores[key], descriptors(seqs)[key])
         with self.assertRaises(ValueError):
-            descriptors(["A" * 41])
+            descriptors(["A" * 51])
 
     def test_novelty_direction_and_cosine(self):
         p = anchor_novelty(["ACDEFGHI", "YYYYYYYY"], ["ACDEFGHI"])
