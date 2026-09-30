@@ -23,11 +23,13 @@ Use Linux x86-64, Python 3.11, the checked-in Pixi and uv locks, CUDA, and CD-HI
 ANIA/HemoPI2 runtime: it uses the explicitly disclosed five-metric partial panel.
 The legacy single-model modes retain their external predictor prerequisites.
 
-Within the provisioned Pixi environment:
+After frozen assets have been provisioned, install the minimal native runtime.
+This creates Python, uv and CD-HIT, without R or the legacy oracle dependencies:
 
 ```bash
-pixi run uv sync --frozen
-pixi run uv-generate
+pixi install --locked -e runtime
+pixi run -e runtime uv sync --frozen
+pixi run -e runtime uv run generate
 ```
 
 The actual competition command is:
@@ -64,7 +66,7 @@ Slurm compute nodes. No login-node or local-Mac computation is permitted.
 - Missing quota or insufficient candidates fails; no old sequences, duplicates
   or relaxed novelty thresholds are used as filler.
 
-The seven-metric internal score is **not** the official aggregation score and is
+The five-metric internal score is **not** the official aggregation score and is
 not completion of the original six-category quality evaluation. Motifs are
 supporting evidence, not proof of antimicrobial activity.
 
@@ -77,16 +79,24 @@ fixed-pool reselection is a separate, explicitly narrower guarantee.
 
 
 ```bash
-pixi run reproduce-from-model --phase prepare --root work/from-model-repro-length-hard-only
-pixi run reproduce-from-model --phase run --root work/from-model-repro-seed42-v2
+# Replace FULL_COMMIT_SHA with the audited 40-character GitHub commit.
+pixi run reproduce-from-model --phase prepare --revision FULL_COMMIT_SHA --root work/from-model-repro-length-hard-only-cold
+pixi run reproduce-from-model --phase run --root work/from-model-repro-length-hard-only-cold
 ```
 
-Preparation copies the same source and lockfiles into two separate directories
-and installs each uv environment. Only frozen input assets are shared read-only
-by convention. Both candidate/output directories must be empty.
+Preparation clones the public repository twice at that exact commit and checks
+the inference source/locks against the audited preparing checkout. Each clone gets
+its own locked Pixi runtime, new uv environment and empty uv package cache.
+The preparing checkout's Python/R paths are removed from the child environment.
+Each install records its interpreter prefix and confirms that rpy2 was not installed.
 
-The run phase invokes exactly `uv run generate` in each directory, sequentially
-on the same allocated GPU. `UV_FROZEN=1` prevents dependency changes, and
+Only manifest-listed frozen input assets are copied into each clone; they are not
+symlinked, and no generated candidates or candidate scores are provisioned.
+Both candidate/output directories must be empty. Because these inputs are still
+privately provisioned, this test does not certify public asset delivery.
+
+The run phase invokes exactly `uv run generate` inside each clone's minimal
+Pixi runtime, sequentially on the same allocated GPU. `UV_FROZEN=1` prevents dependency changes, and
 `PYTHONHASHSEED`, numerical thread settings and deterministic CUDA settings are
 fixed. Each model batch has a seed derived from the master seed, architecture and
 batch index. Model initialization and online tracking cannot advance the batch's

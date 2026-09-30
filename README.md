@@ -66,13 +66,22 @@ the competition entry point uses the **same implementation**. External predictor
 assets are only required by the legacy single-model modes:
 
 ```bash
-pixi run uv sync --frozen
-pixi run uv run --frozen generate
+pixi install --locked -e runtime
+pixi run -e runtime uv sync --frozen
+pixi run -e runtime uv run generate
 ```
 
-A pre-provisioned environment with CD-HIT 4.8.1 and the R prerequisites for the
-retained legacy dependencies can run `uv sync --frozen && uv run generate` directly.
-**uv.lock does not install CD-HIT or R.** Full clean-clone portability remains a release gate.
+The minimal `runtime` environment supplies locked Python, uv and CD-HIT 4.8.1;
+it does not contain R or the external oracle stack. Within that environment the
+commands are simply `uv sync --frozen` and `uv run generate`. **uv.lock does not
+install native CD-HIT or an NVIDIA driver.** The entry checks CD-HIT before sampling.
+Legacy single-model predictor modes additionally require R, oracle assets and
+`uv sync --frozen --extra legacy-oracles`; the full default Pixi environment retains them.
+
+The cold-clone runner checks out a fixed GitHub commit into two separate directories,
+creates a new minimal runtime and uv environment in each, and copies only
+manifest-listed private input assets. This is not yet public cold-clone acceptance:
+the asset delivery/redistribution gate still needs to be resolved.
 
 Default: mixed VQ + DiMA, seed42, batch128, 600,000 newly sampled candidates,
 50,000 unique 8–50 aa sequences and 100 ranked candidates including ten short-motif
@@ -91,8 +100,9 @@ The unchanged official checker is retained:
 pixi run verify-submission https://github.com/nicetone9/amp-challenge-submission
 ```
 
-It cannot yet pass the complete cold-clone path without released assets and the
-external oracle environment. Do not treat component checks as organizer acceptance.
+It cannot yet pass the complete public cold-clone path without released assets.
+The default mixed entry does not require the external oracle environment.
+Do not treat component checks or private asset provisioning as organizer acceptance.
 
 ## License and release boundaries
 

@@ -3,6 +3,7 @@ import json
 import os
 import platform
 import shutil
+import subprocess
 import tempfile
 import time
 from collections import Counter
@@ -182,6 +183,13 @@ def run(args):
         raise ValueError("Require even library/top sizes with 2 <= top <= library <= pool")
     if not 0 <= args.motif_quota <= args.top_k or args.motif_quota % 2:
         raise ValueError("Motif quota must be even and between zero and top-k")
+    cdhit = shutil.which("cd-hit")
+    if cdhit is None:
+        raise RuntimeError("CD-HIT 4.8.1 must be on PATH before generation; see installation instructions")
+    cdhit_help = subprocess.run([cdhit, "-h"], stdout=subprocess.PIPE,
+                               stderr=subprocess.STDOUT, text=True, check=False).stdout
+    if "CD-HIT version 4.8.1 " not in cdhit_help:
+        raise RuntimeError("CD-HIT 4.8.1 is required by the frozen clustering protocol")
     os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
     verify_assets(args.assets)
     reference = load_reference(args.selection_reference or args.assets / "generation-reference")
@@ -242,7 +250,8 @@ def run(args):
                   "fasta_sha256": {name: digest(directory / (name + ".fasta")) for name in ("library", "top")},
                   "raw_sha256": {a: fingerprint(s) for a, s in branches.items()},
                   "environment": {"python": platform.python_version(), "torch": torch.__version__,
-                                  "cuda": torch.version.cuda, "gpu": torch.cuda.get_device_name(0)},
+                                  "cuda": torch.version.cuda, "gpu": torch.cuda.get_device_name(0),
+                                  "cd_hit_sha256": digest(cdhit)},
                   "cd_hit_command": command, "wall_seconds": time.monotonic() - start,
                   "artifact_directory": str(directory.resolve()),
                   "swanlab_run_id": run_handle.id if run_handle else None,

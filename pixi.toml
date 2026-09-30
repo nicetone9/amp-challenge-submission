@@ -12,8 +12,17 @@ r-kaos = "0.1.2.*"
 cd-hit = "4.8.1.*"
 
 [pypi-dependencies]
-amp-challenge-submission = { path = ".", editable = true }
+amp-challenge-submission = { path = ".", editable = true, extras = ["legacy-oracles"] }
 torch = { version = "==2.7.1", index = "https://download.pytorch.org/whl/cu126" }
+
+# Minimal native prerequisites for the uv submission entry; no R or oracle stack.
+[feature.runtime.dependencies]
+python = "3.11.*"
+uv = ">=0.6,<1"
+cd-hit = "4.8.1.*"
+
+[environments]
+runtime = { features = ["runtime"], no-default-feature = true }
 
 [tasks]
 test = "python -m unittest discover -s tests -v"

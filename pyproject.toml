@@ -11,8 +11,11 @@ license = "MIT"
 dependencies = [
   "torch==2.7.1", "transformers==4.53.3", "numpy>=1.26,<3",
   "pandas>=2.2,<3", "scikit-learn>=1.5,<2", "Levenshtein>=0.26,<1",
-  "rapidfuzz>=3.13,<4", "rpy2==3.5.17", "biopython==1.85", "swanlab==0.10.0", "sentencepiece==0.2.0"
+  "rapidfuzz>=3.13,<4", "biopython==1.85", "swanlab==0.10.0", "sentencepiece==0.2.0"
 ]
+
+[project.optional-dependencies]
+legacy-oracles = ["rpy2==3.5.17"]
 
 [project.scripts]
 generate = "amp_submission.generate:main"
