@@ -86,7 +86,7 @@ def prepare(root, revision):
               "asset_delivery": "private manifest-listed copies; public distribution unresolved",
               "assets_manifest": digest(source / "checkpoint/manifest.json"),
               "reference_manifest": digest(source / "checkpoint/generation-reference/manifest.json"),
-              "command": ["uv", "run", "generate"],
+              "command": ["uv", "run", "generate", "--resample"],
               "native_prerequisites": "fresh locked Pixi runtime per clone; Python, uv, CD-HIT"}
     save_json(root / "prepared.json", report)
     print(json.dumps(report), flush=True)
@@ -139,7 +139,7 @@ def verify(root, prepared):
         validators["_veritfy_max_simularity"](set(read_fasta(output / "top.fasta")), references)
     check_inputs(root, prepared)
     result = {"status": "TWO_COLD_MODEL_RUNS_BYTE_IDENTICAL",
-              "command_each_run": ["uv", "run", "generate"], "seed": 42,
+              "command_each_run": ["uv", "run", "generate", "--resample"], "seed": 42,
               "n_sequences": 50000, "top_k": 100, "fasta_sha256": artifacts,
               "raw_sha256": reports[0]["raw_sha256"], "environment": reports[0]["environment"],
               "inputs": prepared, "run_reports_sha256": [
@@ -171,7 +171,7 @@ def execute(root):
         start = time.monotonic()
         save_json(root / "status.json", {"status": "RUNNING", "run": name})
         with (root / (name + ".log")).open("w") as log:
-            result = subprocess.run([*runtime_command(root / name), "uv", "run", "generate"], cwd=root / name,
+            result = subprocess.run([*runtime_command(root / name), "uv", "run", "generate", "--resample"], cwd=root / name,
                                     env=env, stdout=log, stderr=subprocess.STDOUT)
         save_json(root / (name + "-exit.json"),
                   {"exit_code": result.returncode, "wall_seconds": time.monotonic()-start})

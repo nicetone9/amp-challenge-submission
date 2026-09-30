@@ -1,6 +1,6 @@
 # From-model reproducibility
 
-The default entry point is now `uv run generate` with `--arch mixed` and seed 42.
+The explicit fresh-model entry point is `uv run generate --resample` with `--arch mixed` and seed 42.
 It samples both trained models afresh. It does **not** load an existing candidate
 library, a previous raw pool, or cached candidate scores.
 
@@ -15,8 +15,7 @@ Provision the private weights and their manifest under `checkpoint/`, plus the
 reference-only bundle under `checkpoint/generation-reference/`.
 The bundle contains AMP calibration scores, disjoint reference anchors, the
 combined known-AMP novelty reference, training-sequence hashes and frozen motifs.
-It contains **no generated candidates**. Its inputs remain private until their
-redistribution permissions are resolved.
+It contains **no generated candidates**. Public distribution of these optional model inputs is still pending.
 
 Use Linux x86-64, Python 3.11, the checked-in Pixi and uv locks, CUDA, and CD-HIT
 4.8.1 supplied by Pixi. The default mixed route does not invoke the legacy
@@ -29,13 +28,13 @@ This creates Python, uv and CD-HIT, without R or the legacy oracle dependencies:
 ```bash
 pixi install --locked -e runtime
 pixi run -e runtime uv sync --frozen
-pixi run -e runtime uv run generate
+pixi run -e runtime uv run generate --resample
 ```
 
 The actual competition command is:
 
 ```bash
-uv run generate
+uv run generate --resample
 ```
 
 All experiments and installation for this project must run inside approved Lane
@@ -95,7 +94,7 @@ symlinked, and no generated candidates or candidate scores are provisioned.
 Both candidate/output directories must be empty. Because these inputs are still
 privately provisioned, this test does not certify public asset delivery.
 
-The run phase invokes exactly `uv run generate` inside each clone's minimal
+The run phase invokes exactly `uv run generate --resample` inside each clone's minimal
 Pixi runtime, sequentially on the same allocated GPU. `UV_FROZEN=1` prevents dependency changes, and
 `PYTHONHASHSEED`, numerical thread settings and deterministic CUDA settings are
 fixed. Each model batch has a seed derived from the master seed, architecture and

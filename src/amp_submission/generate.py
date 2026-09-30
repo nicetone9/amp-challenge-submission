@@ -1,4 +1,4 @@
-"""Competition entry point. All arguments have defaults; missing assets fail closed."""
+"""Competition entry point: filter the frozen pool by default; resampling is explicit."""
 import argparse
 import json
 import os
@@ -38,6 +38,8 @@ def validate(library, top, references, library_size=50000, top_size=100):
 def parser():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--arch", choices=("mixed", "vq", "dima"), default="mixed")
+    p.add_argument("--resample", action="store_true", help="Explicitly sample models again; requires CUDA and weights")
+    p.add_argument("--candidate-pool", type=Path, default=Path("frozen-pool"))
     p.add_argument("--assets", type=Path, default=Path("checkpoint"))
     p.add_argument("--oracles", type=Path, default=Path("external"))
     p.add_argument("--output", type=Path, default=Path("generate"))
@@ -58,6 +60,8 @@ def main():
         from .model_generate import run
         run(args)
         return
+    if not args.resample:
+        raise ValueError("Legacy single-model routes require explicit --resample")
     # Verify every frozen asset before any generation or output mutation.
     manifest = verify_assets(args.assets)
     oracle_manifest = verify_assets(args.oracles)

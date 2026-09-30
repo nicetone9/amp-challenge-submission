@@ -21,7 +21,7 @@ class ColdInstallTests(unittest.TestCase):
         with patch("amp_submission.model_generate.shutil.which", return_value=None), \
              patch("amp_submission.model_generate.verify_assets") as assets:
             with self.assertRaisesRegex(RuntimeError, "CD-HIT 4.8.1"):
-                run(parser().parse_args([]))
+                run(parser().parse_args(["--resample"]))
             assets.assert_not_called()
 
     def test_actual_cdhit_banner_passes_the_version_preflight(self):
@@ -31,7 +31,7 @@ class ColdInstallTests(unittest.TestCase):
              patch("subprocess.run", return_value=result), \
              patch("amp_submission.model_generate.verify_assets", side_effect=RuntimeError("ASSETS_REACHED")):
             with self.assertRaisesRegex(RuntimeError, "ASSETS_REACHED"):
-                run(parser().parse_args([]))
+                run(parser().parse_args(["--resample"]))
 
     def test_cold_runtime_has_no_r_dependencies(self):
         config = tomllib.loads(Path("pixi.toml").read_text())
@@ -60,7 +60,7 @@ class ColdInstallTests(unittest.TestCase):
              patch("subprocess.run", return_value=result), \
              patch("amp_submission.model_generate.verify_assets") as assets:
             with self.assertRaisesRegex(RuntimeError, "CD-HIT 4.8.1"):
-                run(parser().parse_args([]))
+                run(parser().parse_args(["--resample"]))
             assets.assert_not_called()
 
 

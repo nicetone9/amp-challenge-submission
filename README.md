@@ -16,10 +16,10 @@ the short-motif-aware Top100: [write-up](docs/benchmark-20260930/WRITEUP.md),
 [requirement checklist](docs/benchmark-20260930/REQUIREMENTS_CHECKLIST.md), and
 [two-run verification](reports/motif-library-seed42-verification.json).
 
-The default entry point now samples both models afresh and applies the mixed
-partial-panel / short-motif pipeline. See [from-model reproducibility](docs/FROM_MODEL_REPRODUCIBILITY.md).
-The motif10 report above verifies fixed-pool selection only; a new full-scale
-two-run certificate is required before claiming default-entry reproducibility.
+The default entry point now filters a frozen mixed VQ/DiMA pool with the same
+partial-panel / short-motif pipeline. See [frozen-pool reproduction](docs/FROZEN_POOL_REPRODUCIBILITY.md).
+New model sampling requires explicit `--resample`. The current 600,000-candidate
+release and public cold-clone certificate are prepared separately from historical reports.
 
 Candidate delivery, 2026-09-29. **Not a completed competition submission.**
 No Kaggle submission has been made.
@@ -61,9 +61,9 @@ pixi run check-assets
 pixi run generate
 ```
 
-After approved model and frozen selection-reference assets have been provisioned,
-the competition entry point uses the **same implementation**. External predictor
-assets are only required by the legacy single-model modes:
+The default entry downloads and verifies the frozen candidate/reference release
+named in `candidate-pool.json`, then executes the fixed filtering implementation.
+Model weights and external predictor assets are only needed for explicit resampling:
 
 ```bash
 pixi install --locked -e runtime
@@ -74,33 +74,33 @@ pixi run -e runtime uv run generate
 The minimal `runtime` environment supplies locked Python, uv and CD-HIT 4.8.1;
 it does not contain R or the external oracle stack. Within that environment the
 commands are simply `uv sync --frozen` and `uv run generate`. **uv.lock does not
-install native CD-HIT or an NVIDIA driver.** The entry checks CD-HIT before sampling.
+install native CD-HIT.** The entry checks CD-HIT before filtering.
 Legacy single-model predictor modes additionally require R, oracle assets and
 `uv sync --frozen --extra legacy-oracles`; the full default Pixi environment retains them.
 
-The cold-clone runner checks out a fixed GitHub commit into two separate directories,
-creates a new minimal runtime and uv environment in each, and copies only
-manifest-listed private input assets. This is not yet public cold-clone acceptance:
-the asset delivery/redistribution gate still needs to be resolved.
+The frozen-pool cold-clone runner checks out a fixed GitHub commit twice, creates
+a new minimal runtime and uv environment in each, and independently downloads
+public hash-verified inputs. It certifies the default only after both runs match.
 
-Default: mixed VQ + DiMA, seed42, batch128, 600,000 newly sampled candidates,
+Default: mixed VQ + DiMA frozen pool, selection seed42, 600,000 raw candidates,
 50,000 unique 8–50 aa sequences and 100 ranked candidates including ten short-motif
 quota selections. All candidates receive five partial-panel scores; length and mass are descriptive only.
-`--arch vq` / `--arch dima` retain the historical single-model predictor-ranking routes.
+`--resample` explicitly enables fresh mixed sampling; `--arch vq` / `--arch dima`
+also require `--resample` and retain the historical predictor-ranking routes.
 Output: `generate/library.fasta` and `generate/top.fasta`.
-All arguments have defaults; missing or changed assets stop before changing outputs.
+All arguments have defaults; missing release metadata or changed assets stop before changing outputs.
 Repeated generation in the same output folder is supported. Fixed seeds do not
 promise byte identity across different hardware, drivers or library versions.
 
 Weights are **not yet distributed in this repository**. See [checkpoint/README.md](checkpoint/README.md).
-Real-model CPU inference tests do not replace two full GPU generations.
+The default fixed-pool route needs no GPU or model weights.
 The unchanged official checker is retained:
 
 ```bash
 pixi run verify-submission https://github.com/nicetone9/amp-challenge-submission
 ```
 
-It cannot yet pass the complete public cold-clone path without released assets.
+The public cold-clone result must be checked against the current frozen-pool certificate.
 The default mixed entry does not require the external oracle environment.
 Do not treat component checks or private asset provisioning as organizer acceptance.
 
@@ -115,7 +115,7 @@ Protected test/quarantine data, credentials and full training sequences are not 
 
 Historical source-environment exports passed official sequence component checks
 and two independent Pixi/uv generations matched their hashes.
-The portable package is a new integration and needs its own full regeneration.
+The default frozen-pool package needs its own public cold-clone filtering certificate.
 SwanLab: [AMP_step2challenge](https://swanlab.cn/@nicetone9/AMP_step2challenge/overview).
 
 ## Candidate review

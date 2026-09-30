@@ -1,4 +1,4 @@
-"""Fresh mixed-model inference; never reads a previous candidate pool or delivery."""
+"""Shared fixed-policy filtering; fresh model sampling is an explicit option."""
 import json
 import os
 import platform
@@ -175,7 +175,8 @@ def choose(frame, percentiles, hard, motifs, args, directory):
 
 def run(args):
     from .generate import validate
-    if args.device not in ("auto", "cuda"):
+    fresh = getattr(args, "resample", False)
+    if fresh and args.device not in ("auto", "cuda"):
         raise ValueError("Mixed default is validated on CUDA only")
     if args.seed < 0 or args.threads < 1 or args.pool_size < 2 or args.pool_size % 2:
         raise ValueError("Require nonnegative seed, positive threads, even pool-size")
@@ -191,22 +192,36 @@ def run(args):
     if "CD-HIT version 4.8.1 " not in cdhit_help:
         raise RuntimeError("CD-HIT 4.8.1 is required by the frozen clustering protocol")
     os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
-    verify_assets(args.assets)
-    reference = load_reference(args.selection_reference or args.assets / "generation-reference")
-    official = read_fasta(args.assets / "antibacterial.fasta")
+    pool_manifest = None
+    if fresh:
+        verify_assets(args.assets)
+        reference_root = args.selection_reference or args.assets / "generation-reference"
+        official_path = args.assets / "antibacterial.fasta"
+    else:
+        from .frozen_pool import ensure_pool
+        pool_manifest = ensure_pool(args.candidate_pool)
+        if sum(pool_manifest["counts"].values()) != args.pool_size:
+            raise ValueError("pool-size must match the frozen candidate count")
+        if args.selection_reference is not None:
+            raise ValueError("Frozen-pool filtering uses its bundled reference")
+        reference_root = args.candidate_pool / "reference"
+        official_path = args.candidate_pool / "antibacterial.fasta"
+    reference = load_reference(reference_root)
+    official = read_fasta(official_path)
     if not set(official) <= set(reference["known"]):
         raise ValueError("Frozen novelty reference omits official sequences")
-    # A new retained staging directory every invocation: no candidate-cache reads.
+    # Recompute filtering and clustering in a new staging directory each invocation.
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    directory = Path(tempfile.mkdtemp(prefix=".amp-fresh-", dir=args.output.parent))
+    directory = Path(tempfile.mkdtemp(prefix=".amp-fresh-" if fresh else ".amp-filter-", dir=args.output.parent))
     config = {"seed": args.seed, "pool_size": args.pool_size, "batch_size": 128,
               "threads": args.threads, "n_sequences": args.n_sequences, "top_k": args.top_k,
               "motif_quota": args.motif_quota, "thresholds": list(THRESHOLDS),
               "quality_metrics": list(METRICS), "descriptive_only": list(DESCRIPTIVE_ONLY),
               "length_hard_bounds": [8, 50],
-              "assets_sha256": digest(args.assets / "manifest.json"),
+              "assets_sha256": digest(args.assets / "manifest.json") if fresh else None,
+              "pool_manifest_sha256": digest(args.candidate_pool / "manifest.json") if not fresh else None,
               "reference_sha256": reference["manifest_sha256"],
-              "fresh_model_sampling": True, "candidate_cache_read": False,
+              "fresh_model_sampling": fresh, "candidate_cache_read": not fresh,
               "code_sha256": {str(p.relative_to(Path(__file__).parent)): digest(p)
                               for p in sorted(Path(__file__).parent.rglob("*.py"))},
               "locks": {name: digest(name) for name in ("pixi.lock", "uv.lock")}}
@@ -215,8 +230,8 @@ def run(args):
     if args.track:
         import swanlab
         run_handle = swanlab.init(workspace="nicetone9", project="AMP_step2challenge",
-                                 mode="online", name="fresh-model-generate",
-                                 group="from-model-twice-seed42", job_type="reproducibility",
+                                 mode="online", name="fresh-model-generate" if fresh else "frozen-pool-filter",
+                                 group="from-model-twice-seed42" if fresh else "frozen-pool-twice-seed42", job_type="reproducibility",
                                  config=config, log_dir=str(directory / "swanlog"))
     start, step = time.monotonic(), 0
     def progress(key, value):
@@ -229,10 +244,15 @@ def run(args):
             swanlab.log({key: value, "cost/wall_seconds": event["wall_seconds"]}, step=step)
         step += 1
     try:
-        import torch
-        branches = sample_fresh(args, directory, progress)
-        rows = merge_pool(branches, reference["training"])
-        frame, percentiles, hard = score_candidates(rows, reference, directory, progress)
+        if fresh:
+            import torch
+            branches = sample_fresh(args, directory, progress)
+            rows = merge_pool(branches, reference["training"])
+            frame, percentiles, hard = score_candidates(rows, reference, directory, progress)
+        else:
+            from .frozen_pool import load_pool
+            branches, rows, frame, percentiles, hard = load_pool(args.candidate_pool, pool_manifest, reference)
+            progress("filtering/frozen_candidates", sum(len(s) for s in branches.values()))
         library, top, threshold, attempts, command = choose(
             frame, percentiles, hard, reference["motifs"], args, directory)
         seqs, top_seqs = [r["sequence"] for r in library], [r["sequence"] for r in top]
@@ -240,7 +260,8 @@ def run(args):
         for name, selected in (("library", library), ("top", top)):
             write_fasta(directory / (name + ".fasta"), [r["sequence"] for r in selected])
             pd.DataFrame(selected).to_csv(directory / (name + "-scores.csv"), index=False)
-        report = {**config, "status": "FRESH_MODEL_HARD_COMPLIANT_PARTIAL_QUALITY",
+        report = {**config, "status": ("FRESH_MODEL" if fresh else "FROZEN_POOL") + "_HARD_COMPLIANT_PARTIAL_QUALITY",
+                  "sampling_seed": args.seed if fresh else pool_manifest["sampling_seed"],
                   "all_six_categories_passed": False, "threshold": threshold,
                   "attempts": attempts, "pool_unique": len(rows),
                   "source_counts": dict(Counter(r["source"] for r in library)),
@@ -249,14 +270,15 @@ def run(args):
                   "motif_supported_top": sum(bool(r["short_motif_support"]) for r in top),
                   "fasta_sha256": {name: digest(directory / (name + ".fasta")) for name in ("library", "top")},
                   "raw_sha256": {a: fingerprint(s) for a, s in branches.items()},
-                  "environment": {"python": platform.python_version(), "torch": torch.__version__,
-                                  "cuda": torch.version.cuda, "gpu": torch.cuda.get_device_name(0),
-                                  "cd_hit_sha256": digest(cdhit)},
+                  "environment": {"python": platform.python_version(), "numpy": np.__version__, "pandas": pd.__version__,
+                                  "cd_hit_sha256": digest(cdhit),
+                                  **({"torch": torch.__version__, "cuda": torch.version.cuda,
+                                      "gpu": torch.cuda.get_device_name(0)} if fresh else {"device": "cpu"})},
                   "cd_hit_command": command, "wall_seconds": time.monotonic() - start,
                   "artifact_directory": str(directory.resolve()),
                   "swanlab_run_id": run_handle.id if run_handle else None,
                   "warning": "Five-metric internal ranking; length and mass are descriptive only; not official score or measured activity. "
-                             "A single run is not a two-run reproducibility certificate."}
+                             "Two matching fixed-pool runs certify filtering reproducibility only."}
         save_json(directory / "generation.json", report)
         progress("generation/library_count", len(library))
         progress("generation/top_count", len(top))

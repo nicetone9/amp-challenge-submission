@@ -12,3 +12,4 @@ generate/
 *.orig
 *.rej
 work/
+frozen-pool/
