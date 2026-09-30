@@ -1,0 +1,190 @@
+{
+  "all_six_categories_passed": false,
+  "candidate_count": 597555,
+  "chemical_design": "Linear, unmodified, free N and C termini; not an experimental measurement.",
+  "cluster_count": 41285,
+  "conservative_hard_and_precheck_pass": 594243,
+  "fasta_sha256": {
+    "library": "d5952d27dd77ebca3711c2b95c4b4545653b88d396601188e00722f582306032",
+    "top": "084abeed163358e74d7f756477a9125a11b00d4794a619331b67269480b95ec3"
+  },
+  "identity": {
+    "candidate_score_sources": {
+      "descriptors": "a0980b0bc639480839003e5f95485cf6d652f6c782a03dbcd278c32ba509e536",
+      "novelty": "24c67121683cfc14466afb7a49613eab1b04ef3ff5393eb379cbe98acbea7e00"
+    },
+    "candidate_sha256": "e6845d742b810deb25e248d080a857480da4a1d6407769c714bea3a3cc761a4d",
+    "code_sha256": "f0e5188e50e7d13ceff09b981ab66df40b6b2497577edc839ddd8a7dc9c5aaff",
+    "motif_sha256": "c33556f29b9acc39818670d8c9f170116d5cd019cd5d3952b10f4fb8072c1e4d",
+    "official_result_sha256": "75411410ded09a612531a8aeb75cf0e5c0fde8e0d7b377f56929dcce1ac0bf17",
+    "pixi_lock_sha256": "f34ff396cab8771e70068046601529badd4ea5faa67606cb603a23df0e35d8ad",
+    "reference_score_sources": {
+      "descriptors": "a0980b0bc639480839003e5f95485cf6d652f6c782a03dbcd278c32ba509e536",
+      "novelty": "24c67121683cfc14466afb7a49613eab1b04ef3ff5393eb379cbe98acbea7e00"
+    },
+    "reference_sha256": "5a3e3d5fb877e2469973dc046cf20486f6640a2af7a250209e2c32c49a03386c",
+    "selection_code_sha256": "e78a3ffd5fbcf59ed0c96fe8ff88128e5d1c3eb7755abcb7fdbb0338100abf92"
+  },
+  "length_8_50_pass": 597555,
+  "length_bins": {
+    "16-25": 222215,
+    "26-40": 228079,
+    "41-50": 0,
+    "8-15": 147261
+  },
+  "length_max": 40,
+  "length_min": 8,
+  "n_sequences": 50000,
+  "note": "Internal ranking uses only the seven named metrics, not an official score. The passed flag means this partial panel and hard gates only, not all six categories.",
+  "pending": [
+    "Full potency and safety prediction",
+    "ProtT5 and collection metrics",
+    "Validated peptide synthesizability",
+    "Full generation reproducibility and package validation"
+  ],
+  "quality_complete": false,
+  "quality_metrics": [
+    "length",
+    "charge_ph7",
+    "gravy",
+    "aromaticity",
+    "isoelectric_point",
+    "molecular_weight",
+    "anchor_novelty"
+  ],
+  "seed": 42,
+  "selected_threshold": 0.3,
+  "selection_attempts": [
+    {
+      "command": [
+        "cd-hit",
+        "-i",
+        "work/hard-library-seed42/cluster-0.30/input.fasta",
+        "-o",
+        "work/hard-library-seed42/cluster-0.30/clusters.fasta",
+        "-c",
+        "0.5",
+        "-n",
+        "3",
+        "-aS",
+        "0.8",
+        "-aL",
+        "0.8",
+        "-G",
+        "1",
+        "-g",
+        "1",
+        "-l",
+        "7",
+        "-d",
+        "0",
+        "-T",
+        "1",
+        "-M",
+        "0"
+      ],
+      "threshold": 0.3,
+      "tier_capacity": {
+        "high": 30326,
+        "low": 27812
+      }
+    }
+  ],
+  "sequence_hard_pass": 597392,
+  "source_counts": {
+    "dima": 23139,
+    "vq": 26861
+  },
+  "standard_amino_acids_pass": 597555,
+  "status": "HARD_SEQUENCE_COMPLIANT_PARTIAL_QUALITY_LIBRARY",
+  "threshold_curve": [
+    {
+      "eligible": 14181,
+      "threshold": 0.5
+    },
+    {
+      "eligible": 23346,
+      "threshold": 0.45
+    },
+    {
+      "eligible": 31766,
+      "threshold": 0.4
+    },
+    {
+      "eligible": 45212,
+      "threshold": 0.35
+    },
+    {
+      "eligible": 58138,
+      "threshold": 0.3
+    },
+    {
+      "eligible": 75474,
+      "threshold": 0.25
+    }
+  ],
+  "tier_counts": {
+    "high": 25000,
+    "low": 25000
+  },
+  "top_k": 100,
+  "independent_verification": {
+    "library": {
+      "n": 50000,
+      "sha256": "d5952d27dd77ebca3711c2b95c4b4545653b88d396601188e00722f582306032",
+      "unique": true,
+      "two_selection_runs_byte_identical": true,
+      "hard_constraints_pass": true,
+      "min_length": 10,
+      "max_length": 20,
+      "length_bins": {
+        "8-15": 13738,
+        "16-25": 36262,
+        "26-40": 0,
+        "41-50": 0
+      },
+      "sources": {
+        "vq": 26861,
+        "dima": 23139
+      },
+      "tiers": {
+        "low": 25000,
+        "high": 25000
+      },
+      "selected_clusters": 38200,
+      "motif_supported": 64,
+      "ranking_min": 0.3657252673796791,
+      "ranking_max": 0.9606543374925728,
+      "weakest_min": 0.3000222816399287
+    },
+    "top": {
+      "n": 100,
+      "sha256": "084abeed163358e74d7f756477a9125a11b00d4794a619331b67269480b95ec3",
+      "unique": true,
+      "two_selection_runs_byte_identical": true,
+      "hard_constraints_pass": true,
+      "min_length": 10,
+      "max_length": 20,
+      "length_bins": {
+        "8-15": 23,
+        "16-25": 77,
+        "26-40": 0,
+        "41-50": 0
+      },
+      "sources": {
+        "vq": 52,
+        "dima": 48
+      },
+      "tiers": {
+        "high": 50,
+        "low": 50
+      },
+      "selected_clusters": 79,
+      "motif_supported": 0,
+      "ranking_min": 0.4797608437314319,
+      "ranking_max": 0.8739787581699346,
+      "weakest_min": 0.3000222816399287
+    }
+  },
+  "reproducibility_scope": "Selection from the same frozen candidate pool only; not full model regeneration or cache/resume equivalence."
+}
