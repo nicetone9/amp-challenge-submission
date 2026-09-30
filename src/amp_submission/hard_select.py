@@ -12,8 +12,8 @@ from .prepare_reference import save_json
 from .score_stage import load_scores
 from .selection import assign_tiers, cluster_sequences, select
 
-METRICS = ("length", "charge_ph7", "gravy", "aromaticity",
-           "isoelectric_point", "molecular_weight", "anchor_novelty")
+METRICS = ("charge_ph7", "gravy", "aromaticity", "isoelectric_point", "anchor_novelty")
+DESCRIPTIVE_ONLY = ("length", "molecular_weight")
 THRESHOLDS = (.50, .45, .40, .35, .30, .25)
 
 
@@ -81,7 +81,9 @@ def run(work, output, assets, count=50000, top_k=100, seed=42, export=False):
         "length_bins": {f"{lo}-{hi}": int(lengths.between(lo, hi).sum())
                         for lo, hi in ((8, 15), (16, 25), (26, 40), (41, 50))},
         "conservative_hard_and_precheck_pass": int(base.sum()),
-        "quality_metrics": list(METRICS), "threshold_curve": threshold_curve(values, base),
+        "quality_metrics": list(METRICS), "descriptive_only": list(DESCRIPTIVE_ONLY),
+        "length_policy": "8-50 aa hard validity only; no length or mass percentile gate/ranking",
+        "threshold_curve": threshold_curve(values, base),
         "quality_complete": False, "all_six_categories_passed": False,
         "chemical_design": "Linear, unmodified, free N and C termini; not an experimental measurement.",
         "pending": ["Full potency and safety prediction", "ProtT5 and collection metrics",
@@ -114,6 +116,7 @@ def run(work, output, assets, count=50000, top_k=100, seed=42, export=False):
         clusters, command = cluster_sequences(seqs, output / f"cluster-{t:.2f}")
         rows = [{"sequence": sequences[i], "source": candidates.iloc[i].source,
                  "cluster": clusters[sequences[i]], "passed": True,
+                 "length": len(sequences[i]), "molecular_weight": float(candidates.iloc[i].molecular_weight),
                  "ranking": float(ranking[i]), "weakest": float(weakest[i]),
                  "motif_support": sum(m in sequences[i] for m in motif["motifs"]),
                  **{name + "_percentile": float(values[i, j]) for j, name in enumerate(METRICS)}}
@@ -149,7 +152,7 @@ def run(work, output, assets, count=50000, top_k=100, seed=42, export=False):
                   source_counts=pd.Series([r["source"] for r in chosen]).value_counts().to_dict(),
                   tier_counts=pd.Series([r["tier"] for r in chosen]).value_counts().to_dict(),
                   fasta_sha256={name: digest(output / (name + ".fasta")) for name in ("library", "top")},
-                  note="Internal ranking uses only the seven named metrics, not an official score. "
+                  note="Internal ranking uses only the five named metrics, not an official score. "
                        "The passed flag means this partial panel and hard gates only, not all six categories.")
     save_json(output / "complete.json", report)
     print(json.dumps(report), flush=True)

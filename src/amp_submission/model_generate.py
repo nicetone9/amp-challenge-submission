@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 
 from .calibration import fingerprint, subseed
-from .hard_select import METRICS, THRESHOLDS, quality_arrays
+from .hard_select import METRICS, DESCRIPTIVE_ONLY, THRESHOLDS, quality_arrays
 from .io import AA, digest, read_fasta, verify_assets, write_fasta
 from .metric_scores import anchor_novelty, descriptors
 from .motif_select import motif_top
@@ -29,7 +29,7 @@ def load_reference(root):
     if not required <= set(manifest["sha256"]):
         raise ValueError("Incomplete frozen generation reference")
     reference = json.loads((root / "reference-scores.json").read_text())
-    if set(reference) != set(METRICS):
+    if not set(METRICS) <= set(reference) or set(reference) - set(METRICS) - set(DESCRIPTIVE_ONLY):
         raise ValueError("Unexpected reference metric panel")
     arrays = [np.asarray(reference[m], float) for m in METRICS]
     if len({len(a) for a in arrays}) != 1 or not len(arrays[0]) or not all(np.isfinite(a).all() for a in arrays):
@@ -51,7 +51,7 @@ def merge_pool(branches, training):
                 row["source"] = "|".join(sorted(set(row["source"].split("|")) | {arch}))
                 row["raw_occurrences"] += 1
                 continue
-            valid = (8 <= len(sequence) <= 40 and set(sequence) <= set(AA))
+            valid = (8 <= len(sequence) <= 50 and set(sequence) <= set(AA))
             low_complexity = bool(sequence) and max(Counter(sequence).values()) / len(sequence) > .6
             merged[sequence] = {"sequence": sequence, "source": arch, "raw_occurrences": 1,
                                 "hard_precheck": valid and not low_complexity
@@ -67,7 +67,7 @@ def sample_fresh(args, directory, progress):
         raise RuntimeError("Default mixed generation requires an allocated CUDA GPU; no CPU fallback")
     pdf = np.asarray(json.loads((args.assets / "length-pdf.json").read_text()), float)
     pdf[:8] = 0
-    pdf[41:] = 0
+    pdf[51:] = 0
     if not np.isfinite(pdf).all() or np.any(pdf < 0) or pdf.sum() <= 0:
         raise ValueError("Invalid frozen length distribution")
     pdf /= pdf.sum()
@@ -105,23 +105,24 @@ def sample_fresh(args, directory, progress):
 def score_candidates(rows, reference, directory, progress):
     from .generate import too_similar
     sequences = [r["sequence"] for r in rows]
-    if any(not 8 <= len(s) <= 40 or not set(s) <= set(AA) for s in sequences):
+    if any(not 8 <= len(s) <= 50 or not set(s) <= set(AA) for s in sequences):
         raise ValueError("Model generated unsupported sequence; no truncation or silent repair")
-    columns = {m: [] for m in METRICS}
+    score_names = (*METRICS, *DESCRIPTIVE_ONLY)
+    columns = {m: [] for m in score_names}
     for start in range(0, len(sequences), 2048):
         batch = sequences[start:start+2048]
         values = descriptors(batch)
         values["anchor_novelty"] = anchor_novelty(batch, reference["anchors"])
-        for metric in METRICS:
+        for metric in score_names:
             columns[metric].extend(values[metric].tolist())
         progress("scoring/sequences", start + len(batch))
     frame = pd.DataFrame(rows)
-    for metric in METRICS:
+    for metric in score_names:
         frame[metric] = columns[metric]
     percentiles, ranking, weakest = quality_arrays(reference["scores"], frame)
     finite = np.isfinite(percentiles).all(axis=1)
     possible = frame.hard_precheck.to_numpy(bool) & finite & (percentiles >= min(THRESHOLDS)).all(axis=1)
-    # Everyone receives the same seven scores. Expensive whole-reference checks
+    # Everyone receives the same five quality scores (length and mass are descriptive only). Expensive whole-reference checks
     # are required for every selectable candidate, never inferred from percentiles.
     hard = np.zeros(len(frame), dtype=bool)
     indices = np.flatnonzero(possible)
@@ -193,6 +194,8 @@ def run(args):
     config = {"seed": args.seed, "pool_size": args.pool_size, "batch_size": 128,
               "threads": args.threads, "n_sequences": args.n_sequences, "top_k": args.top_k,
               "motif_quota": args.motif_quota, "thresholds": list(THRESHOLDS),
+              "quality_metrics": list(METRICS), "descriptive_only": list(DESCRIPTIVE_ONLY),
+              "length_hard_bounds": [8, 50],
               "assets_sha256": digest(args.assets / "manifest.json"),
               "reference_sha256": reference["manifest_sha256"],
               "fresh_model_sampling": True, "candidate_cache_read": False,
@@ -243,7 +246,7 @@ def run(args):
                   "cd_hit_command": command, "wall_seconds": time.monotonic() - start,
                   "artifact_directory": str(directory.resolve()),
                   "swanlab_run_id": run_handle.id if run_handle else None,
-                  "warning": "Seven-metric internal ranking; not official score or measured activity. "
+                  "warning": "Five-metric internal ranking; length and mass are descriptive only; not official score or measured activity. "
                              "A single run is not a two-run reproducibility certificate."}
         save_json(directory / "generation.json", report)
         progress("generation/library_count", len(library))
