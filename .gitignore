@@ -11,3 +11,4 @@ generate/
 *.safetensors
 *.orig
 *.rej
+work/

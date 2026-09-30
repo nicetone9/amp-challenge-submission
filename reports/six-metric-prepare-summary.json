@@ -1,0 +1,47 @@
+{
+  "artifacts": {
+    "candidates.csv": "19c888d7f31ddce36f9999f5d9b0d119c8eea66902450a7be40eae4be9155c09",
+    "excluded-reference.csv": "c8ae60332396339306d01dcb54f790abcb1b284cf3f5c336210155338bb7cbb9",
+    "reference.csv": "5a3e3d5fb877e2469973dc046cf20486f6640a2af7a250209e2c32c49a03386c",
+    "training-sequences.csv": "7ac17f44b350e57f86c5bb4c9dcce83940bd2b237cec07e1ddc5afefe5731876"
+  },
+  "code_sha256": "3bbe4b4ca153a16844b7ddd2411ddc65a39a560a7ea31d3068fb099a9059a157",
+  "data_boundary": "Only frozen milestone train-core. Not all newer Step1 databases.",
+  "excluded_length_or_alphabet": 227,
+  "hard_precheck_failures": {
+    "exact_training_hit": 34
+  },
+  "input_fasta_sha256": {
+    "dima": "29983135bdd147d7639e556ffc2607a0bc791655d3db1308ad15c9a80e5c38a1",
+    "vq": "3d4c3685a2365c12e1273aaa13a492d26ec30d050499205145cbe4a5d50c5afe"
+  },
+  "label_files": {
+    "/home/peiranj/AMP/step1_retrain_external_20260917/data/ZYL_dataset/amp/antibacterial/train.csv": "b929107e745929d790fd6b4719b500aadb8135fe5a88b84b970509b30d565797",
+    "/home/peiranj/AMP/step1_retrain_external_20260917/data/ZYL_dataset/amp/antimicrobial/train.csv": "f8d347f03c8d48b0348a9434b2cb133d9989e4196cdf01922b07a7d778fb873e"
+  },
+  "limitations": [
+    "Chemical states absent from milestone; no modification inference from letters",
+    "Additional Step1 positives outside frozen milestone require an audited manifest",
+    "Official-reference similarity audit runs at scoring/selection stage"
+  ],
+  "manifest_sha256": "a80a84884fa43c04ec95c082ddababf1297552e21d70d8f0a64d0693b2fddbbe",
+  "pool_precheck_pass": 99966,
+  "pool_raw": {
+    "dima_raw": 50000,
+    "vq_raw": 50000
+  },
+  "pool_unique": 100000,
+  "reference_clusters": {
+    "anchor": 4347,
+    "calibration": 4348
+  },
+  "reference_eligible": 8985,
+  "reference_roles": {
+    "anchor": 4497,
+    "calibration": 4488
+  },
+  "reference_train_core_all_lengths": 9212,
+  "registry_sha256": "25d89080ec45b790cfa775cb26d1991bab4d641a98a101ad50969f8f3bd3da80",
+  "seed": 42,
+  "status": "PREPARED_NOT_CALIBRATED"
+}

@@ -1,0 +1,72 @@
+{
+  "all_six_categories_passed": false,
+  "candidate_n": 100000,
+  "candidates": {
+    "joint_all_sequence_metrics": 0.0,
+    "joint_computed_metrics_only_DIAGNOSTIC": 0.02443,
+    "per_metric_pass_rate": {
+      "anchor_novelty": 0.75012,
+      "ania_ecoli": 0.0,
+      "ania_paeruginosa": 0.0,
+      "ania_saureus": 0.0,
+      "aromaticity": 0.59177,
+      "charge_ph7": 0.41029,
+      "embedding_nn_cosine_distance": 0.0,
+      "gravy": 0.48547,
+      "hemopi2_hc50_um": 0.0,
+      "isoelectric_point": 0.52816,
+      "length": 0.33048,
+      "molecular_weight": 0.30461,
+      "peptide_synthesis_score": 0.0
+    }
+  },
+  "frozen_sha256": "37b1d059c77d37f9d3698e9d83281b2bcf6d36ab8640a2bbad8bcc11acfe70dd",
+  "metric_status": {
+    "anchor_novelty": "COMPUTED",
+    "ania_ecoli": "Missing reference or candidate scores",
+    "ania_paeruginosa": "Missing reference or candidate scores",
+    "ania_saureus": "Missing reference or candidate scores",
+    "aromaticity": "COMPUTED",
+    "charge_ph7": "COMPUTED",
+    "embedding_nn_cosine_distance": "Missing reference or candidate scores",
+    "gravy": "COMPUTED",
+    "hemopi2_hc50_um": "Missing reference or candidate scores",
+    "isoelectric_point": "COMPUTED",
+    "length": "COMPUTED",
+    "molecular_weight": "COMPUTED",
+    "peptide_synthesis_score": "No validated short-peptide synthesis implementation/weights selected"
+  },
+  "note": "Computed-only diagnostic cannot qualify candidates; missing metrics fail closed.",
+  "pending": [
+    "official-reference hard audit",
+    "collection-level gates",
+    "motif discovery/validation",
+    "deterministic full generation"
+  ],
+  "reference": {
+    "joint_all_sequence_metrics": 0.0,
+    "joint_computed_metrics_only_DIAGNOSTIC": 0.04835115864527629,
+    "per_metric_pass_rate": {
+      "anchor_novelty": 0.4663547237076649,
+      "ania_ecoli": 0.0,
+      "ania_paeruginosa": 0.0,
+      "ania_saureus": 0.0,
+      "aromaticity": 0.5265151515151515,
+      "charge_ph7": 0.5,
+      "embedding_nn_cosine_distance": 0.0,
+      "gravy": 0.500222816399287,
+      "hemopi2_hc50_um": 0.0,
+      "isoelectric_point": 0.5,
+      "length": 0.5902406417112299,
+      "molecular_weight": 0.5,
+      "peptide_synthesis_score": 0.0
+    }
+  },
+  "reference_n": 4488,
+  "score_sources": {
+    "descriptors": "d9049bf41717c8ca418a052b2b1d2f85c3249e48681f9ce98790addc82dfca9a",
+    "novelty": "8601dbc9e858562295ffaa9ced556dafa6b28f78c8dc0a51d75e18e3d054a87b"
+  },
+  "status": "INCOMPLETE",
+  "threshold": 0.5
+}

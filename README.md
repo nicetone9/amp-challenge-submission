@@ -8,6 +8,12 @@ Two independent sequence-only generators use frozen original
 prior and decodes its codebook; DiMA samples continuous latent noise and decodes
 with a trained ESM LM head. No structural input, prediction, loss or evaluation.
 
+## Six-category screening update
+
+[Current protocol, partial results and release gates](docs/SIX_METRIC_PROTOCOL.md).
+The new mixed-pool protocol is under implementation. The legacy `generate`
+command below does not yet produce six-category-qualified candidates.
+
 ## Read first
 
 - [Candidate selection guide](docs/CANDIDATE_SELECTION.md): Top100 + Top100 and both 50,000 libraries.
