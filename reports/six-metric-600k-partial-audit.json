@@ -1,0 +1,56 @@
+{
+  "status": "PARTIAL_AUDIT_NOT_SIX_CATEGORY_QUALIFIED",
+  "observed_at": "2026-09-30T03:14:01-04:00",
+  "raw_pool": {
+    "requested": 600000,
+    "vq": 300000,
+    "dima": 300000,
+    "physical_attempts": 600224,
+    "unique": 597555,
+    "cloud_completion": "PENDING_SWANLAB_DNS_RECOVERY"
+  },
+  "precheck_pass": 595853,
+  "computed_percentile_metrics": [
+    "length",
+    "charge_ph7",
+    "gravy",
+    "aromaticity",
+    "isoelectric_point",
+    "molecular_weight",
+    "anchor_novelty"
+  ],
+  "reference_percentile": 0.5,
+  "computed_metrics_and_precheck_and_official_pass": 14181,
+  "partial_pass_sources": {
+    "vq": 7179,
+    "dima": 7002
+  },
+  "official_audit": {
+    "reference_count": 39448,
+    "candidate_count": 597555,
+    "pass": 595538,
+    "fail": 2017,
+    "precheck_and_official_pass": 594243,
+    "max_levenshtein_ratio": 0.8,
+    "result_sha256": "75411410ded09a612531a8aeb75cf0e5c0fde8e0d7b377f56929dcce1ac0bf17",
+    "identity_sha256": "b77269cf39072f99cd92b6b4bc0ff7e184882c366069fb9c72d0703dcc3a5709"
+  },
+  "motif": {
+    "reliable_motifs": 12,
+    "candidate_hits": 2183,
+    "role": "SUPPORT_ONLY",
+    "frozen_sha256": "c33556f29b9acc39818670d8c9f170116d5cd019cd5d3952b10f4fb8072c1e4d"
+  },
+  "candidate_table_sha256": "e6845d742b810deb25e248d080a857480da4a1d6407769c714bea3a3cc761a4d",
+  "all_six_categories_passed": false,
+  "pending": [
+    "Complete external predictor scoring",
+    "Complete ProtT5 scoring and collection-level gates",
+    "Validated short-peptide synthesizability remains UNAVAILABLE",
+    "Updated Step1 reference integration",
+    "Strict end-to-end generation and selection",
+    "Complete double-run reproducibility",
+    "Cloud synchronization and final readback"
+  ],
+  "note": "14181 is a partial-gate count, not a six-category-qualified library. Predictions and motifs are not experimental activity evidence."
+}
