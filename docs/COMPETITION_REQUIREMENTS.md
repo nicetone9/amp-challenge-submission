@@ -40,7 +40,7 @@ the [official template](https://github.com/szczurek-lab/amp-challenge-2027#submi
 | Defined Python and uv.lock | Python 3.11; locked install and default entry implemented |
 | No-argument uv run generate | Fixed-pool filtering; native CD-HIT prerequisite is supplied by locked Pixi runtime |
 | Identical repeated default output | [Two public cold clones pass](../reports/frozen-pool-seed42-public-verification.json); byte-identical and source-hash matched |
-| Full unchanged official validator | Pending for the current public delivery |
+| Full unchanged official validator | [Passed on public revision aea6ce7](../reports/official-template-seed42-public-verification.json): fresh clone, install, two default generations and all checker gates |
 | Full training-data disclosure and nonpublic-data release | Not complete: source/accession/processing records and redistribution rights unresolved |
 | Organizer acceptance of disclosed fixed-pool workflow | Not confirmed; fresh-model identity is not claimed |
 | seqme / full six-category screening | Partial internal metrics only |

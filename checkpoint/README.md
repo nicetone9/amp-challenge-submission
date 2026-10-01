@@ -13,10 +13,16 @@ reference FASTA. Inference uses weights_only=True and strict state-dict loading.
 
 The approved frozen inference weights/reference bundle is distributed as a
 [release asset](https://github.com/nicetone9/amp-challenge-submission/releases/tag/frozen-pool-seed42-20260930),
-not as Git blobs. `inference-checkpoint-seed42.tar.gz` has SHA256
-`10006178df027959ff2c25a619b9e2e4440d3083a737090a056f23d20bee8e12`.
-It contains only manifest-listed generator inputs plus the reference-only bundle.
+not as Git blobs. Use `inference-checkpoint-seed42-with-notices.tar.gz`, SHA256
+`72f9327ee1f5ed9dd113d7901b026d241eb3e09da53030f6c78a4f2c2af171a4`.
+It preserves full DiMA, ESM and AMP Challenge license notices. Model tensors and
+input manifests match the first archive exactly. The earlier archive remains for
+provenance; use the notices-inclusive archive for new downloads.
+It contains manifest-listed generator inputs, the reference-only bundle and notices.
 It does not contain full training/test data or external predictor weights.
+The DiMA decoder includes parameters derived from the pretrained ESM head;
+the full ESM encoder is not bundled. Original-code MIT does not relicense third-party
+weights/data or resolve incomplete source-data redistribution clearance.
 
 For explicit model resampling, download and verify the archive, then extract its
 contents under `checkpoint/` in a fresh clone. The entry verifies both manifests

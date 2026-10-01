@@ -72,8 +72,14 @@ hashes. Native CD-HIT, Python/numpy/pandas versions, pool/raw hashes and the two
 online tracking run IDs are recorded. The independent output checklist is in
 [the metric table](../reports/new60w-submission-metrics-check.md).
 
-The certificate covers frozen-pool filtering, not fresh model resampling. The
-complete unchanged upstream validator is a separate check and remains pending.
+The certificate covers frozen-pool filtering, not fresh model resampling.
+The [complete unchanged upstream validator also passed](../reports/official-template-seed42-public-verification.json)
+on public revision `aea6ce7ab7b50bd517b7788ed30037f83bafb914`, using the official
+reference and a third fresh clone. It installed dependencies, generated twice,
+checked the library and Top100, tested reference overlap/similarity and compared
+both FASTAs byte for byte. Runtime source, lockfiles and pool metadata are unchanged
+from the two-cold-clone certificate; later documentation-only changes reuse this evidence.
+Neither certificate establishes training-data rights or organizer acceptance.
 
 ## Explicit new sampling
 

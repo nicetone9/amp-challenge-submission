@@ -97,8 +97,14 @@ See [checkpoint/README.md](checkpoint/README.md) for checksums and scope.
 The default fixed-pool route needs no GPU or model weights.
 The unchanged official checker is retained:
 
+After a successful default generation, the downloaded pool contains the verified
+official reference. Use a new, nonexistent checker clone directory:
+
 ```bash
-pixi run verify-submission https://github.com/nicetone9/amp-challenge-submission
+pixi run -e runtime uv run python scripts/verify_submission.py \
+  https://github.com/nicetone9/amp-challenge-submission \
+  --dir work/official-submission-check \
+  --antibacterial-fasta frozen-pool/antibacterial.fasta
 ```
 
 The public cold-clone result must be checked against the current frozen-pool certificate.
@@ -118,7 +124,11 @@ Historical source-environment exports passed official sequence component checks
 and two independent Pixi/uv generations matched their hashes.
 The current default frozen-pool package has its own
 [public cold-clone filtering certificate](reports/frozen-pool-seed42-public-verification.json).
-The complete unchanged official validator remains a separate check.
+The [complete unchanged official validator passed](reports/official-template-seed42-public-verification.json)
+on public revision `aea6ce7ab7b50bd517b7788ed30037f83bafb914`: a third fresh
+clone, dependency installation, two default generations, sequence/reference checks
+and byte-for-byte reproducibility. Subsequent documentation-only changes leave the
+certified runtime and frozen inputs unchanged.
 SwanLab: [AMP_step2challenge](https://swanlab.cn/@nicetone9/AMP_step2challenge/overview).
 
 ## Candidate review

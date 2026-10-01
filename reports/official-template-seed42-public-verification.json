@@ -1,0 +1,77 @@
+{
+  "status": "UNMODIFIED_OFFICIAL_VALIDATOR_PASSED",
+  "verified_at_utc": "2026-10-01T02:43:30Z",
+  "repository": "https://github.com/nicetone9/amp-challenge-submission",
+  "revision": "aea6ce7ab7b50bd517b7788ed30037f83bafb914",
+  "official_template": {
+    "repository": "https://github.com/szczurek-lab/amp-challenge-2027",
+    "revision": "5c8a5d8e2551c8cf572d3d3bfcfe7633b109d91e",
+    "validator_sha256": "3f2eb1bd61200abfccf07d86e9c226d57f3d12abcf25715af1d90f41531942cf",
+    "reference_sha256": "cbbeac64ba95746d87961e8ad9dd0849ae8058d15a300b2e7f6990730ca521e9",
+    "script_modified": false,
+    "default_reference_used": true
+  },
+  "invocation": {
+    "cwd": "official template repository root",
+    "command": [
+      "python",
+      "scripts/verify_submission.py",
+      "https://github.com/nicetone9/amp-challenge-submission",
+      "--branch",
+      "main",
+      "--dir",
+      "../submission"
+    ],
+    "submission_fresh_public_clone": true,
+    "submission_uv_environment_new": true,
+    "submission_uv_cache_empty_before_start": true,
+    "native_runtime": "locked minimal Pixi runtime; Python 3.11, uv and CD-HIT 4.8.1",
+    "sync_command": [
+      "uv",
+      "sync"
+    ],
+    "generation_command_each_run": [
+      "uv",
+      "run",
+      "--no-sync",
+      "generate"
+    ],
+    "generation_invocations": 2,
+    "exit_code": 0
+  },
+  "checks": {
+    "library_50000_unique_canonical_length_8_to_50": true,
+    "top100_unique_members_of_library": true,
+    "library_no_exact_official_reference_overlap": true,
+    "top_reference_levenshtein_ratio_at_most_0_8": true,
+    "two_default_runs_byte_identical": true,
+    "source_selection_fasta_sha256_match": true
+  },
+  "fasta_sha256": {
+    "library.fasta": "bc1835e2b2a3c2e5185840b0800cbf779e679230c8751990c3a55a79b0ad1354",
+    "top.fasta": "264c4ec0c407aace74ffb41d7911dd8241eae695d899ce3ff0b63cd2bd94ebc9"
+  },
+  "generation_report_sha256": "ded846d23e48712e1381423cbd0ef7abad8c9ae33cefe21c3d71b3bcb0cb1eb8",
+  "log_sha256": "fa4007920dfbafb8cb177af2cb1a1a9f5fc82e68c50e406d325ae80406e376f8",
+  "environment": {
+    "cd_hit_sha256": "f432fac931ea91b77a02a2d17d899b77e25a6b7373d873adb38a79944aba4929",
+    "device": "cpu",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "python": "3.11.16"
+  },
+  "reused_public_cold_certificate": {
+    "revision": "05a99cf633084de146c3e91a897e89161c715288",
+    "runtime_code_locks_descriptor_match": true
+  },
+  "scope": "fixed-pool filtering; frozen candidate score/audit table is a declared input",
+  "not_claimed": [
+    "model-resampling identity",
+    "complete training-data disclosure or redistribution clearance",
+    "organizer acceptance of the fixed-pool workflow",
+    "full co-authorship eligibility",
+    "six-category quality completion",
+    "wet-lab activity, safety or synthesis",
+    "Kaggle submission"
+  ]
+}

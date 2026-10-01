@@ -115,9 +115,13 @@ at revision `05a99cf633084de146c3e91a897e89161c715288`: each independently downl
 the pool, used a new locked runtime and empty uv environment/cache, and ran the
 full default command. Both FASTAs are byte-identical and match source-finalization
 hashes. Official sequence components and the independent five-metric check passed.
-The complete unchanged official validator is checked separately; that result is
-still pending. These checks do not establish fresh-model resampling identity,
-organizer acceptance or wet-lab activity.
+[The complete unchanged official validator also passed](../../reports/official-template-seed42-public-verification.json)
+on public revision `aea6ce7ab7b50bd517b7788ed30037f83bafb914`: it cloned the
+public repository anew, installed dependencies, ran the default entry twice,
+checked sequence/reference gates and compared both outputs byte for byte.
+Certified runtime code, locks and pool metadata are unchanged across these revisions.
+These checks do not establish fresh-model resampling identity, organizer acceptance
+or wet-lab activity.
 
 The repository and optional frozen inference weights are public. Original code is
 MIT, vendored DiMA is MIT, ESM-derived decoder parameters retain Meta MIT, and the
