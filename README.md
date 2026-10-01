@@ -47,7 +47,7 @@ not a completed six-category quality evaluation.
 - [Top200 CSV](reports/top200-candidates.csv): sequences, original ranks, all proxy scores and compliance fields.
 - [Exact full-library statistics](reports/library-statistics.json).
 - [Competition requirement mapping](docs/COMPETITION_REQUIREMENTS.md).
-- [Training-data disclosure and unresolved permissions](docs/DATA.md).
+- [Public training dataset, provenance and license scope](docs/DATA.md).
 - [Ranking and score definitions](docs/METHOD.md).
 - [Third-party notices](THIRD_PARTY_NOTICES.md).
 
@@ -116,7 +116,10 @@ Do not treat component checks or private asset provisioning as organizer accepta
 Original packaging code: MIT. Vendored DiMA: upstream MIT, notice retained.
 Official validator: BSD-3-Clause. External predictors, model weights and datasets
 retain their own terms; this MIT file does not relicense them.
-Protected test/quarantine data, credentials and full training sequences are not included.
+The exact prepared training dataset and used nonpublic positive annotations are now
+[publicly released](docs/DATA.md), with [source-specific data terms](docs/DATA_LICENSING.md).
+Protected test/quarantine data and credentials are not published. Historical upstream
+accession/version gaps and exact synthetic RL trajectory retention remain disclosed limitations.
 
 ## Experimental evidence
 

@@ -36,7 +36,10 @@ Core sources include the collective dataset used in a previous study (internal I
 ZYL) and OmegAMP; AMPSphere provides the non-core candidate tier. Protected
 test/quarantine sequences are excluded. Reference calibration uses 8,985 eligible
 training AMPs; motif support uses only frozen, safe training evidence, not all later
-Step 1 updates. [Full source records and redistribution clearance remain incomplete](../DATA.md).
+Step 1 updates. [The exact prepared dataset and used positive annotation rows are now public](../DATA.md),
+with retained processing snapshots, source fingerprints and mixed-license notices.
+Owner redistribution authority is confirmed; missing historical accession/version
+maps and exact original synthetic RL trajectories remain explicitly disclosed.
 
 External resources include ESM-2, DiMA, ANIA, HemoPI2, CD-HIT and the official
 antibacterial reference. ProtT5/collection and synthesizability evaluations remain
@@ -125,9 +128,11 @@ or wet-lab activity.
 
 The repository and optional frozen inference weights are public. Original code is
 MIT, vendored DiMA is MIT, ESM-derived decoder parameters retain Meta MIT, and the
-official validator is BSD-3-Clause; full notices are preserved. Nonpublic training
-data are not released and their redistribution rights remain unresolved. Therefore
-full co-authorship eligibility is not claimed. The frozen-pool workflow is disclosed,
+official validator is BSD-3-Clause; full notices are preserved. The exact prepared
+sequence dataset and used nonpublic annotations are public. Owner-controlled rights
+are CC BY 4.0; mixed database rights retain ODbL and individual third-party terms.
+Historical provenance gaps and original synthetic RL trajectory retention remain
+limitations. Full co-authorship eligibility is not claimed. The frozen-pool workflow is disclosed,
 but organizer acceptance of this workflow has not been confirmed. No Kaggle
 submission has been made. Missing potency/safety, embedding/collection and synthesis
 evaluation are not counted as passing.

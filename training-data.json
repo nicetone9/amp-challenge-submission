@@ -1,0 +1,16 @@
+{
+  "audit_sha256": "3572a68b5de2a91b807c01c9c9a359f7df5a3b72f88b170d3c36aa4e145ec561",
+  "bytes": 48387091,
+  "disclosure_status": "Exact prepared sequence dataset and used annotation rows public; historical accession maps and synthetic RL trajectories not retained.",
+  "license_scope": "Owner-controlled annotations CC-BY-4.0; mixed database ODbL-1.0; third-party individual content retains terms.",
+  "manifest_sha256": "a80a84884fa43c04ec95c082ddababf1297552e21d70d8f0a64d0693b2fddbbe",
+  "rows": 1332764,
+  "schema_version": 1,
+  "sha256": "9ed5e6cf973831b806cebd02f5118287b4df6717103ae62488a702de2c22d70d",
+  "split_counts": {
+    "generation_eval": 133738,
+    "train": 1066105,
+    "validation": 132921
+  },
+  "url": "https://github.com/nicetone9/amp-challenge-submission/releases/download/frozen-pool-seed42-20260930/training-data-seed42-20260930.tar.gz"
+}

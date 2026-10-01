@@ -41,7 +41,7 @@ the [official template](https://github.com/szczurek-lab/amp-challenge-2027#submi
 | No-argument uv run generate | Fixed-pool filtering; native CD-HIT prerequisite is supplied by locked Pixi runtime |
 | Identical repeated default output | [Two public cold clones pass](../reports/frozen-pool-seed42-public-verification.json); byte-identical and source-hash matched |
 | Full unchanged official validator | [Passed on public revision aea6ce7](../reports/official-template-seed42-public-verification.json): fresh clone, install, two default generations and all checker gates |
-| Full training-data disclosure and nonpublic-data release | Not complete: source/accession/processing records and redistribution rights unresolved |
+| Full training-data disclosure and nonpublic-data release | [Exact prepared dataset and used nonpublic annotations public](DATA.md); owner authority confirmed; CC BY owner-controlled rights and ODbL mixed database terms retained. Historical accession/version maps and exact synthetic RL trajectories not retained; organizer interpretation not confirmed |
 | Organizer acceptance of disclosed fixed-pool workflow | Not confirmed; fresh-model identity is not claimed |
 | seqme / full six-category screening | Partial internal metrics only |
 | Wet-lab activity, safety, synthesis/QC | Not established |
@@ -50,7 +50,9 @@ the [official template](https://github.com/szczurek-lab/amp-challenge-2027#submi
 Default reproduction uses a disclosed raw-candidate and score/audit cache and
 reruns all selection stages. Optional `--resample` generates model candidates anew
 but does not have a successful two-run certificate. Neither the public filtering
-certificate nor a validator pass settles training-data rights or organizer acceptance.
+certificate nor a validator pass settles third-party data rights or organizer acceptance.
+The new training release resolves the previous lack of permission/publication for
+owner-controlled nonpublic data; it does not make missing provenance or activity evidence pass.
 
 No numeric overall compliance percentage: the gates are heterogeneous and some are
 blocking requirements, not interchangeable points.
