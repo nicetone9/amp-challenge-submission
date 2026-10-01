@@ -1,0 +1,13 @@
+{
+  "counts": {
+    "dima": 300000,
+    "vq": 300000
+  },
+  "manifest_sha256": "e590b18532a495ebd7f19466d415cd4798bfa0cc2e695c9f88fa00ba89553237",
+  "raw_sha256": {
+    "dima": "9ca822e4c2ac936c1725bc5a9f34be2835c0d573b3fcf9292d2bfcf8651dfbd3",
+    "vq": "8379202511be1206c35fd89fb0634dfa52bd86a6b9e9345033f23afd28edeff5"
+  },
+  "sha256": "341913a0f958f31473cdfb652fc54a0dc3ce6c7f89c0cd07e0c6ecc1fc19a469",
+  "url": "https://github.com/nicetone9/amp-challenge-submission/releases/download/frozen-pool-seed42-20260930/frozen-pool-seed42.tar.gz"
+}

@@ -1,33 +1,38 @@
 # AMP Challenge — VQ-VAE and DiMA
 
-## Length-hard-only selection update (2026-09-30)
+## Current fixed-pool delivery (2026-09-30)
 
-Length is now only an 8–50 aa validity bound. Length and molecular weight do not
-contribute to percentile gates or ranking. See [the revised policy](docs/LENGTH_HARD_ONLY.md).
-The existing frozen pool spans 8–40 aa; this update reselects from that pool and
-does not invent 41–50 aa candidates. Earlier motif10 artifacts remain historical. The revised fixed-pool delivery has
-passed two-run byte equality and a fresh whole-library reference audit:
-[verification report](reports/length-hard-only-seed42-verification.json).
+The current library is selected from one new seed-42 model-sampled pool:
+300,000 VQ + 300,000 DiMA attempts, 597,058 unique candidates. It contains
+50,000 unique peptides and a ranked Top100 drawn from that library.
+The library spans 8–50 aa; Top100 spans 8–36 aa. Length and molecular weight
+are descriptive only, not quality gates or ranking terms.
 
-## Earlier frozen library and write-up (2026-09-30)
+The default `uv run generate` downloads the hash-verified
+[public pool release](https://github.com/nicetone9/amp-challenge-submission/releases/tag/frozen-pool-seed42-20260930)
+named in `candidate-pool.json` and reruns filtering, clustering and selection.
+It does not resample models or copy a preselected library. The candidate score/audit
+table is a declared frozen input. Public cold-clone verification is pending.
+See [reproduction](docs/FROZEN_POOL_REPRODUCIBILITY.md),
+[write-up](docs/benchmark-20260930/WRITEUP.md), and
+[requirements](docs/COMPETITION_REQUIREMENTS.md).
 
-The earlier candidate delivery is the unchanged 50,000-member library plus
-the short-motif-aware Top100: [write-up](docs/benchmark-20260930/WRITEUP.md),
-[requirement checklist](docs/benchmark-20260930/REQUIREMENTS_CHECKLIST.md), and
-[two-run verification](reports/motif-library-seed42-verification.json).
-
-The default entry point now filters a frozen mixed VQ/DiMA pool with the same
-partial-panel / short-motif pipeline. See [frozen-pool reproduction](docs/FROZEN_POOL_REPRODUCIBILITY.md).
-New model sampling requires explicit `--resample`. The current 600,000-candidate
-release and public cold-clone certificate are prepared separately from historical reports.
-
-Candidate delivery, 2026-09-29. **Not a completed competition submission.**
-No Kaggle submission has been made.
+The five internal metrics are charge at pH 7, GRAVY, aromaticity, pI and anchor
+novelty. The highest feasible tested common percentile threshold is 0.50.
+The library has 25,000 high / 25,000 qualified-low members; Top100 has 50 per
+tier, including ten short-motif quota selections. No quality or novelty gate
+was relaxed to fill missing slots.
 
 Two independent sequence-only generators use frozen original
 `facebook/esm2_t33_650M_UR50D` residue embeddings. VQ-VAE samples a causal code
 prior and decodes its codebook; DiMA samples continuous latent noise and decodes
-with a trained ESM LM head. No structural input, prediction, loss or evaluation.
+with a trained sequence head. No structural input, loss or evaluation is used.
+Explicit `--resample` needs CUDA and the released frozen model inputs;
+[model-to-output reproducibility remains uncertified](docs/FROM_MODEL_REPRODUCIBILITY.md).
+
+Historical September 29/30 selections and reports remain for provenance; they
+must not be substituted for the current pool certificate. **No Kaggle submission
+or organizer acceptance is claimed.**
 
 ## Six-category screening update
 
@@ -45,31 +50,24 @@ not a completed six-category quality evaluation.
 - [Ranking and score definitions](docs/METHOD.md).
 - [Third-party notices](THIRD_PARTY_NOTICES.md).
 
-The Top200 is a research decision sheet, **not a single official Top200 submission**.
-Each architecture retains its own library and ranked Top100.
+The linked Top200 and architecture-specific libraries are historical research
+artifacts, **not the current mixed-library submission files**.
 No activity, MDR effect, hemolysis safety or synthesis success has been experimentally verified.
 Original broad/Gram+/Gram−/MDR/selectivity/joint RL results include failures and unchanged checkpoints.
 
 ## Install and use
 
-Linux x86-64, Python 3.11. Experiment setup and CPU tests use Pixi:
-
-```bash
-pixi install --locked
-pixi run test
-pixi run check-assets
-pixi run generate
-```
-
-The default entry downloads and verifies the frozen candidate/reference release
-named in `candidate-pool.json`, then executes the fixed filtering implementation.
-Model weights and external predictor assets are only needed for explicit resampling:
+Linux x86-64, Python 3.11. Provision the locked native runtime with Pixi:
 
 ```bash
 pixi install --locked -e runtime
 pixi run -e runtime uv sync --frozen
 pixi run -e runtime uv run generate
 ```
+
+The default downloads and verifies the frozen candidate/reference release, then
+executes filtering. CUDA, model weights and external predictor assets are not
+needed for this route.
 
 The minimal `runtime` environment supplies locked Python, uv and CD-HIT 4.8.1;
 it does not contain R or the external oracle stack. Within that environment the
@@ -92,7 +90,9 @@ All arguments have defaults; missing release metadata or changed assets stop bef
 Repeated generation in the same output folder is supported. Fixed seeds do not
 promise byte identity across different hardware, drivers or library versions.
 
-Weights are **not yet distributed in this repository**. See [checkpoint/README.md](checkpoint/README.md).
+Frozen inference weights/reference assets are now distributed via the
+[seed-42 release](https://github.com/nicetone9/amp-challenge-submission/releases/tag/frozen-pool-seed42-20260930).
+See [checkpoint/README.md](checkpoint/README.md) for checksums and scope.
 The default fixed-pool route needs no GPU or model weights.
 The unchanged official checker is retained:
 

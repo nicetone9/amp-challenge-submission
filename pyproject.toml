@@ -23,6 +23,11 @@ generate = "amp_submission.generate:main"
 [tool.hatch.build.targets.wheel]
 packages = ["src/amp_submission"]
 
+[tool.hatch.build.targets.wheel.force-include]
+"THIRD_PARTY_NOTICES.md" = "amp_submission/THIRD_PARTY_NOTICES.md"
+"third_party/DiMA_LICENSE" = "amp_submission/third_party/DiMA_LICENSE"
+"third_party/AMP_CHALLENGE_LICENSE" = "amp_submission/third_party/AMP_CHALLENGE_LICENSE"
+
 [tool.uv]
 index-strategy = "unsafe-best-match"
 

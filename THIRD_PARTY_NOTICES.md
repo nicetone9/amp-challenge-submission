@@ -3,6 +3,7 @@
 - DiMA, https://github.com/MeshchaninovViacheslav/DiMA,
   commit 18f4a2e67988efe1cc5593fcaec1ece8f09fdac0.
   MIT, copyright 2024 Petr Grinberg; full notice in third_party/DiMA_LICENSE.
+  Checked against the upstream LICENCE at that exact commit on 2026-09-30.
   Five upstream source files are in src/amp_submission/vendor. The score estimator's
   import is made package-relative. No structural components are included.
 - AMP Challenge template, https://github.com/szczurek-lab/amp-challenge-2027.
@@ -17,3 +18,7 @@
 
 The repository MIT license applies only to original code and documentation, not
 third-party data, predictions, weights or upstream source under its own notice.
+
+Built wheels include this notice and both full upstream license files under
+amp_submission/third_party. Original-code MIT terms do not replace those notices.
+No license is asserted here for unreleased nonpublic training data; see docs/DATA.md.

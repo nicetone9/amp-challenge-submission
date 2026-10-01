@@ -6,16 +6,16 @@ library, a previous raw pool, or cached candidate scores.
 
 This integration is distinct from the frozen 2026-09-30 motif10 delivery:
 that delivery demonstrated fixed-pool selection reproducibility only.
-The new full-scale certificate must be produced by two successful default runs;
+The fresh-model certificate must be produced by two successful explicit resampling runs;
 unit tests and small real-model smoke runs are not substitutes.
 
 ## Inputs and supported environment
 
-Provision the private weights and their manifest under `checkpoint/`, plus the
+Provision the [released inference weights](../checkpoint/README.md) and manifest under `checkpoint/`, plus the
 reference-only bundle under `checkpoint/generation-reference/`.
 The bundle contains AMP calibration scores, disjoint reference anchors, the
 combined known-AMP novelty reference, training-sequence hashes and frozen motifs.
-It contains **no generated candidates**. Public distribution of these optional model inputs is still pending.
+It contains **no generated candidates**. These optional model inputs are now published as a hash-identified release asset.
 
 Use Linux x86-64, Python 3.11, the checked-in Pixi and uv locks, CUDA, and CD-HIT
 4.8.1 supplied by Pixi. The default mixed route does not invoke the legacy
@@ -31,7 +31,7 @@ pixi run -e runtime uv sync --frozen
 pixi run -e runtime uv run generate --resample
 ```
 
-The actual competition command is:
+The explicit resampling command is:
 
 ```bash
 uv run generate --resample
@@ -69,11 +69,11 @@ The five-metric internal score is **not** the official aggregation score and is
 not completion of the original six-category quality evaluation. Motifs are
 supporting evidence, not proof of antimicrobial activity.
 
-## Two independent default invocations
+## Two independent explicit resampling invocations
 
 The previous seven-metric run in `work/from-model-repro-seed42-v2` was stopped
 when the user changed the selection policy. It is not a completed certificate.
-The revised default model-to-output route needs a new full-scale verification;
+The explicit model-to-output route still needs a successful full-scale verification;
 fixed-pool reselection is a separate, explicitly narrower guarantee.
 
 
@@ -91,8 +91,9 @@ Each install records its interpreter prefix and confirms that rpy2 was not insta
 
 Only manifest-listed frozen input assets are copied into each clone; they are not
 symlinked, and no generated candidates or candidate scores are provisioned.
-Both candidate/output directories must be empty. Because these inputs are still
-privately provisioned, this test does not certify public asset delivery.
+Both candidate/output directories must be empty. The historical runner copies the
+preparing checkout's verified assets; that copying mechanism alone is not evidence
+of an anonymous public asset download.
 
 The run phase invokes exactly `uv run generate --resample` inside each clone's minimal
 Pixi runtime, sequentially on the same allocated GPU. `UV_FROZEN=1` prevents dependency changes, and
@@ -112,7 +113,7 @@ retries a failed run. Run 2 starts only if run 1 exits successfully.
 
 The runner writes `verification.json` only after:
 
-1. Both default processes exit zero.
+1. Both explicit resampling processes exit zero.
 2. Raw VQ and DiMA sequence hashes match across runs.
 3. Model, reference, source, dependency and recorded hardware identities match.
 4. Both `library.fasta` files and both `top.fasta` files are byte-identical,
@@ -128,3 +129,13 @@ does not overwrite the previous completed delivery.
 This certifies the pinned supported environment, not arbitrary hardware or
 library versions. It does not grant organizer access, publish weights/data,
 submit Kaggle, resolve data licensing, or establish wet-lab activity.
+
+## Completed raw pool and subsequent recovery
+
+The first seed-42 run produced all 300,000 VQ and 300,000 DiMA raw candidates,
+but failed during scoring because a legacy descriptor guard rejected valid
+41–50 aa sequences. That run is recorded as crashed, not as verified generation.
+The descriptor-only guard was repaired without changing external-oracle limits;
+checksum-verified raw batches are reused for CPU scoring/selection, without any
+new sampling. The public fixed-pool certificate, when complete, is separate from
+and does not imply a successful two-run fresh-model certificate.
