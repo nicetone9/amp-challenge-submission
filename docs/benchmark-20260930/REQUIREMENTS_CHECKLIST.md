@@ -1,30 +1,27 @@
-# Submission checklist — based on the requirements supplied by the team
+# Current submission checklist
 
-This is a preparation package, not a submitted or organizer-accepted entry.
+Current candidate: the new seed-42 mixed 600,000-attempt pool, selected into a
+50,000-member library and ranked Top100. Historical selection reports remain
+separate. No Kaggle submission or organizer acceptance is claimed.
 
-## Minimum benchmark participation
+| Minimum benchmark requirement | Current evidence |
+| --- | --- |
+| Method abstract | [ABSTRACT.md](ABSTRACT.md) |
+| 50,000 designs and ranked Top100 | Source-finalization FASTAs and independent hard/metric checks pass |
+| Selection, ranking, filters, training and external-resource summary | [WRITEUP.md](WRITEUP.md), [data disclosure](../DATA.md) |
+| GitHub inference code and model weights | Public repository and seed-42 release |
+| Organizer read access | Public repository/assets readable anonymously |
 
-| Requirement | Current status | Remaining action |
-| --- | --- | --- |
-| Method abstract | Prepared in ABSTRACT.md | Team review |
-| 50,000 designed peptides | library.fasta: 50,000 unique, sequence-hard checks passed | Submit through the organizer's stated channel |
-| Ranked Top100 and selection documentation | top.fasta: 100 from library; SELECTION_AND_MOTIFS.md and per-sequence CSVs | Team review of partial-quality ranking |
-| Short data/resources/intervention summary | DATA_AND_INTERVENTIONS.md prepared | Confirm source records and disclose unresolved restrictions honestly |
-| Private GitHub with model weights and inference code | Public repository contains code; weights exist on Lane but are not distributed | Resolve weight distribution and provide weights; verify clean inference |
-| Read access for RasmusML and szymczakpau | Not granted or verified by this work | Repository owner grants read access and checks it |
+| Additional full requirement | Current evidence / gap |
+| --- | --- |
+| Public code, weights and usage docs | Published; [public cold-clone filtering certificate passes](../../reports/frozen-pool-seed42-public-verification.json) |
+| Permissive OSI-approved code license | Original code MIT; full upstream MIT/BSD notices retained |
+| Python version and uv.lock | Python 3.11; locked default installation |
+| Default uv run generate with seed 42 | Disclosed frozen-pool selection route; all arguments have defaults |
+| Identical repeated outputs | Two public cold clones pass with byte-identical, source-hash-matched outputs |
+| Full training-data disclosure / permissive nonpublic-data release | Incomplete; no redistribution authority assumed |
 
-The selected files and summary documents do not by themselves satisfy the missing weights/access requirement. Six-category quality completion is an internal evaluation goal; it is not represented here as an extra minimum requirement in the supplied text. Predictions are not wet-lab measurements.
-
-## Full requirements / co-authorship eligibility
-
-| Requirement | Current status | Remaining action |
-| --- | --- | --- |
-| Public template-based repository, weights, inference and detailed usage | Public repository and implementation exist; assets not distributed | Resolve asset release rights and complete cold-clone verification |
-| Permissive OSI-approved license | MIT for original code/documentation | Preserve all separate upstream data/weight/code terms |
-| Default seed and identical repeated generation | Seed 42; two fixed-pool selections match | Validate two full model-to-output runs via the competition entry point |
-| Full training data disclosure and permissive release of nonpublic data | Partial disclosure, counts and fingerprints | Complete source/accession/version records and resolve/release permitted nonpublic data |
-| Compliance with source terms | Not fully established | Finish source-by-source review before release |
-
-The current legacy uv run generate entry point does not yet reproduce this mixed calibrated selection pipeline. Do not use the fixed-pool check as a substitute for full-entry-point reproducibility.
-
-No collaborator permissions, repository visibility, data licenses, weight releases or competition submissions were changed while preparing these documents.
+The unchanged official validator must be run on the current public revision.
+A validator pass does not assess training-data rights, experimental quality or
+organizer acceptance of a fixed-pool workflow. Fresh-model resampling identity
+remains uncertified. Full co-authorship eligibility is not claimed.

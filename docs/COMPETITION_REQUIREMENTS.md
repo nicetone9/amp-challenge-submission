@@ -1,4 +1,4 @@
-# Competition alignment (checked 2026-09-29)
+# Competition alignment (checked 2026-09-30)
 
 Sources: [official template](https://github.com/szczurek-lab/amp-challenge-2027),
 [category definitions](https://szczurek-lab.github.io/amp-challenge-website/#categories),
@@ -19,25 +19,38 @@ HC50 assay limit128µM; nonhemolytic is>128,not128.
 Team results average peptide metrics over25randomly sampled candidates fromTop100.
 Individual-peptide proxy scores cannot establish team category results.
 
-## Sequence and delivery gates
+## Current sequence and delivery gates
 
-| Requirement | Status |
+The current delivery is the new seed-42 300,000 VQ + 300,000 DiMA pool, not the
+historical separate-architecture libraries. Minimum and full requirements follow
+the [official template](https://github.com/szczurek-lab/amp-challenge-2027#submission-requirements).
+
+| Requirement | Current evidence / remaining gate |
 | --- | --- |
-| 50,000 unique sequences per library | Historical exports verified, bothroutes |
-| RankedTop100 drawn fromownlibrary | Verified, bothroutes |
-|20standardAA,length8–50 | Verified; actualgeneration8–40 |
-|Linearity,freeN/Ctermini,noamidationorothermodification | Design specification; synthesis/QC unverified |
-|Librarynoexactofficialreferenceoverlap | Verified byhash-matched historical full-library checker |
-|Top100maxreferenceLevenshteinratio≤0.8 | Recomputed for200/200; full50kbothuse same stricterfilter |
-|Method,filters,externaltools,rankingdocumented | Included |
-|PrivateGitHubinference+weights+organizerreadaccess | Publicrepoaccessible; weightsnotreleased |
-|Publicrepo+permissivecode | Publicrepo; MIToriginalcode; weightsanddatareleasepending |
-|Fulltrainingdatadisclosure+nonpublicdatarelease | Partial; sourcepermissionsunresolved |
-|Pythonversion+uv.lock+noargentrypoint | Implemented; externalR/oracleenvironment remainsreleasegate |
-|Twoclean-clonefullgenerationsidentical | Historicalsameenvironmentpassed; portablecold-cloneGPUtestpending |
-|seqmecomputationalscreening,DBAASP/dbAMP/APDnearhits | Partialinternalproxies; fullofficialscreeningnotrun |
-|SynthesisandpurityidentityQC | Notassessed |
-|Officialacceptance/Kagglesubmission | Notperformed |
+| Method abstract and ranking/filter summary | Current ABSTRACT.md and WRITEUP.md |
+| Library of 50,000 unique designs | Source finalization and independent metric table pass |
+| Ranked Top100 from that library | 100 unique members; 50 per tier and ten motif quota selections |
+| 20 standard AA; length 8–50 | Library 8–50; Top100 8–36; checked |
+| Linear, free termini, unmodified | Design specification; synthesis/QC not assessed |
+| No exact official-reference library overlap | Full-library combined-reference validation passes |
+| Top100 reference Levenshtein ratio <=0.8 | Stricter gate also applied to the entire library |
+| GitHub inference code and weights | Public code and approved frozen inference release |
+| Organizer read access | Public repository/assets can be read anonymously; no collaborator/admin action required |
+| Permissive original-code license | MIT; DiMA/ESM MIT and validator BSD notices retained separately |
+| Defined Python and uv.lock | Python 3.11; locked install and default entry implemented |
+| No-argument uv run generate | Fixed-pool filtering; native CD-HIT prerequisite is supplied by locked Pixi runtime |
+| Identical repeated default output | [Two public cold clones pass](../reports/frozen-pool-seed42-public-verification.json); byte-identical and source-hash matched |
+| Full unchanged official validator | Pending for the current public delivery |
+| Full training-data disclosure and nonpublic-data release | Not complete: source/accession/processing records and redistribution rights unresolved |
+| Organizer acceptance of disclosed fixed-pool workflow | Not confirmed; fresh-model identity is not claimed |
+| seqme / full six-category screening | Partial internal metrics only |
+| Wet-lab activity, safety, synthesis/QC | Not established |
+| Kaggle submission | Not performed |
+
+Default reproduction uses a disclosed raw-candidate and score/audit cache and
+reruns all selection stages. Optional `--resample` generates model candidates anew
+but does not have a successful two-run certificate. Neither the public filtering
+certificate nor a validator pass settles training-data rights or organizer acceptance.
 
 No numeric overall compliance percentage: the gates are heterogeneous and some are
 blocking requirements, not interchangeable points.

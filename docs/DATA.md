@@ -22,7 +22,10 @@ used in a previous study (internal ID: ZYL), or OmegAMP curated AMP.
 Candidates: AMPSphere-source sequences excluding core.
 Background is not interpreted as experimentally validated negative.
 ESM residue cache, train-only normalization and weighted length distribution shared
-between architectures. Generation is narrowed to8–40 for the current HemoPI2 domain.
+between architectures. Default mixed-pool sampling/filtering uses the 8–50 aa validity range; length and
+mass are descriptive, not quality gates. Explicit legacy ANIA/HemoPI2 predictor
+routes retain their original 8–40 aa domain. Extending descriptor validity does
+not extend an external predictor's validated domain.
 
 ## Missing for full disclosure
 

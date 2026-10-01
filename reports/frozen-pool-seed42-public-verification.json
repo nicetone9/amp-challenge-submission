@@ -1,0 +1,47 @@
+{
+  "command_each_run": [
+    "uv",
+    "run",
+    "generate"
+  ],
+  "environment": {
+    "cd_hit_sha256": "f432fac931ea91b77a02a2d17d899b77e25a6b7373d873adb38a79944aba4929",
+    "device": "cpu",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "python": "3.11.16"
+  },
+  "fasta_sha256": {
+    "library.fasta": "bc1835e2b2a3c2e5185840b0800cbf779e679230c8751990c3a55a79b0ad1354",
+    "top.fasta": "264c4ec0c407aace74ffb41d7911dd8241eae695d899ce3ff0b63cd2bd94ebc9"
+  },
+  "fresh_model_sampling": false,
+  "frozen_source_selection_match": true,
+  "library_count": 50000,
+  "not_claimed": [
+    "model-resampling identity",
+    "organizer acceptance",
+    "six-category quality completion",
+    "wet-lab activity"
+  ],
+  "official_template_component_checks_passed": true,
+  "pool_counts": {
+    "dima": 300000,
+    "vq": 300000
+  },
+  "pool_manifest_sha256": "e590b18532a495ebd7f19466d415cd4798bfa0cc2e695c9f88fa00ba89553237",
+  "public_inputs_downloaded_each_clone": true,
+  "raw_sha256": {
+    "dima": "9ca822e4c2ac936c1725bc5a9f34be2835c0d573b3fcf9292d2bfcf8651dfbd3",
+    "vq": "8379202511be1206c35fd89fb0634dfa52bd86a6b9e9345033f23afd28edeff5"
+  },
+  "revision": "05a99cf633084de146c3e91a897e89161c715288",
+  "seed": 42,
+  "status": "TWO_PUBLIC_COLD_CLONES_FROZEN_FILTER_BYTE_IDENTICAL",
+  "swanlab_run_ids": [
+    "j4yzfoul",
+    "23ix4d4s"
+  ],
+  "threshold": 0.5,
+  "top_count": 100
+}

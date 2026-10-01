@@ -1,3 +1,20 @@
-# Method abstract
+# Method abstract — current new 600k pool
 
-We developed two independent, sequence-only peptide generators based on frozen residue representations from the original ESM-2 650M model: a VQ-VAE with an autoregressive discrete-code prior and a DiMA continuous-latent diffusion model. Generator policies were adapted using published antimicrobial-potency and hemolysis predictors; these rewards are computational proxies rather than experimental activity measurements. An existing equal-source raw pool of 600,000 designs yielded 597,555 unique candidates. We excluded invalid or duplicate sequences and applied a conservative whole-library Levenshtein-ratio threshold of 0.8 against the frozen official reference. Six physicochemical descriptors and anchor-based novelty were calibrated against eligible training AMP sequences, with nonmonotonic descriptors converted to AMP typicality. To obtain 50,000 designs, the internal joint percentile threshold was explicitly reduced from 0.50 to 0.30 using a predefined grid. Deterministic clustering and balanced high/qualified-low selection produced a 50,000-member library and a ranked 100-member subset, with ten slots reserved for eligible candidates carrying frozen 3–4-residue motifs. Two complete selection runs from the same frozen pool produced byte-identical FASTA files. Full predictor, embedding, synthesizability, and fresh-generation reproducibility evaluations remain incomplete. No experimental antimicrobial activity or safety is claimed.
+We developed two independent, sequence-only peptide generators using frozen original
+ESM-2 650M residue representations: a VQ-VAE with an autoregressive discrete-code
+prior and a DiMA latent diffusion model. Published potency and hemolysis predictors
+were policy-reward proxies, not experimental measurements. The new seed-42 pool
+contains 300,000 attempts from each model and 597,058 unique candidates.
+Canonical-sequence, training-overlap and conservative whole-library known-AMP
+similarity checks are followed by five reference-calibrated internal metrics:
+charge at pH 7, GRAVY, aromaticity, pI and anchor novelty. Every metric passes a common
+percentile threshold of 0.50. Length is only an 8–50 aa validity bound; length and
+mass do not contribute to quality gates or ranking. Deterministic clustering and
+balanced high/qualified-low selection produce 50,000 unique peptides and a ranked
+Top100 with ten short-motif quota selections. The public default entry reruns
+filtering from the declared hash-verified frozen pool; model resampling is an
+explicit, separately uncertified option. Full functional, embedding and synthesis
+evaluation and training-data release remain incomplete. No experimental activity
+or safety is claimed.
+
+See [the current write-up](WRITEUP.md) for outputs, verification and release boundaries.

@@ -1,4 +1,8 @@
-# Selection, ranking and motif evidence
+# Historical seven-metric selection and motif evidence
+
+This page preserves the earlier pool/selection. For the current new 600k pool,
+five-metric ranking, 0.50 threshold and outputs, use [WRITEUP.md](WRITEUP.md).
+Do not use the historical counts or 0.30 threshold below for the current delivery.
 
 ## Frozen selection
 

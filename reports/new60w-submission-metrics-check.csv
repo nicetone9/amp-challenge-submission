@@ -1,0 +1,22 @@
+metric,requirement,library,top100,library_range,top100_range,status
+数量,library=50000；Top100=100,50000,100,,,PASS
+唯一序列,无重复,50000,100,,,PASS
+标准氨基酸,仅20种标准AA,50000,100,,,PASS
+长度合法性,8–50 aa；仅硬性合法范围,50000,100,8–50 aa,8–36 aa,PASS
+低复杂度排除,单一AA占比≤0.6,50000,100,,,PASS
+训练集精确重叠排除,训练序列哈希不命中,50000,100,,,PASS
+已知AMP相似性,Levenshtein ratio≤0.8；生成时完整库审核已通过,50000,100,,,PASS
+CD-HIT聚类,identity=0.50；双向coverage=0.80；单线程,46286 clusters,91 clusters,,,PASS
+Top100属于library,全部来自本次library,50000,100,,,PASS
+高/低组配额,library各25000；Top100各50,high=25000; low=25000,high=50; low=50,,,PASS
+短motif支持,Top100至少10；3–4 aa motif；每组至少5个配额位,104,10,,,PASS
+charge_ph7,"校准percentile≥0.50；最小值 library=0.5, Top=0.500223",50000,100,-0.259675–2.49735; median=0.819496,-0.247998–2.49535; median=0.846389,PASS
+gravy,"校准percentile≥0.50；最小值 library=0.5, Top=0.503565",50000,100,-0.885714–0.226667; median=-0.24,-0.878571–0.223077; median=-0.282692,PASS
+aromaticity,"校准percentile≥0.50；最小值 library=0.50713, Top=0.50713",50000,100,0.05–0.2; median=0.1,0.05–0.193548; median=0.111111,PASS
+isoelectric_point,"校准percentile≥0.50；最小值 library=0.5, Top=0.532977",50000,100,5.97164–10.6133; median=8.49153,5.99426–9.99429; median=8.49218,PASS
+anchor_novelty,"校准percentile≥0.50；最小值 library=0.533645, Top=0.533645",50000,100,0.45–0.64; median=0.5,0.45–0.568627; median=0.5,PASS
+分子量,仅描述；不参与质量门槛或排名,描述项,描述项,817.846–6173.19 Da,990.177–3856.36 Da,DESCRIPTIVE
+抗菌活性/MIC与溶血安全性,当前输出未完成此项验证,未验证,未验证,,,UNVERIFIED
+ProtT5/集合表征指标,当前输出未完成此项验证,未验证,未验证,,,UNVERIFIED
+合成可行性,当前输出未完成此项验证,未验证,未验证,,,UNVERIFIED
+湿实验活性与安全性,当前输出未完成此项验证,未验证,未验证,,,UNVERIFIED

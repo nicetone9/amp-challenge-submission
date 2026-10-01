@@ -12,7 +12,8 @@ The default `uv run generate` downloads the hash-verified
 [public pool release](https://github.com/nicetone9/amp-challenge-submission/releases/tag/frozen-pool-seed42-20260930)
 named in `candidate-pool.json` and reruns filtering, clustering and selection.
 It does not resample models or copy a preselected library. The candidate score/audit
-table is a declared frozen input. Public cold-clone verification is pending.
+table is a declared frozen input. [Two public cold-clone default runs passed](reports/frozen-pool-seed42-public-verification.json),
+with byte-identical FASTAs matching the source selection.
 See [reproduction](docs/FROZEN_POOL_REPRODUCIBILITY.md),
 [write-up](docs/benchmark-20260930/WRITEUP.md), and
 [requirements](docs/COMPETITION_REQUIREMENTS.md).
@@ -115,7 +116,9 @@ Protected test/quarantine data, credentials and full training sequences are not 
 
 Historical source-environment exports passed official sequence component checks
 and two independent Pixi/uv generations matched their hashes.
-The default frozen-pool package needs its own public cold-clone filtering certificate.
+The current default frozen-pool package has its own
+[public cold-clone filtering certificate](reports/frozen-pool-seed42-public-verification.json).
+The complete unchanged official validator remains a separate check.
 SwanLab: [AMP_step2challenge](https://swanlab.cn/@nicetone9/AMP_step2challenge/overview).
 
 ## Candidate review

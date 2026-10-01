@@ -62,6 +62,19 @@ This certifies filtering from the fixed pool in the pinned environment.
 It does not certify repeated model sampling, complete six-category quality,
 organizer acceptance or experimental activity.
 
+## Current public certificate
+
+[The certificate](../reports/frozen-pool-seed42-public-verification.json) records
+two successful public cold clones at commit
+`05a99cf633084de146c3e91a897e89161c715288`. Both default runs generated 50,000
+unique library members and Top100, matching each other and the source-finalization
+hashes. Native CD-HIT, Python/numpy/pandas versions, pool/raw hashes and the two
+online tracking run IDs are recorded. The independent output checklist is in
+[the metric table](../reports/new60w-submission-metrics-check.md).
+
+The certificate covers frozen-pool filtering, not fresh model resampling. The
+complete unchanged upstream validator is a separate check and remains pending.
+
 ## Explicit new sampling
 
 `uv run generate --resample` retains fresh mixed-model generation for deliberate

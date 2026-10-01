@@ -27,6 +27,7 @@ packages = ["src/amp_submission"]
 "THIRD_PARTY_NOTICES.md" = "amp_submission/THIRD_PARTY_NOTICES.md"
 "third_party/DiMA_LICENSE" = "amp_submission/third_party/DiMA_LICENSE"
 "third_party/AMP_CHALLENGE_LICENSE" = "amp_submission/third_party/AMP_CHALLENGE_LICENSE"
+"third_party/ESM_LICENSE" = "amp_submission/third_party/ESM_LICENSE"
 
 [tool.uv]
 index-strategy = "unsafe-best-match"

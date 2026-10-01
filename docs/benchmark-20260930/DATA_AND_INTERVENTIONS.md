@@ -1,4 +1,8 @@
-# Training data, external resources and interventions
+# Historical seven-metric data/resources/interventions summary
+
+The training milestone remains shared, but selection interventions below refer to
+the earlier library. Current sampling, five-metric filtering and release boundaries
+are in [WRITEUP.md](WRITEUP.md) and [data disclosure](../DATA.md).
 
 ## Training input
 
